@@ -39,3 +39,6 @@ build/
 .DS_Store
 ### IntelliJ : config locale non partagee ###
 .idea/
+
+### Notes locales de travail (non versionnees) ###
+RESULTATS.md
