@@ -2,6 +2,8 @@ package hai913i.tp1.cli;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.eclipse.jdt.core.compiler.IProblem;
@@ -14,6 +16,9 @@ import hai913i.tp1.model.ProjectFacts;
 import hai913i.tp1.parse.JdtParser;
 import hai913i.tp1.parse.JdtParser.ParsedFile;
 import hai913i.tp1.parse.ProjectSources;
+import hai913i.tp1.report.DotReport;
+import hai913i.tp1.spoon.SpoonExtractor;
+import hai913i.tp1.spoon.SpoonRawCounts;
 import hai913i.tp1.report.TextReport;
 
 /** Enchaine les etapes : sources, AST, faits, traitements, sorties. */
@@ -71,12 +76,31 @@ public final class Analyzer {
             }
         }
 
+        if (action == Action.SPOON) {
+            ProjectFacts spoonFacts = SpoonExtractor.extract(sources.sourceRoot(),
+                    sources.javaFiles());
+            TextReport.comparison(out, facts, spoonFacts,
+                    SpoonRawCounts.of(sources.sourceRoot()));
+        }
+
         CallGraph graph = CallGraphBuilder.build(facts);
         if (action == Action.GRAPH || action == Action.ALL) {
             TextReport.graph(out, graph);
         }
         options.callees().ifPresent(id -> TextReport.neighbours(out, graph, id, false));
         options.callers().ifPresent(id -> TextReport.neighbours(out, graph, id, true));
+
+        if (options.dotFile().isPresent()) {
+            try (PrintStream dot = new PrintStream(
+                    Files.newOutputStream(options.dotFile().get()), true, StandardCharsets.UTF_8)) {
+                DotReport.write(dot, graph, options.dotPackage().orElse(null));
+            } catch (IOException e) {
+                err.println("Erreur d'ecriture du fichier DOT : " + e.getMessage());
+                return BAD_PROJECT;
+            }
+            out.println();
+            out.println("Graphe exporte : " + options.dotFile().get());
+        }
 
         return OK;
     }

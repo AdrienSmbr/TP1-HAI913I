@@ -16,6 +16,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdt.version>3.46.0</jdt.version>
         <junit.version>5.14.4</junit.version>
+        <spoon.version>11.5.0</spoon.version>
+        <slf4j.version>2.0.18</slf4j.version>
     </properties>
 
     <dependencies>
@@ -24,6 +26,18 @@
             <groupId>org.eclipse.jdt</groupId>
             <artifactId>org.eclipse.jdt.core</artifactId>
             <version>${jdt.version}</version>
+        </dependency>
+        <!-- Partie C (bonus) : seconde extraction, comparee a celle de JDT. -->
+        <dependency>
+            <groupId>fr.inria.gforge.spoon</groupId>
+            <artifactId>spoon-core</artifactId>
+            <version>${spoon.version}</version>
+        </dependency>
+        <dependency>
+            <!-- Sans implementation SLF4J, Spoon affiche un avertissement au demarrage. -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

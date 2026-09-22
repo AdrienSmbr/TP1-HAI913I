@@ -12,6 +12,7 @@ import hai913i.tp1.model.FieldFact;
 import hai913i.tp1.model.MethodFact;
 import hai913i.tp1.model.ProjectFacts;
 import hai913i.tp1.model.TypeFact;
+import hai913i.tp1.spoon.SpoonRawCounts;
 
 /** Mise en forme texte. Ne calcule rien : lit le modele et les traitements. */
 public final class TextReport {
@@ -131,6 +132,36 @@ public final class TextReport {
             return;
         }
         neighbours.forEach((id, weight) -> out.println("    " + id + "  (poids " + weight + ")"));
+    }
+
+    /** Bonus C1 : JDT contre Spoon, brut puis apres conventions du sujet. */
+    public static void comparison(PrintStream out, ProjectFacts jdt, ProjectFacts spoon,
+            SpoonRawCounts raw) {
+        out.println();
+        out.println("== JDT contre Spoon (bonus C1) ==");
+        out.printf("%-26s %12s %12s %12s%n", "MESURE", "JDT", "SPOON BRUT", "SPOON (TP)");
+        row(out, "types", jdt.types().size(),
+                raw.allTypes() + " / " + raw.topLevelTypes(), spoon.types().size());
+        row(out, "methodes", jdt.methodCount(),
+                raw.methods() + " + " + raw.constructors(), spoon.methodCount());
+        row(out, "dont constructeurs", jdt.constructorCount(),
+                raw.constructors() + " (" + raw.implicitConstructors() + " impl.)",
+                spoon.constructorCount());
+        row(out, "attributs", jdt.fieldCount(),
+                raw.fields() + " (" + raw.enumValues() + " const.)", spoon.fieldCount());
+        row(out, "paquetages", jdt.packages().size(),
+                String.valueOf(raw.packages()), spoon.packages().size());
+        row(out, "appels", jdt.callCount(),
+                raw.invocations() + " (" + raw.constructorInvocations() + " ctors)",
+                spoon.callCount());
+        out.println();
+        out.println("Les colonnes JDT et SPOON (TP) doivent coincider : c'est l'interet du");
+        out.println("modele de faits, les traitements ne changent pas d'un extracteur a l'autre.");
+    }
+
+    private static void row(PrintStream out, String label, int jdt, String raw, int spoon) {
+        out.printf("%-26s %12d %12s %12d%s%n", label, jdt, raw, spoon,
+                jdt == spoon ? "" : "   <-- ECART");
     }
 
     private static String twoDecimals(double value) {

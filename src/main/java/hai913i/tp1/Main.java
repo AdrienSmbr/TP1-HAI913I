@@ -26,6 +26,10 @@ public final class Main {
             System.exit(Analyzer.BAD_USAGE);
             return;
         }
+        if (options.gui()) {
+            hai913i.tp1.ui.AnalyzerWindow.launch(options.projectDirectory().toString());
+            return;
+        }
         System.exit(Analyzer.run(options, System.out, System.err));
     }
 }
