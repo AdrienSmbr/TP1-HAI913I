@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import hai913i.tp1.model.CallFact;
@@ -27,6 +28,8 @@ public final class CallGraphBuilder {
                 .map(MethodFact::id)
                 .sorted()
                 .toList();
+        // Recherche en O(1) : le test ci-dessous est fait pour chaque appel.
+        Set<String> nodeIds = Set.copyOf(nodes);
 
         Map<String, Map<String, Integer>> outgoing = new TreeMap<>();
         Map<String, Map<String, Integer>> incoming = new TreeMap<>();
@@ -41,7 +44,7 @@ public final class CallGraphBuilder {
                         continue;
                     }
                     String target = call.targetId().orElseThrow();
-                    if (!call.internal() || !nodes.contains(target)) {
+                    if (!call.internal() || !nodeIds.contains(target)) {
                         external++;
                         continue;
                     }

@@ -1,6 +1,7 @@
 package hai913i.tp1.report;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public final class DotReport {
         Map<String, List<String>> byOwner = new LinkedHashMap<>();
         for (String node : graph.nodes()) {
             if (matches(node, packageFilter)) {
-                byOwner.computeIfAbsent(owner(node), key -> new java.util.ArrayList<>()).add(node);
+                byOwner.computeIfAbsent(owner(node), key -> new ArrayList<>()).add(node);
             }
         }
 

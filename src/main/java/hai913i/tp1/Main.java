@@ -4,6 +4,7 @@ import hai913i.tp1.cli.Analyzer;
 import hai913i.tp1.cli.CommandLine;
 import hai913i.tp1.cli.Options;
 import hai913i.tp1.cli.UsageException;
+import hai913i.tp1.ui.AnalyzerWindow;
 
 /**
  * Point d'entree. Lit les arguments, delegue, rend un code de sortie.
@@ -27,7 +28,7 @@ public final class Main {
             return;
         }
         if (options.gui()) {
-            hai913i.tp1.ui.AnalyzerWindow.launch(options.projectDirectory().toString());
+            AnalyzerWindow.launch(options.projectDirectory().toString());
             return;
         }
         System.exit(Analyzer.run(options, System.out, System.err));

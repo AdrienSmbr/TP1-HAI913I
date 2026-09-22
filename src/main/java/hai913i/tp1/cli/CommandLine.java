@@ -25,11 +25,11 @@ public final class CommandLine {
               --gui                  ouvre l'interface graphique
 
             Exemples :
-              java -jar target/hai913i-tp1-analyzer.jar ../validation --x 5
-              java -jar target/hai913i-tp1-analyzer.jar ../validation --action graph \\
+              java -jar target/hai913i-tp1-analyzer.jar resources/validation --x 5
+              java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph \\
                   --callers 'library.model.Loanable#checkOut(library.model.Member)'
-              java -jar target/hai913i-tp1-analyzer.jar ../validation --action graph --dot graphe.dot
-              java -jar target/hai913i-tp1-analyzer.jar ../validation --gui
+              java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph --dot graphe.dot
+              java -jar target/hai913i-tp1-analyzer.jar resources/validation --gui
             """;
 
     private CommandLine() {
@@ -70,11 +70,10 @@ public final class CommandLine {
         if (project == null) {
             throw new UsageException("chemin du projet manquant");
         }
-        if (action.needsThreshold() && threshold == null) {
-            throw new UsageException("le seuil X est obligatoire pour l'action "
-                    + action.name().toLowerCase(Locale.ROOT) + " : ajoutez --x N");
-        }
-        return new Options(project, action, threshold == null ? 0 : threshold,
+        // L'absence de seuil n'est pas refusee ici : un chemin invalide doit etre
+        // diagnostique avant lui. C'est Analyzer qui exige X, apres verification
+        // du projet. Voir le point de controle B4.
+        return new Options(project, action, threshold,
                 callees, callers, dotFile, dotPackage, false);
     }
 

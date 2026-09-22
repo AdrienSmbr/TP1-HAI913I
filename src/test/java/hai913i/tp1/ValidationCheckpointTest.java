@@ -28,7 +28,7 @@ import hai913i.tp1.parse.ProjectSources;
  */
 class ValidationCheckpointTest {
 
-    private static final Path VALIDATION = Path.of("..", "validation");
+    private static final Path VALIDATION = TestProjects.validation();
 
     private static ProjectFacts facts;
     private static int compilationUnits;

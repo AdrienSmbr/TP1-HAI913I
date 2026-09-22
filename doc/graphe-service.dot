@@ -1,0 +1,56 @@
+digraph callgraph {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=9];
+  edge [fontname="Helvetica", fontsize=8];
+  subgraph cluster_0 {
+    label="library.service.Catalog";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.Catalog#add(library.model.Item)" [label="add/1"];
+    "library.service.Catalog#add(library.model.Item,library.model.Item)" [label="add/2"];
+    "library.service.Catalog#available()" [label="available/0"];
+    "library.service.Catalog#findById(java.lang.String)" [label="findById/1"];
+    "library.service.Catalog#size()" [label="size/0"];
+  }
+  subgraph cluster_1 {
+    label="library.service.ConsoleNotifier";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.ConsoleNotifier#getSent()" [label="getSent/0"];
+    "library.service.ConsoleNotifier#send(library.model.Member,java.lang.String)" [label="send/2"];
+  }
+  subgraph cluster_2 {
+    label="library.service.LoanException";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.LoanException#LoanException(java.lang.String)" [label="LoanException/1"];
+  }
+  subgraph cluster_3 {
+    label="library.service.LoanService";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.LoanService#LoanService(library.service.Catalog,library.service.Notifier)" [label="LoanService/2"];
+    "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" [label="borrow/3"];
+    "library.service.LoanService#getHistory()" [label="getHistory/0"];
+    "library.service.LoanService#getRefusals()" [label="getRefusals/0"];
+    "library.service.LoanService#giveBack(library.service.LoanService.Loan)" [label="giveBack/1"];
+    "library.service.LoanService#totalFees()" [label="totalFees/0"];
+  }
+  subgraph cluster_4 {
+    label="library.service.LoanService.Loan";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.LoanService.Loan#Loan(library.model.Item,library.model.Member,int)" [label="Loan/3"];
+    "library.service.LoanService.Loan#getDays()" [label="getDays/0"];
+    "library.service.LoanService.Loan#getItem()" [label="getItem/0"];
+    "library.service.LoanService.Loan#getMember()" [label="getMember/0"];
+  }
+  subgraph cluster_5 {
+    label="library.service.Notifier";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.Notifier#send(library.model.Member,java.lang.String)" [label="send/2"];
+  }
+  "library.service.Catalog#add(library.model.Item,library.model.Item)" -> "library.service.Catalog#add(library.model.Item)" [label="2"];
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.service.Catalog#findById(java.lang.String)";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.service.Notifier#send(library.model.Member,java.lang.String)";
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.service.LoanService.Loan#getItem()" [label="2"];
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.service.Notifier#send(library.model.Member,java.lang.String)";
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.service.LoanService.Loan#getMember()";
+  "library.service.LoanService#totalFees()" -> "library.service.LoanService.Loan#getItem()";
+  "library.service.LoanService#totalFees()" -> "library.service.LoanService.Loan#getDays()";
+}

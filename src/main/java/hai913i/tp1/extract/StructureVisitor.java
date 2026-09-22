@@ -79,7 +79,7 @@ public class StructureVisitor extends ASTVisitor {
                 superclassesOf(binding),
                 interfacesOf(binding),
                 fieldsOf(node),
-                methodsOf(node, qualifiedName, kind)));
+                methodsOf(node, qualifiedName)));
     }
 
     private String packageOf(ITypeBinding binding) {
@@ -133,7 +133,7 @@ public class StructureVisitor extends ASTVisitor {
         return fields;
     }
 
-    private List<MethodFact> methodsOf(AbstractTypeDeclaration node, String owner, TypeKind kind) {
+    private List<MethodFact> methodsOf(AbstractTypeDeclaration node, String owner) {
         List<MethodFact> methods = new ArrayList<>();
         for (Object member : node.bodyDeclarations()) {
             if (member instanceof MethodDeclaration method) {

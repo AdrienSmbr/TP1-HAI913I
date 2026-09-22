@@ -42,3 +42,12 @@ build/
 
 ### Notes locales de travail (non versionnees) ###
 RESULTATS.md
+
+### LaTeX : fichiers intermediaires du rapport ###
+rapport/*.aux
+rapport/*.log
+rapport/*.out
+rapport/*.toc
+rapport/*.synctex.gz
+rapport/*.fls
+rapport/*.fdb_latexmk

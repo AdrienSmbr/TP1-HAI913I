@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Locale;
 
 import org.eclipse.jdt.core.compiler.IProblem;
 
@@ -49,6 +50,17 @@ public final class Analyzer {
             return NO_SOURCES;
         }
 
+        // Le seuil est exige ici, et non a la lecture des arguments, pour que
+        // « dossier inexistant » et « aucun fichier .java » soient diagnostiques
+        // avant lui : sans cela, oublier --x masquait le vrai probleme.
+        if (options.action().needsThreshold() && !options.hasThreshold()) {
+            err.println("Erreur : le seuil X est obligatoire pour l'action "
+                    + options.action().name().toLowerCase(Locale.ROOT) + " : ajoutez --x N");
+            err.println();
+            err.print(CommandLine.USAGE);
+            return BAD_USAGE;
+        }
+
         List<ParsedFile> files = JdtParser.parse(sources, List.of());
         int errors = reportCompilationProblems(files, err);
 
@@ -69,7 +81,7 @@ public final class Analyzer {
         }
         if (action == Action.METRICS || action == Action.ALL) {
             try {
-                TextReport.metrics(out, MetricsService.compute(facts, options.threshold()));
+                TextReport.metrics(out, MetricsService.compute(facts, options.thresholdOrZero()));
             } catch (IOException e) {
                 err.println("Erreur de lecture pendant le calcul des metriques : " + e.getMessage());
                 return BAD_PROJECT;

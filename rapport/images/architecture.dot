@@ -1,0 +1,34 @@
+digraph architecture {
+  rankdir=TB;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, fillcolor=white];
+  edge [fontname="Helvetica", fontsize=9, color=gray40];
+
+  subgraph cluster_jdt {
+    label="connaissent JDT"; style=dashed; color=crimson; fontcolor=crimson; fontsize=11;
+    parse  [label="parse\nProjectSources, JdtParser", fillcolor="#ffecec"];
+    extract [label="extract\nStructureVisitor\nCallCollector, FactExtractor", fillcolor="#ffecec"];
+  }
+
+  subgraph cluster_pur {
+    label="ne voient que le modele"; style=dashed; color="#1a6e1a"; fontcolor="#1a6e1a"; fontsize=11;
+    metrics   [label="metrics\nRanking, MetricsService", fillcolor="#eaf7ea"];
+    callgraph [label="callgraph\nCallGraph, CallGraphBuilder", fillcolor="#eaf7ea"];
+    report    [label="report\nTextReport, DotReport", fillcolor="#eaf7ea"];
+    ui        [label="ui\nAnalyzerWindow  (bonus C2)", fillcolor="#eaf7ea"];
+  }
+
+  main  [label="Main + cli\nOptions, CommandLine, Analyzer", fillcolor="#eef2ff"];
+  model [label="model\nTypeFact, FieldFact, MethodFact,\nCallFact, ProjectFacts\n(ne depend de RIEN)", fillcolor="#fff8dd", penwidth=2];
+  spoon [label="spoon\nSpoonExtractor  (bonus C1)", fillcolor="#ffecec"];
+
+  main -> parse;
+  parse -> extract [label="CompilationUnit"];
+  extract -> model [label="remplit"];
+  spoon -> model   [label="remplit aussi"];
+  model -> metrics   [label="lit", dir=back];
+  model -> callgraph [label="lit", dir=back];
+  model -> report    [label="lit", dir=back];
+  model -> ui        [label="lit", dir=back];
+  main -> metrics [style=dotted];
+  main -> callgraph [style=dotted];
+}

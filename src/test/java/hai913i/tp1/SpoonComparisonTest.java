@@ -26,7 +26,7 @@ import hai913i.tp1.spoon.SpoonRawCounts;
  */
 class SpoonComparisonTest {
 
-    private static final Path VALIDATION = Path.of("..", "validation");
+    private static final Path VALIDATION = TestProjects.validation();
 
     private static ProjectFacts jdt;
     private static ProjectFacts spoon;

@@ -1,0 +1,168 @@
+digraph callgraph {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=9];
+  edge [fontname="Helvetica", fontsize=8];
+  subgraph cluster_0 {
+    label="library.app.LibraryApp";
+    style=dashed; color=gray60; fontsize=10;
+    "library.app.LibraryApp#main(java.lang.String[])" [label="main/1"];
+    "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)" [label="run/3"];
+  }
+  subgraph cluster_1 {
+    label="library.model.Book";
+    style=dashed; color=gray60; fontsize=10;
+    "library.model.Book#Book(java.lang.String,java.lang.String,java.lang.String,int)" [label="Book/4"];
+    "library.model.Book#dailyRate()" [label="dailyRate/0"];
+    "library.model.Book#describe()" [label="describe/0"];
+    "library.model.Book#getAuthor()" [label="getAuthor/0"];
+    "library.model.Book#getPages()" [label="getPages/0"];
+  }
+  subgraph cluster_2 {
+    label="library.model.Category";
+    style=dashed; color=gray60; fontsize=10;
+    "library.model.Category#Category(java.lang.String)" [label="Category/1"];
+    "library.model.Category#getLabel()" [label="getLabel/0"];
+  }
+  subgraph cluster_3 {
+    label="library.model.Dvd";
+    style=dashed; color=gray60; fontsize=10;
+    "library.model.Dvd#Dvd(java.lang.String,java.lang.String,int)" [label="Dvd/3"];
+    "library.model.Dvd#dailyRate()" [label="dailyRate/0"];
+    "library.model.Dvd#getMinutes()" [label="getMinutes/0"];
+  }
+  subgraph cluster_4 {
+    label="library.model.Item";
+    style=dashed; color=gray60; fontsize=10;
+    "library.model.Item#Item(java.lang.String,java.lang.String,library.model.Category)" [label="Item/3"];
+    "library.model.Item#checkOut(library.model.Member)" [label="checkOut/1"];
+    "library.model.Item#dailyRate()" [label="dailyRate/0"];
+    "library.model.Item#describe()" [label="describe/0"];
+    "library.model.Item#fee(int)" [label="fee/1"];
+    "library.model.Item#getCategory()" [label="getCategory/0"];
+    "library.model.Item#getId()" [label="getId/0"];
+    "library.model.Item#getTitle()" [label="getTitle/0"];
+    "library.model.Item#giveBack()" [label="giveBack/0"];
+    "library.model.Item#isAvailable()" [label="isAvailable/0"];
+  }
+  subgraph cluster_5 {
+    label="library.model.Loanable";
+    style=dashed; color=gray60; fontsize=10;
+    "library.model.Loanable#checkOut(library.model.Member)" [label="checkOut/1"];
+    "library.model.Loanable#fee(int)" [label="fee/1"];
+    "library.model.Loanable#giveBack()" [label="giveBack/0"];
+    "library.model.Loanable#isAvailable()" [label="isAvailable/0"];
+  }
+  subgraph cluster_6 {
+    label="library.model.Member";
+    style=dashed; color=gray60; fontsize=10;
+    "library.model.Member#Member(java.lang.String)" [label="Member/1"];
+    "library.model.Member#addLoan(library.model.Item)" [label="addLoan/1"];
+    "library.model.Member#getLoans()" [label="getLoans/0"];
+    "library.model.Member#getName()" [label="getName/0"];
+    "library.model.Member#loanCount()" [label="loanCount/0"];
+    "library.model.Member#removeLoan(library.model.Item)" [label="removeLoan/1"];
+  }
+  subgraph cluster_7 {
+    label="library.service.Catalog";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.Catalog#add(library.model.Item)" [label="add/1"];
+    "library.service.Catalog#add(library.model.Item,library.model.Item)" [label="add/2"];
+    "library.service.Catalog#available()" [label="available/0"];
+    "library.service.Catalog#findById(java.lang.String)" [label="findById/1"];
+    "library.service.Catalog#size()" [label="size/0"];
+  }
+  subgraph cluster_8 {
+    label="library.service.ConsoleNotifier";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.ConsoleNotifier#getSent()" [label="getSent/0"];
+    "library.service.ConsoleNotifier#send(library.model.Member,java.lang.String)" [label="send/2"];
+  }
+  subgraph cluster_9 {
+    label="library.service.LoanException";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.LoanException#LoanException(java.lang.String)" [label="LoanException/1"];
+  }
+  subgraph cluster_10 {
+    label="library.service.LoanService";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.LoanService#LoanService(library.service.Catalog,library.service.Notifier)" [label="LoanService/2"];
+    "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" [label="borrow/3"];
+    "library.service.LoanService#getHistory()" [label="getHistory/0"];
+    "library.service.LoanService#getRefusals()" [label="getRefusals/0"];
+    "library.service.LoanService#giveBack(library.service.LoanService.Loan)" [label="giveBack/1"];
+    "library.service.LoanService#totalFees()" [label="totalFees/0"];
+  }
+  subgraph cluster_11 {
+    label="library.service.LoanService.Loan";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.LoanService.Loan#Loan(library.model.Item,library.model.Member,int)" [label="Loan/3"];
+    "library.service.LoanService.Loan#getDays()" [label="getDays/0"];
+    "library.service.LoanService.Loan#getItem()" [label="getItem/0"];
+    "library.service.LoanService.Loan#getMember()" [label="getMember/0"];
+  }
+  subgraph cluster_12 {
+    label="library.service.Notifier";
+    style=dashed; color=gray60; fontsize=10;
+    "library.service.Notifier#send(library.model.Member,java.lang.String)" [label="send/2"];
+  }
+  subgraph cluster_13 {
+    label="library.util.Statistics";
+    style=dashed; color=gray60; fontsize=10;
+    "library.util.Statistics#max(double,double)" [label="max/2"];
+    "library.util.Statistics#mean(java.util.List)" [label="mean/1"];
+    "library.util.Statistics#report(java.lang.String,int,int,double,int)" [label="report/5"];
+  }
+  subgraph cluster_14 {
+    label="library.util.TextUtils";
+    style=dashed; color=gray60; fontsize=10;
+    "library.util.TextUtils#TextUtils()" [label="TextUtils/0"];
+    "library.util.TextUtils#capitalize(java.lang.String)" [label="capitalize/1"];
+    "library.util.TextUtils#pad(java.lang.String,int)" [label="pad/2"];
+    "library.util.TextUtils#pad(java.lang.String,int,char)" [label="pad/3"];
+    "library.util.TextUtils#repeat(java.lang.String,int)" [label="repeat/2"];
+  }
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.model.Book#describe()";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.service.Catalog#size()";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.service.LoanService#getRefusals()";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.service.Catalog#add(library.model.Item)";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.service.LoanService#totalFees()";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.model.Item#getTitle()";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.util.Statistics#report(java.lang.String,int,int,double,int)";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.service.Catalog#add(library.model.Item,library.model.Item)";
+  "library.app.LibraryApp#main(java.lang.String[])" -> "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)";
+  "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)" -> "library.service.LoanService.Loan#getItem()";
+  "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)" -> "library.model.Item#fee(int)";
+  "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)" -> "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)";
+  "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)" -> "library.service.LoanService.Loan#getDays()";
+  "library.app.LibraryApp#run(library.service.LoanService,library.model.Member,java.util.List)" -> "library.model.Item#describe()";
+  "library.model.Book#describe()" -> "library.model.Item#describe()";
+  "library.model.Item#checkOut(library.model.Member)" -> "library.model.Member#addLoan(library.model.Item)";
+  "library.model.Item#checkOut(library.model.Member)" -> "library.model.Item#isAvailable()";
+  "library.model.Item#describe()" -> "library.model.Category#getLabel()";
+  "library.model.Item#fee(int)" -> "library.model.Item#dailyRate()";
+  "library.model.Item#giveBack()" -> "library.model.Member#removeLoan(library.model.Item)";
+  "library.service.Catalog#add(library.model.Item,library.model.Item)" -> "library.service.Catalog#add(library.model.Item)" [label="2"];
+  "library.service.Catalog#available()" -> "library.model.Item#isAvailable()";
+  "library.service.Catalog#findById(java.lang.String)" -> "library.model.Item#getId()";
+  "library.service.ConsoleNotifier#send(library.model.Member,java.lang.String)" -> "library.model.Member#getName()";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.model.Item#getTitle()";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.model.Member#getName()";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.service.Notifier#send(library.model.Member,java.lang.String)";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.util.TextUtils#capitalize(java.lang.String)";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.service.Catalog#findById(java.lang.String)";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.model.Member#loanCount()";
+  "library.service.LoanService#borrow(library.model.Member,java.lang.String,int)" -> "library.model.Loanable#checkOut(library.model.Member)";
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.service.LoanService.Loan#getItem()" [label="2"];
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.model.Item#getTitle()";
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.service.LoanService.Loan#getMember()";
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.service.Notifier#send(library.model.Member,java.lang.String)";
+  "library.service.LoanService#giveBack(library.service.LoanService.Loan)" -> "library.model.Item#giveBack()";
+  "library.service.LoanService#totalFees()" -> "library.service.LoanService.Loan#getItem()";
+  "library.service.LoanService#totalFees()" -> "library.model.Item#fee(int)";
+  "library.service.LoanService#totalFees()" -> "library.service.LoanService.Loan#getDays()";
+  "library.util.Statistics#report(java.lang.String,int,int,double,int)" -> "library.util.TextUtils#repeat(java.lang.String,int)";
+  "library.util.Statistics#report(java.lang.String,int,int,double,int)" -> "library.util.TextUtils#pad(java.lang.String,int)";
+  "library.util.TextUtils#pad(java.lang.String,int)" -> "library.util.TextUtils#pad(java.lang.String,int,char)";
+  "library.util.TextUtils#pad(java.lang.String,int,char)" -> "library.util.TextUtils#repeat(java.lang.String,int)";
+  "library.util.TextUtils#repeat(java.lang.String,int)" -> "library.util.TextUtils#repeat(java.lang.String,int)";
+}

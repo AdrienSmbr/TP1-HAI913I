@@ -1,6 +1,7 @@
 package hai913i.tp1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,11 +38,12 @@ class CommandLineTest {
     }
 
     @Test
-    @DisplayName("X absent alors que l'action en a besoin")
-    void missingThreshold() {
-        assertThrows(UsageException.class,
-                () -> CommandLine.parse(new String[] {"p", "--action", "metrics"}));
-        assertThrows(UsageException.class, () -> CommandLine.parse(new String[] {"p"}));
+    @DisplayName("X absent : la lecture des arguments ne tranche pas, Analyzer le fera")
+    void missingThreshold() throws UsageException {
+        // Le refus a lieu dans Analyzer, apres verification du projet, pour qu'un
+        // chemin invalide soit diagnostique avant le seuil (voir RobustnessTest).
+        assertFalse(CommandLine.parse(new String[] {"p", "--action", "metrics"}).hasThreshold());
+        assertFalse(CommandLine.parse(new String[] {"p"}).hasThreshold());
     }
 
     @Test

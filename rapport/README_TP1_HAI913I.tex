@@ -1,0 +1,305 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{booktabs}
+
+\geometry{hmargin=2.3cm,vmargin=2.5cm}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    backgroundcolor=\color{backcolour},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numberstyle=\tiny\color{codegray},
+    tabsize=2,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    extendedchars=true,
+    literate={é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ç}{{\c{c}}}1 {ù}{{\`u}}1 {É}{{\'E}}1 {û}{{\^u}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {â}{{\^a}}1
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{README --- Analyseur statique}
+\rhead{HAI913I --- TP 1}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\begin{document}
+
+\begin{center}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushleft}\includegraphics[width=2cm]{images/logo_mtp.png}\end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushright}\includegraphics[width=2.5cm]{images/faculte_science_logo.png}\end{flushright}
+    \end{minipage}
+
+    \vspace{0.8cm}
+    \rule{\linewidth}{0.5pt}
+    \vspace{0.3cm}
+
+    {\LARGE \bfseries README --- Analyseur statique Java \par}
+    \vspace{0.3cm}
+    {\large HAI913I --- TP 1 : Analyse statique \par}
+    \rule{\linewidth}{0.5pt}
+
+    \vspace{0.4cm}
+    {\large SAMBARREY Adrien \quad --- \quad PREVOST-AVENEL Pierre \par}
+    \vspace{0.15cm}
+    {\normalsize Année universitaire 2026--2027 \quad --- \quad Enseignant : Bachar Rima \par}
+\end{center}
+
+\vspace{0.6cm}
+
+\section{Projet}
+
+Analyseur statique de programmes Java en ligne de commande. Il extrait la structure et les appels de méthodes avec le type statique du receveur, construit un modèle de faits indépendant de la bibliothèque d'analyse, puis calcule treize métriques et un graphe d'appel interrogeable dans les deux sens. Bonus traités : extraction Spoon (C1), export Graphviz et interface graphique (C2).
+
+\subsection*{Structure du code}
+
+\begin{lstlisting}
+hai913i.tp1
+|-- Main          point d'entree : lit les arguments, delegue
+|-- cli           Action, Options, CommandLine, Analyzer
+|-- parse         ProjectSources, JdtParser            <- connait JDT
+|-- extract       AstPrinter, StructureVisitor,
+|                 CallCollector, FactExtractor         <- connait JDT
+|-- model         TypeFact, FieldFact, MethodFact,
+|                 CallFact, ProjectFacts               <- ne depend de rien
+|-- metrics       Ranking, MetricsService, MetricsReport
+|-- callgraph     CallGraph, CallGraphBuilder
+|-- report        TextReport, DotReport
+|-- ui            AnalyzerWindow                (bonus C2)
+`-- spoon         SpoonExtractor, SpoonRawCounts (bonus C1)
+\end{lstlisting}
+
+\textbf{Entrée} : un dossier de projet Java. La racine des sources est détectée automatiquement (\texttt{src/main/java}, sinon \texttt{src}, sinon le dossier du projet) ; \texttt{target}, \texttt{build}, \texttt{out}, \texttt{bin} et les dossiers cachés sont ignorés.
+
+\textbf{Sorties} : texte sur la sortie standard, export DOT, interface graphique. Erreurs de compilation et messages d'erreur sur la sortie d'erreur.
+
+\textbf{Limites} : pas d'expansion des appels virtuels (ni CHA ni RTA), un appel via une interface visant la méthode de l'interface ; réflexion, proxys et injection de dépendances non vus ; pas d'arc vers les constructeurs, qui restent des n\oe{}uds.
+
+\section{Environnement}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Élément} & \textbf{Version exacte utilisée} \\
+\midrule
+JDK & OpenJDK 17.0.16 (Homebrew, aarch64). \textbf{Java 17 minimum} \\
+Maven & 3.9.11 \\
+Eclipse JDT Core & \texttt{org.eclipse.jdt:org.eclipse.jdt.core:3.46.0} \\
+Spoon (bonus C1) & \texttt{fr.inria.gforge.spoon:spoon-core:11.5.0} \\
+SLF4J (bonus C1) & \texttt{org.slf4j:slf4j-nop:2.0.18} \\
+JUnit Jupiter & 5.14.4 \\
+Graphviz (bonus C2) & 14.1.0, commande \texttt{dot} \\
+Système d'exploitation & macOS 26.6, Apple Silicon \\
+IDE & IntelliJ IDEA 2026.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Aucun JAR n'est à installer à la main : Maven télécharge toutes les dépendances. Le projet est sur le \textit{classpath}, sans \texttt{module-info.java}.
+
+\textbf{Attention} : \texttt{JAVA\_HOME} et la commande \texttt{java} doivent désigner le même JDK 17. Une incohérence produit un \texttt{UnsupportedClassVersionError} au lancement du JAR.
+
+\section{Construction}
+
+Depuis une copie fraîche du dépôt, sans IDE :
+
+\begin{lstlisting}[language=bash]
+cd hai913i-tp1-analyzer
+mvn clean package
+\end{lstlisting}
+
+Produit \texttt{target/hai913i-tp1-analyzer.jar}, exécutable et contenant ses dépendances.
+
+Pour lancer la suite de tests seule :
+
+\begin{lstlisting}[language=bash]
+mvn clean test
+\end{lstlisting}
+
+\section{Exécution}
+
+\subsection*{Syntaxe}
+
+\begin{lstlisting}
+java -jar target/hai913i-tp1-analyzer.jar PROJET [OPTIONS]
+
+  PROJET                 dossier du projet Java a analyser
+                         facultatif avec --gui
+
+Options :
+  --action ACTION        structure | calls | metrics | graph | spoon | all
+                         (defaut : all)
+  --x N                  seuil X, entier positif ou nul
+                         obligatoire pour les actions metrics et all
+  --callees ID           methodes appelees par ID
+  --callers ID           methodes appelantes de ID
+                         ID a la forme paquetage.Classe#methode(Type,Type)
+  --dot FICHIER          exporte le graphe au format Graphviz
+  --dot-package PREFIXE  limite l'export DOT a un paquetage
+  --gui                  ouvre l'interface graphique
+\end{lstlisting}
+
+\subsection*{Exemples complets}
+
+\begin{lstlisting}[language=bash]
+# Analyse complete du projet de validation, seuil X = 5
+java -jar target/hai913i-tp1-analyzer.jar resources/validation --x 5
+
+# Graphe d'appel et interrogation dans les deux sens
+java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph \
+    --callers 'library.model.Loanable#checkOut(library.model.Member)'
+
+# Export Graphviz, puis image
+java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph \
+    --dot graphe.dot --dot-package library.service
+dot -Tpng graphe.dot -o graphe.png
+
+# Comparaison JDT / Spoon (bonus C1)
+java -jar target/hai913i-tp1-analyzer.jar resources/validation --action spoon
+
+# Interface graphique (bonus C2)
+java -jar target/hai913i-tp1-analyzer.jar --gui
+\end{lstlisting}
+
+Sous Windows, entourez de guillemets les chemins contenant des espaces.
+
+\subsection*{Codes de sortie}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}cl@{}}
+\toprule
+\textbf{Code} & \textbf{Signification} \\
+\midrule
+0 & analyse réussie \\
+2 & usage incorrect : argument manquant, option ou action inconnue, X mal formé ou absent \\
+3 & chemin invalide ou illisible \\
+4 & aucun fichier \texttt{.java} trouvé \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Le projet est vérifié avant le seuil : un chemin inexistant rend 3 et un dossier sans source rend 4, même si \texttt{-{}-x} a été oublié. Le code 2 pour seuil absent ne se produit donc que sur un projet par ailleurs valide.
+
+\section{Validation}
+
+\subsection*{Projet d'entrée}
+
+Le projet de validation fourni avec le sujet. \textbf{Il est livré avec le dépôt}, sous \texttt{resources/validation}, ainsi que les trois échantillons de robustesse sous \texttt{resources/robustness} : \texttt{mvn clean test} réussit donc sur une copie fraîche, sans avoir à récupérer les ressources du sujet séparément.
+
+L'outil a également été exécuté sur deux projets extérieurs, pour vérifier que les résultats ne dépendent pas du projet de validation :
+
+\begin{itemize}
+\item le paquetage \texttt{gof} de \texttt{resources/visitor-examples}, recopié dans le \texttt{src} d'un dossier vide (9 fichiers, 0 erreur, 9 types, 19 méthodes, 40 appels, graphe de 19 n\oe{}uds et 14 arcs) ; il contient des \textit{records}, absents du projet de validation ;
+\item l'analyseur lui-même (bonus C3 : 29 fichiers, 2 109 lignes, 10 paquetages, 128 méthodes, 1 040 appels). Ses dépendances JDT et Spoon n'étant pas sur le \textit{classpath} d'analyse, 246 appels sont signalés non résolus ; l'analyse va jusqu'au bout.
+\end{itemize}
+
+Le projet de validation recopié dans un dossier dont le nom contient des espaces (\texttt{mon projet test}) rend les mêmes chiffres, sans guillemets particuliers sous macOS.
+
+\subsection*{Sortie attendue}
+
+\begin{lstlisting}
+Racine des sources     : .resources/validation/src
+Unites de compilation  : 14
+Erreurs de compilation : 0
+
+Types      : 15
+Methodes   : 59 (dont 9 constructeurs)
+Attributs  : 21
+Paquetages : 4 [library.app, library.model, library.service, library.util]
+Appels     : 94 (46 internes, 48 externes, 0 non resolus)
+
+== Metriques ==      (avec --x 5)
+ 1. Classes : 15   2. Lignes : 493   3. Methodes : 59   4. Paquetages : 4
+ 5. Methodes/classe : 3.93   6. Lignes/methode : 4.64 (246 pour 53)
+ 7. Attributs/classe : 1.40  13. Max parametres : 5 (Statistics#report)
+
+== Graphe d'appel ==
+Noeuds : 59 | Arcs : 44 | Sites d'appel internes : 46
+Appels externes : 48 | Appels non resolus : 0
+\end{lstlisting}
+
+\subsection*{Vérification automatique}
+
+La commande suivante rejoue l'intégralité des points de contrôle A0 à B4, plus l'équivalence entre l'extraction JDT et l'extraction Spoon :
+
+\begin{lstlisting}[language=bash]
+mvn clean test
+\end{lstlisting}
+
+\begin{lstlisting}
+Tests run: 35, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+\end{lstlisting}
+
+\subsection*{Comportement sur les échantillons de robustesse}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}lp{9.5cm}@{}}
+\toprule
+\textbf{Échantillon} & \textbf{Comportement attendu} \\
+\midrule
+\texttt{missing-dep} & 2 erreurs signalées ; \texttt{StringUtils.capitalize} non résolu, \texttt{formatter.decorate} résolu ; l'analyse va jusqu'au bout ; code 0 \\
+\texttt{syntax-error} & erreurs de \texttt{Broken.java} signalées, \texttt{Helper.java} analysé normalement, l'outil ne s'arrête pas ; code 0 \\
+\texttt{no-java-files} & message « aucun fichier .java sous ... » ; code 4, que \texttt{-{}-x} soit fourni ou non \\
+chemin inexistant & message « Pas un repertoire : ... » ; code 3, que \texttt{-{}-x} soit fourni ou non \\
+\texttt{-{}-x abc} & message « seuil X mal forme » et rappel de l'usage ; code 2 \\
+\texttt{-{}-x} absent & sur un projet valide : message « le seuil X est obligatoire » et usage ; code 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Dépannage}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}p{6.2cm}p{9.2cm}@{}}
+\toprule
+\textbf{Symptôme} & \textbf{Cause et remède} \\
+\midrule
+\texttt{UnsupportedClassVersionError} au lancement & Le JDK d'exécution est antérieur à 17. Vérifier \texttt{java -version} et \texttt{JAVA\_HOME} ; les deux doivent désigner le même JDK 17. \\
+\texttt{SecurityException: Invalid signature file digest} & Les JAR Eclipse sont signés. Le \texttt{pom.xml} exclut déjà \texttt{META-INF/*.SF}, \texttt{*.DSA}, \texttt{*.RSA}, \texttt{*.EC} : reconstruire avec \texttt{mvn clean package}. \\
+\texttt{IllegalStateException: Missing system library} & \texttt{setEnvironment} n'inclut pas le JDK courant. Le 4\textsuperscript{e} argument doit valoir \texttt{true}. \\
+Environ la moitié des appels non résolus, \textbf{sans aucune erreur} & La racine des sources désigne le dossier du projet au lieu du dossier qui contient les paquetages (\texttt{src}). Panne silencieuse : vérifier la ligne « Racine des sources » affichée. \\
+14 types au lieu de 15 & Seul \texttt{visit(TypeDeclaration)} est redéfini. Les énumérations et les \textit{records} sont des n\oe{}uds distincts. \\
+93 appels au lieu de 94 & \texttt{SuperMethodInvocation} oublié : \texttt{super.m()} n'est pas un \texttt{MethodInvocation}. \\
+\texttt{cannot find symbol: method of(String)} sur \texttt{Path} & Import automatique erroné : \texttt{org.eclipse.core.runtime.Path} au lieu de \texttt{java.nio.file.Path}. \\
+L'IDE affiche des erreurs mais \texttt{mvn} compile & Modèle de projet de l'IDE périmé ou SDK mal configuré. Recharger le projet Maven ; la ligne de commande fait foi. \\
+Spoon affiche un avertissement SLF4J & Ajouter \texttt{org.slf4j:slf4j-nop} (déjà présent dans le \texttt{pom.xml}). \\
+L'image DOT est illisible & Filtrer avec \texttt{-{}-dot-package}, par exemple \texttt{library.service}. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Dépôt et vidéo}
+
+\begin{itemize}
+    \item Dépôt Git : \url{https://github.com/AdrienSmbr/TP1-HAI913I}
+    \item Vidéo de démonstration : \textcolor{red}{\texttt{[URL à compléter]}}
+\end{itemize}
+
+\end{document}
