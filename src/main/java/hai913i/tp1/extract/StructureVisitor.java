@@ -19,6 +19,7 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
+import hai913i.tp1.model.CallFact;
 import hai913i.tp1.model.FieldFact;
 import hai913i.tp1.model.MethodFact;
 import hai913i.tp1.model.TypeFact;
@@ -137,17 +138,33 @@ public class StructureVisitor extends ASTVisitor {
         for (Object member : node.bodyDeclarations()) {
             if (member instanceof MethodDeclaration method) {
                 List<String> parameterTypes = parameterTypesOf(method);
+                String id = owner + "#" + method.getName().getIdentifier()
+                        + "(" + String.join(",", parameterTypes) + ")";
                 methods.add(new MethodFact(
-                        owner + "#" + method.getName().getIdentifier()
-                                + "(" + String.join(",", parameterTypes) + ")",
+                        id,
                         method.getName().getIdentifier(),
                         parameterTypes,
                         method.isConstructor(),
                         visibilityOf(method, node),
-                        bodyLoc(method)));
+                        bodyLoc(method),
+                        callsOf(method, id)));
             }
         }
         return methods;
+    }
+
+    /**
+     * Appels contenus dans le corps de la methode. Une methode sans corps
+     * (abstraite ou d'interface) n'en contient aucun ; les appels situes hors
+     * de toute methode (initialiseur de champ) ne sont donc jamais vus.
+     */
+    private List<CallFact> callsOf(MethodDeclaration method, String callerId) {
+        if (method.getBody() == null) {
+            return List.of();
+        }
+        CallCollector collector = new CallCollector(unit, callerId);
+        method.getBody().accept(collector);
+        return List.copyOf(collector.calls());
     }
 
     private List<String> parameterTypesOf(MethodDeclaration method) {

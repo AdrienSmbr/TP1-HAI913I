@@ -20,6 +20,32 @@ public record ProjectFacts(List<TypeFact> types, List<Path> sourceFiles) {
                 .count();
     }
 
+    public List<CallFact> calls() {
+        return types.stream()
+                .flatMap(t -> t.methods().stream())
+                .flatMap(m -> m.calls().stream())
+                .toList();
+    }
+
+    public int callCount() {
+        return calls().size();
+    }
+
+    public int internalCallCount() {
+        return (int) calls().stream().filter(CallFact::internal).count();
+    }
+
+    public int externalCallCount() {
+        return (int) calls().stream()
+                .filter(CallFact::resolved)
+                .filter(c -> !c.internal())
+                .count();
+    }
+
+    public int unresolvedCallCount() {
+        return (int) calls().stream().filter(c -> !c.resolved()).count();
+    }
+
     public List<String> packages() {
         return types.stream().map(TypeFact::packageName).distinct().sorted().toList();
     }

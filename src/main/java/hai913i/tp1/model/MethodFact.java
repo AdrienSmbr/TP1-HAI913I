@@ -7,7 +7,8 @@ public record MethodFact(String id,
                          List<String> parameterTypes,
                          boolean constructor,
                          Visibility visibility,
-                         int bodyLoc) {
+                         int bodyLoc,
+                         List<CallFact> calls) {
 
     public int parameterCount() {
         return parameterTypes.size();
