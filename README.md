@@ -7,8 +7,6 @@ deux sens.
 
 SAMBARREY Adrien et PREVOST-AVENEL Pierre — 2026/2027 — enseignant : Bachar Rima.
 
-Le README complet et évalué est le PDF fourni dans l'archive de rendu.
-
 ## Environnement
 
 | Élément | Version |
