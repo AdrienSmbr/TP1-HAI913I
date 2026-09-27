@@ -148,7 +148,7 @@ java -jar target/hai913i-tp1-analyzer.jar PROJET [OPTIONS]
                          facultatif avec --gui
 
 Options :
-  --action ACTION        structure | calls | metrics | graph | spoon | all
+  --action ACTION        ast | structure | calls | metrics | graph | spoon | all
                          (defaut : all)
   --x N                  seuil X, entier positif ou nul
                          obligatoire pour les actions metrics et all
@@ -157,6 +157,7 @@ Options :
                          ID a la forme paquetage.Classe#methode(Type,Type)
   --dot FICHIER          exporte le graphe au format Graphviz
   --dot-package PREFIXE  limite l'export DOT a un paquetage
+  --file NOM             avec --action ast : n'affiche que ce fichier
   --gui                  ouvre l'interface graphique
 \end{lstlisting}
 
@@ -165,6 +166,9 @@ Options :
 \begin{lstlisting}[language=bash]
 # Analyse complete du projet de validation, seuil X = 5
 java -jar target/hai913i-tp1-analyzer.jar resources/validation --x 5
+
+# Arbre syntaxique d'un fichier (etape A1)
+java -jar target/hai913i-tp1-analyzer.jar resources/validation --action ast --file Dvd.java
 
 # Graphe d'appel et interrogation dans les deux sens
 java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph \
@@ -249,7 +253,7 @@ mvn clean test
 \end{lstlisting}
 
 \begin{lstlisting}
-Tests run: 35, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 37, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 \end{lstlisting}
 

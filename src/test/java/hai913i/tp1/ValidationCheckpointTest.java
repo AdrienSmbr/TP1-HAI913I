@@ -193,6 +193,12 @@ class ValidationCheckpointTest {
         assertEquals(facts.callCount(), again.callCount());
         assertEquals(CallGraphBuilder.build(facts).outgoing(),
                 CallGraphBuilder.build(again).outgoing());
+        // equals ignore l'ordre, et deux appels dans la meme JVM le partagent :
+        // on verifie donc directement que chaque liste d'appelees est triee.
+        for (Map<String, Integer> callees : CallGraphBuilder.build(facts).outgoing().values()) {
+            List<String> keys = List.copyOf(callees.keySet());
+            assertEquals(keys.stream().sorted().toList(), keys);
+        }
     }
 
     private static TypeFact type(String qualifiedName) {

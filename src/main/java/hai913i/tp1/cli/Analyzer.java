@@ -11,6 +11,7 @@ import org.eclipse.jdt.core.compiler.IProblem;
 
 import hai913i.tp1.callgraph.CallGraph;
 import hai913i.tp1.callgraph.CallGraphBuilder;
+import hai913i.tp1.extract.AstPrinter;
 import hai913i.tp1.extract.FactExtractor;
 import hai913i.tp1.metrics.MetricsService;
 import hai913i.tp1.model.ProjectFacts;
@@ -69,6 +70,11 @@ public final class Analyzer {
         out.println("Erreurs de compilation : " + errors);
         out.println();
 
+        // A1 : l'arbre brut, avant toute extraction de faits.
+        if (options.action() == Action.AST) {
+            return printAst(files, options, out, err);
+        }
+
         ProjectFacts facts = FactExtractor.extract(files);
         TextReport.summary(out, facts);
 
@@ -114,6 +120,27 @@ public final class Analyzer {
             out.println("Graphe exporte : " + options.dotFile().get());
         }
 
+        return OK;
+    }
+
+    private static int printAst(List<ParsedFile> files, Options options,
+                                PrintStream out, PrintStream err) {
+        List<ParsedFile> selected = files.stream()
+                .filter(file -> options.astFile()
+                        .map(name -> file.path().getFileName().toString().equals(name))
+                        .orElse(true))
+                .toList();
+        if (selected.isEmpty()) {
+            err.println("Erreur : aucun fichier nomme " + options.astFile().orElse("")
+                    + " dans le projet");
+            return BAD_USAGE;
+        }
+        for (ParsedFile file : selected) {
+            out.println("== AST de " + file.path().getFileName() + " ==");
+            AstPrinter printer = new AstPrinter(out);
+            file.unit().accept(printer);
+            out.println();
+        }
         return OK;
     }
 

@@ -34,12 +34,13 @@ java -jar target/hai913i-tp1-analyzer.jar ../validation --x 5
 
 | Option | Rôle |
 |---|---|
-| `--action` | `structure` \| `calls` \| `metrics` \| `graph` \| `spoon` \| `all` (défaut : `all`) |
+| `--action` | `ast` \| `structure` \| `calls` \| `metrics` \| `graph` \| `spoon` \| `all` (défaut : `all`) |
 | `--x N` | seuil X, entier positif ou nul ; obligatoire pour `metrics` et `all` |
 | `--callees ID` | méthodes appelées par `ID` |
 | `--callers ID` | méthodes appelantes de `ID` |
 | `--dot FICHIER` | export Graphviz |
 | `--dot-package P` | limite l'export DOT à un paquetage |
+| `--file NOM` | avec `--action ast` : arbre du seul fichier `NOM` (ex. `Dvd.java`) |
 | `--gui` | interface graphique (le chemin devient facultatif) |
 
 `ID` a la forme `paquetage.Classe#methode(Type,Type)`.
@@ -61,7 +62,7 @@ Metriques (X=5) : 493 lignes, 3.93 meth/classe, 4.64 lignes/meth, 1.40 attr/clas
 Vérification automatique de tous les points de contrôle A0 à B4 :
 
 ```bash
-mvn clean test     # 34 tests, 0 echec
+mvn clean test     # 37 tests, 0 echec
 ```
 
 ## Organisation

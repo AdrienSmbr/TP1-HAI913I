@@ -44,7 +44,8 @@ class RobustnessTest {
     /** Seuil absent : Options le porte a null, comme apres lecture de la ligne de commande. */
     private static Options withoutThreshold(String projectDirectory, Action action) {
         return new Options(Path.of(projectDirectory), action, null,
-                Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), false);
+                Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
+                Optional.empty(), false);
     }
 
     @Test

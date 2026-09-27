@@ -179,7 +179,7 @@ La dernière ligne est une \textbf{panne silencieuse} : aucune exception, simple
 @Override public void postVisit(ASTNode node) { depth--; }
 \end{lstlisting}
 
-Sur \texttt{Dvd.java}, le point de contrôle est atteint : un \texttt{TypeDeclaration}, un \texttt{FieldDeclaration} et trois \texttt{MethodDeclaration} dont le constructeur contenant un \texttt{SuperConstructorInvocation}. Trois observations ont servi à A2 : le \texttt{FieldDeclaration} et son \texttt{VariableDeclarationFragment} sont deux n\oe{}uds distincts, et c'est le fragment qu'il faut compter ; le constructeur est un \texttt{MethodDeclaration} ordinaire, seul \texttt{isConstructor()} le distingue ; la Javadoc est un enfant de la \texttt{MethodDeclaration}, d'où le piège des positions.
+L'action \texttt{-{}-action ast -{}-file Dvd.java} de la ligne de commande affiche cet arbre pour un fichier du projet. Sur \texttt{Dvd.java}, le point de contrôle est atteint : un \texttt{TypeDeclaration}, un \texttt{FieldDeclaration} et trois \texttt{MethodDeclaration} dont le constructeur contenant un \texttt{SuperConstructorInvocation}. Trois observations ont servi à A2 : le \texttt{FieldDeclaration} et son \texttt{VariableDeclarationFragment} sont deux n\oe{}uds distincts, et c'est le fragment qu'il faut compter ; le constructeur est un \texttt{MethodDeclaration} ordinaire, seul \texttt{isConstructor()} le distingue ; la Javadoc est un enfant de la \texttt{MethodDeclaration}, d'où le piège des positions.
 
 Sur \texttt{Category.java}, la racine du type est un \textbf{\texttt{EnumDeclaration}}, qui n'hérite pas de \texttt{TypeDeclaration} : les deux descendent d'\texttt{AbstractTypeDeclaration}. Un visiteur ne redéfinissant que \texttt{visit(TypeDeclaration)} compterait \textbf{14 types au lieu de 15}. Les \texttt{EnumConstantDeclaration} n'étant pas des \texttt{FieldDeclaration}, l'exclusion des constantes d'énumération du §4.1 est gratuite avec JDT, contrairement à Spoon (section \ref{sec:bonus}).
 
@@ -276,7 +276,7 @@ Trois clauses sont des pièges. $k = \lceil n/10 \rceil$ calculé par \texttt{(n
 
 \textbf{Résultat} : 59 n\oe{}uds, 44 arcs, 46 sites internes, 48 appels externes, 0 non résolu. Les quatre cas particuliers sont conformes : \texttt{Catalog\#add(Item,Item)} $\rightarrow$ \texttt{Catalog\#add(Item)} de poids 2, \texttt{TextUtils\#repeat} récursif, \texttt{LoanService\#borrow} seule appelante de \texttt{Loanable\#checkOut}, et \texttt{Item\#checkOut(Member)} sans aucune appelante, ce dernier point découlant de l'absence d'expansion des appels virtuels.
 
-\textbf{Format de sortie} : un en-tête de totaux puis une ligne par arc, \texttt{source -> cible (poids n)}. Lisible sans outil, filtrable par \texttt{grep}, directement convertible en DOT. Les options \texttt{--callees ID} et \texttt{--callers ID} affichent les voisins avec leur poids.
+\textbf{Format de sortie} : un en-tête de totaux puis une ligne par arc, \texttt{source -> cible (poids n)}. Lisible sans outil, filtrable par \texttt{grep}, directement convertible en DOT. Les options \texttt{-{}-callees ID} et \texttt{-{}-callers ID} affichent les voisins avec leur poids.
 
 \subsection{B4 --- Un outil utilisable et reproductible}
 
@@ -345,13 +345,14 @@ Les points de contrôle sont figés dans une suite JUnit, comme le recommande l'
 \toprule
 \textbf{Classe} & \textbf{Nb} & \textbf{Couvre} \\
 \midrule
+\texttt{AstPrinterTest} & 2 & l'arbre de \texttt{Dvd.java} et la racine \texttt{EnumDeclaration} de \texttt{Category.java} (A1) \\
 \texttt{ValidationCheckpointTest} & 13 & tous les chiffres de A0 à B3 et les cas particuliers \\
 \texttt{RankingTest} & 6 & la règle des « 10 \% », \textbf{sans JDT ni fichier analysé} \\
 \texttt{CommandLineTest} & 7 & chemin manquant, X = \texttt{abc}, X négatif, X absent, X = 0 \\
 \texttt{RobustnessTest} & 5 & les trois échantillons, un chemin inexistant, l'ordre de validation \\
 \texttt{SpoonComparisonTest} & 4 & équivalence JDT / Spoon et écarts bruts \\
 \midrule
-\textbf{Total} & \textbf{35} & \texttt{mvn clean test} : 0 échec \\
+\textbf{Total} & \textbf{37} & \texttt{mvn clean test} : 0 échec \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -372,7 +373,7 @@ demo.Greeter#greet(java.lang.String)
     ligne 15 : decorate   | receveur demo.Formatter | cible demo.Formatter#decorate(...) [interne]
 \end{lstlisting}
 
-Sur \texttt{syntax-error}, les erreurs de \texttt{Broken.java} sont signalées, \texttt{Helper.java} est analysé normalement et l'outil ne s'arrête pas. Sur \texttt{no-java-files}, le message est explicite et le code vaut 4. Une valeur \texttt{--x abc} est refusée avec un message citant la valeur fautive et le code 2.
+Sur \texttt{syntax-error}, les erreurs de \texttt{Broken.java} sont signalées, \texttt{Helper.java} est analysé normalement et l'outil ne s'arrête pas. Sur \texttt{no-java-files}, le message est explicite et le code vaut 4. Une valeur \texttt{-{}-x abc} est refusée avec un message citant la valeur fautive et le code 2.
 
 \subsection{Un second projet, et un chemin contenant des espaces}
 \label{sec:second-projet}
@@ -432,7 +433,7 @@ Spoon épargne du code, mais c'est ce confort qui masque les questions de défin
 
 \subsection{C2 --- Visualisation et interface graphique}
 
-L'option \texttt{--dot} écrit le graphe au format Graphviz, les n\oe{}uds groupés par classe et les étiquettes raccourcies en \texttt{methode/arite}. Le filtre \texttt{--dot-package} est indispensable en pratique : sur 59 n\oe{}uds l'image devient dense.
+L'option \texttt{-{}-dot} écrit le graphe au format Graphviz, les n\oe{}uds groupés par classe et les étiquettes raccourcies en \texttt{methode/arite}. Le filtre \texttt{-{}-dot-package} est indispensable en pratique : sur 59 n\oe{}uds l'image devient dense.
 
 \begin{figure}[H]
     \centering
@@ -440,7 +441,7 @@ L'option \texttt{--dot} écrit le graphe au format Graphviz, les n\oe{}uds group
     \caption{Graphe du paquetage \texttt{library.service} (Graphviz 14.1.0). L'arc \texttt{add/2} $\rightarrow$ \texttt{add/1} porte le poids 2, conformément au point de contrôle B3.}
 \end{figure}
 
-L'option \texttt{--gui} ouvre une fenêtre Swing. Conformément au sujet, ce n'est qu'une \textbf{seconde façon d'afficher les résultats du même modèle} : elle appelle les mêmes composants que la ligne de commande et ne calcule rien. Quatre onglets, un par étape : Structure, Appels, Métriques avec réglage du seuil X, et Graphe d'appel avec interrogation dans les deux sens.
+L'option \texttt{-{}-gui} ouvre une fenêtre Swing. Conformément au sujet, ce n'est qu'une \textbf{seconde façon d'afficher les résultats du même modèle} : elle appelle les mêmes composants que la ligne de commande et ne calcule rien. Quatre onglets, un par étape : Structure, Appels, Métriques avec réglage du seuil X, et Graphe d'appel avec interrogation dans les deux sens.
 
 \begin{figure}[H]
     \centering

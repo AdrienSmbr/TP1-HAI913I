@@ -15,6 +15,7 @@ public record Options(Path projectDirectory,
                       Optional<String> callers,
                       Optional<Path> dotFile,
                       Optional<String> dotPackage,
+                      Optional<String> astFile,
                       boolean gui) {
 
     /** Vrai si le seuil X a ete fourni. */
@@ -30,6 +31,7 @@ public record Options(Path projectDirectory,
     /** Options minimales, pratiques pour les tests. */
     public static Options of(Path projectDirectory, Action action, int threshold) {
         return new Options(projectDirectory, action, threshold,
-                Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), false);
+                Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
+                Optional.empty(), false);
     }
 }

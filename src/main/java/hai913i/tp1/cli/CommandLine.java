@@ -14,7 +14,7 @@ public final class CommandLine {
                                      facultatif avec --gui (bouton « Parcourir »)
 
             Options :
-              --action ACTION        structure | calls | metrics | graph | spoon | all  (defaut : all)
+              --action ACTION        ast | structure | calls | metrics | graph | spoon | all  (defaut : all)
               --x N                  seuil X, entier positif ou nul
                                      obligatoire pour les actions metrics et all
               --callees ID           methodes appelees par ID
@@ -22,10 +22,12 @@ public final class CommandLine {
                                      ID a la forme paquetage.Classe#methode(Type,Type)
               --dot FICHIER          exporte le graphe d'appel au format Graphviz
               --dot-package PREFIXE  limite l'export DOT a un paquetage
+              --file NOM             avec --action ast : n'affiche que ce fichier (ex. Dvd.java)
               --gui                  ouvre l'interface graphique
 
             Exemples :
               java -jar target/hai913i-tp1-analyzer.jar resources/validation --x 5
+              java -jar target/hai913i-tp1-analyzer.jar resources/validation --action ast --file Dvd.java
               java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph \\
                   --callers 'library.model.Loanable#checkOut(library.model.Member)'
               java -jar target/hai913i-tp1-analyzer.jar resources/validation --action graph --dot graphe.dot
@@ -46,6 +48,7 @@ public final class CommandLine {
         Optional<String> callers = Optional.empty();
         Optional<Path> dotFile = Optional.empty();
         Optional<String> dotPackage = Optional.empty();
+        Optional<String> astFile = Optional.empty();
         boolean gui = false;
 
         for (int i = hasProject ? 1 : 0; i < args.length; i++) {
@@ -57,6 +60,7 @@ public final class CommandLine {
                 case "--callers" -> callers = Optional.of(value(args, ++i, "--callers"));
                 case "--dot" -> dotFile = Optional.of(Path.of(value(args, ++i, "--dot")));
                 case "--dot-package" -> dotPackage = Optional.of(value(args, ++i, "--dot-package"));
+                case "--file" -> astFile = Optional.of(value(args, ++i, "--file"));
                 case "--gui" -> gui = true;
                 default -> throw new UsageException("option inconnue : " + option);
             }
@@ -65,7 +69,7 @@ public final class CommandLine {
         if (gui) {
             return new Options(project == null ? Path.of("") : project,
                     action, threshold == null ? 0 : threshold,
-                    callees, callers, dotFile, dotPackage, true);
+                    callees, callers, dotFile, dotPackage, astFile, true);
         }
         if (project == null) {
             throw new UsageException("chemin du projet manquant");
@@ -74,7 +78,7 @@ public final class CommandLine {
         // diagnostique avant lui. C'est Analyzer qui exige X, apres verification
         // du projet. Voir le point de controle B4.
         return new Options(project, action, threshold,
-                callees, callers, dotFile, dotPackage, false);
+                callees, callers, dotFile, dotPackage, astFile, false);
     }
 
     private static String value(String[] args, int index, String option) throws UsageException {
@@ -89,7 +93,7 @@ public final class CommandLine {
             return Action.valueOf(raw.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
             throw new UsageException("action inconnue : " + raw
-                    + " (attendu : structure, calls, metrics, graph, spoon, all)");
+                    + " (attendu : ast, structure, calls, metrics, graph, spoon, all)");
         }
     }
 

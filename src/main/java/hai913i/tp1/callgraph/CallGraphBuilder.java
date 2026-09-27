@@ -1,6 +1,7 @@
 package hai913i.tp1.callgraph;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -66,7 +67,8 @@ public final class CallGraphBuilder {
         List<String> keys = new ArrayList<>(index.keySet());
         keys.sort(Comparator.naturalOrder());
         for (String key : keys) {
-            frozen.put(key, Map.copyOf(index.get(key)));
+            // Pas Map.copyOf : son ordre d'iteration change d'une JVM a l'autre.
+            frozen.put(key, Collections.unmodifiableMap(new TreeMap<>(index.get(key))));
         }
         return frozen;
     }
