@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Optional;
 
-/** Lecture et validation des arguments. Ne calcule rien. */
 public final class CommandLine {
 
     public static final String USAGE = """
@@ -38,8 +37,6 @@ public final class CommandLine {
     }
 
     public static Options parse(String[] args) throws UsageException {
-        // Le chemin est le premier argument s'il ne commence pas par un tiret.
-        // Avec --gui il devient facultatif : la fenetre a un bouton « Parcourir ».
         boolean hasProject = args.length > 0 && !args[0].startsWith("--");
         Path project = hasProject ? Path.of(args[0]) : null;
         Action action = Action.ALL;
@@ -74,9 +71,6 @@ public final class CommandLine {
         if (project == null) {
             throw new UsageException("chemin du projet manquant");
         }
-        // L'absence de seuil n'est pas refusee ici : un chemin invalide doit etre
-        // diagnostique avant lui. C'est Analyzer qui exige X, apres verification
-        // du projet. Voir le point de controle B4.
         return new Options(project, action, threshold,
                 callees, callers, dotFile, dotPackage, astFile, false);
     }
@@ -97,7 +91,6 @@ public final class CommandLine {
         }
     }
 
-    /** X doit etre un entier positif ou nul ; toute autre valeur est refusee. */
     private static int readThreshold(String raw) throws UsageException {
         int value;
         try {

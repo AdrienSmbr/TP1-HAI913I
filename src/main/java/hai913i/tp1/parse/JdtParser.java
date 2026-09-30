@@ -12,7 +12,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FileASTRequestor;
 
 public final class JdtParser {
-    /** Un fichier source analysé. */
     public record ParsedFile(Path path, CompilationUnit unit) {}
         private JdtParser() {}
 
@@ -20,16 +19,12 @@ public final class JdtParser {
                                          List<String> classpath){
                 ASTParser parser = ASTParser.newParser(AST.getJLSLatest());
 
-                // Niveau de langage du code analysé : Java 17.
                 Map<String, String> options = JavaCore.getOptions();
                 JavaCore.setComplianceOptions(JavaCore.VERSION_17, options);
                 parser.setCompilerOptions(options);
                 parser.setKind(ASTParser.K_COMPILATION_UNIT);
                 parser.setResolveBindings(true);
                 parser.setBindingsRecovery(true);
-                // 1. JAR externes du projet analysé (éventuellement aucun)
-                // 2. racine des sources 3. encodage
-                // 4. true : inclure le JDK qui exécute l'analyseur (java.lang...)
                 parser.setEnvironment(
                         classpath.toArray(String[]::new),
                         new String[]{sources.sourceRoot().toString()},
@@ -42,8 +37,8 @@ public final class JdtParser {
                         .map(p -> "UTF-8")
                         .toArray(String[]::new);
 
-                // Un seul lot : les bindings sont partagés entre les fichiers.
                 List<ParsedFile> parsed = new ArrayList<>();
+                // Un seul lot : les bindings sont partagés entre les fichiers.
                 parser.createASTs(paths, encodings, new String[0],
                         new FileASTRequestor() {
 

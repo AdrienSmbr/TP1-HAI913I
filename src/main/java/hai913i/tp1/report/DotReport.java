@@ -8,14 +8,6 @@ import java.util.Map;
 
 import hai913i.tp1.callgraph.CallGraph;
 
-/**
- * Export du graphe d'appel au format DOT (bonus C2).
- *
- * <p>Le meme graphe que la sortie texte, dans un format que Graphviz sait
- * mettre en page : {@code dot -Tpng graphe.dot -o graphe.png}. Les noeuds sont
- * groupes par classe dans des sous-graphes, ce qui rend l'image lisible sur un
- * projet de cette taille.</p>
- */
 public final class DotReport {
 
     private DotReport() {
@@ -69,7 +61,6 @@ public final class DotReport {
         return hash < 0 ? nodeId : nodeId.substring(0, hash);
     }
 
-    /** Sur l'image, le nom qualifie complet est illisible : on garde methode(arite). */
     private static String shortLabel(String nodeId) {
         int hash = nodeId.indexOf('#');
         String signature = hash < 0 ? nodeId : nodeId.substring(hash + 1);

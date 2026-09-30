@@ -172,7 +172,7 @@ La dernière ligne est une \textbf{panne silencieuse} : aucune exception, simple
 
 \begin{lstlisting}
 @Override public boolean preVisit2(ASTNode node) {
-    System.out.println("  ".repeat(depth) + node.getClass().getSimpleName());
+    out.println("  ".repeat(depth) + node.getClass().getSimpleName());
     depth++;
     return true;
 }
@@ -197,9 +197,9 @@ Dans notre outil, \texttt{return false} sur une \texttt{AnonymousClassDeclaratio
 
 \begin{lstlisting}
 @Override public boolean visit(TypeDeclaration node) {
-    if (node.isLocalTypeDeclaration()) return false;   // classe locale : non comptee
+    if (node.isLocalTypeDeclaration()) return false;
     record(node, node.isInterface() ? TypeKind.INTERFACE : TypeKind.CLASS);
-    return true;                     // on descend : les types membres comptent
+    return true;
 }
 @Override public boolean visit(EnumDeclaration node)   { record(node, TypeKind.ENUM);   return true; }
 @Override public boolean visit(RecordDeclaration node) { record(node, TypeKind.RECORD); return true; }
@@ -219,10 +219,10 @@ Le \texttt{return true} laisse le parcours atteindre les types membres comme \te
 \begin{lstlisting}
 private String receiverOf(MethodInvocation node, IMethodBinding target) {
     Expression receiver = node.getExpression();
-    if (receiver != null) return nameOf(receiver.resolveTypeBinding());  // type declare
+    if (receiver != null) return nameOf(receiver.resolveTypeBinding());
     if (target != null && Modifier.isStatic(target.getModifiers()))
-        return nameOf(target.getDeclaringClass());        // import statique compris
-    return nameOf(enclosingTypeOf(node));                 // this implicite
+        return nameOf(target.getDeclaringClass());
+    return nameOf(enclosingTypeOf(node));
 }
 \end{lstlisting}
 
@@ -241,7 +241,6 @@ Le modèle ayant été construit au fil de A2 et A3, cette étape a consisté à
 Les questions 8, 9 et 12 reposent sur la même règle, isolée dans \texttt{Ranking} et testée séparément.
 
 \begin{lstlisting}
-/** Plafond de n/10 en entiers. (int) (n * 0.1) arrondirait vers le bas. */
 public static int quota(int candidateCount) { return (candidateCount + 9) / 10; }
 
 public static <T> List<T> topTenPercent(List<T> candidates,
@@ -452,33 +451,33 @@ L'option \texttt{-{}-gui} ouvre une fenêtre Swing. Conformément au sujet, ce n
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{images/gui-graphe.png}
-    \caption{Onglet « Graphe d'appel (B3) ». La seule valeur de poids supérieure à 1 est l'arc \texttt{Catalog\#add(Item,Item)} $\rightarrow$ \texttt{Catalog\#add(Item)} ; la dernière ligne, \texttt{TextUtils\#repeat} vers lui-même, matérialise la récursion.}
+    \caption{Onglet « Graphe d'appel (B3) », interrogation des appelées de \texttt{Catalog\#add(Item,Item)} : un seul arc vers \texttt{Catalog\#add(Item)}, de poids 2 pour deux sites d'appel. C'est l'un des deux arcs de poids 2 du graphe, l'autre allant de \texttt{LoanService\#giveBack} à \texttt{LoanService.Loan\#getItem}.}
 \end{figure}
 
 \subsection{C3 --- Analyser un projet de taille moyenne}
 
-Le projet analysé est notre propre analyseur : 29 fichiers, 2 109 lignes, 10 paquetages, soit environ quatre fois le projet de validation. Le choix n'est pas seulement commode. Le rapport affirme depuis la section \ref{sec:architecture} que le modèle de faits est un point d'arrivée dont rien ne repart ; faire mesurer cette affirmation par l'outil lui-même la transforme en fait vérifiable.
+Le projet analysé est notre propre analyseur : 29 fichiers, 1 996 lignes, 10 paquetages, soit environ quatre fois le projet de validation. Le choix n'est pas seulement commode. Le rapport affirme depuis la section \ref{sec:architecture} que le modèle de faits est un point d'arrivée dont rien ne repart ; faire mesurer cette affirmation par l'outil lui-même la transforme en fait vérifiable.
 
 \begin{lstlisting}[language=bash]
 $ java -jar target/hai913i-tp1-analyzer.jar . --action all --x 5
 Unites de compilation : 29       Erreurs de compilation : 213
-Types : 30   Methodes : 128 (dont 15 constructeurs)   Attributs : 28   Paquetages : 10
-Appels : 1040 (318 internes, 476 externes, 246 non resolus)
- 2. Lignes : 2109    5. Methodes/classe : 4.27    6. Lignes/methode : 10.35 (1325 pour 128)
- 7. Attributs/classe : 0.93
+Types : 30   Methodes : 130 (dont 16 constructeurs)   Attributs : 29   Paquetages : 10
+Appels : 1066 (326 internes, 493 externes, 247 non resolus)
+ 2. Lignes : 1996    5. Methodes/classe : 4.33    6. Lignes/methode : 10.31 (1340 pour 130)
+ 7. Attributs/classe : 0.97
  8. plus de methodes  : [StructureVisitor, SpoonExtractor, TextReport, AnalyzerWindow]
  9. plus d'attributs  : [AnalyzerWindow, Analyzer, CallCollector]
 10. intersection      : [AnalyzerWindow]
-Noeuds : 128 | Arcs : 145 | Sites internes : 180 | Externes : 614 | Non resolus : 246
+Noeuds : 130 | Arcs : 146 | Sites internes : 182 | Externes : 637 | Non resolus : 247
 \end{lstlisting}
 
 \textbf{Ce que le graphe révèle, et que nous ne pouvions pas affirmer autrement.} Le paquetage \texttt{model} reçoit 29 arcs et n'en émet que 4, et ces quatre-là sont internes à \texttt{ProjectFacts} : \texttt{callCount}, \texttt{internalCallCount}, \texttt{externalCallCount} et \texttt{unresolvedCallCount} appellent toutes \texttt{calls()}. Le modèle de faits est donc bien un puits au sens du graphe d'appel : tout le monde l'appelle, il n'appelle personne. C'est la traduction mesurée de la frontière décrite en section 2.1, et c'est la propriété qui a permis de brancher Spoon puis l'interface graphique sans toucher aux traitements.
 
-\textbf{Ce que les métriques révèlent, et qui nous dérange.} La question 10 désigne \texttt{AnalyzerWindow} comme seule classe à la fois dans les 10 \% les plus fournies en méthodes et en attributs. Le diagnostic est correct sans être inquiétant : une fenêtre Swing accumule des composants en attributs, et notre interface ne calcule rien. La question 12 est plus gênante pour nous : la méthode la plus longue de \texttt{Analyzer} est \texttt{run}, avec 83 lignes. Notre propre rapport reproche au « \textit{main} de mille lignes » de ne pas être une architecture ; notre chef d'orchestre est sur la même pente, et devrait être découpé par action.
+\textbf{Ce que les métriques révèlent, et qui nous dérange.} La question 10 désigne \texttt{AnalyzerWindow} comme seule classe à la fois dans les 10 \% les plus fournies en méthodes et en attributs. Le diagnostic est correct sans être inquiétant : une fenêtre Swing accumule des composants en attributs, et notre interface ne calcule rien. La question 12 est plus gênante pour nous : la méthode la plus longue de \texttt{Analyzer} est \texttt{run}, avec 84 lignes. Notre propre rapport reproche au « \textit{main} de mille lignes » de ne pas être une architecture ; notre chef d'orchestre est sur la même pente, et devrait être découpé par action.
 
-Le contraste des moyennes mérite aussi d'être noté : 10,35 lignes par méthode ici contre 4,64 sur le projet de validation. Le projet de validation est un jeu d'essai, pas un logiciel ; en tirer des seuils que l'on appliquerait à du code réel n'aurait aucun sens, ce qui illustre concrètement la mise en garde du CM 01 sur ce qu'une métrique permet ou non d'affirmer.
+Le contraste des moyennes mérite aussi d'être noté : 10,31 lignes par méthode ici contre 4,64 sur le projet de validation. Le projet de validation est un jeu d'essai, pas un logiciel ; en tirer des seuils que l'on appliquerait à du code réel n'aurait aucun sens, ce qui illustre concrètement la mise en garde du CM 01 sur ce qu'une métrique permet ou non d'affirmer.
 
-\textbf{Les limites que cette analyse expose.} 246 appels sur 1 040, soit 24 \%, sont non résolus, et 213 erreurs de compilation sont signalées. Toutes ont la même origine : notre analyseur dépend de JDT et de Spoon, et ces bibliothèques ne sont pas sur le \textit{classpath} d'analyse puisque nous n'exposons pas d'option pour les y mettre (section \ref{sec:second-projet}). Le graphe obtenu reste exploitable, puisque les 318 appels internes sont tous résolus, mais l'expérience chiffre le coût de cette limite sur un projet réaliste : un quart des appels invisibles. Sur un projet à dépendances lourdes, la proportion serait pire encore, et c'est la première raison pour laquelle nous exposerions un \textit{classpath} avant toute autre amélioration.
+\textbf{Les limites que cette analyse expose.} 247 appels sur 1 066, soit 23 \%, sont non résolus, et 213 erreurs de compilation sont signalées. Toutes ont la même origine : notre analyseur dépend de JDT et de Spoon, et ces bibliothèques ne sont pas sur le \textit{classpath} d'analyse puisque nous n'exposons pas d'option pour les y mettre (section \ref{sec:second-projet}). Le graphe obtenu reste exploitable, puisque les 326 appels internes sont tous résolus, mais l'expérience chiffre le coût de cette limite sur un projet réaliste : près d'un quart des appels invisibles. Sur un projet à dépendances lourdes, la proportion serait pire encore, et c'est la première raison pour laquelle nous exposerions un \textit{classpath} avant toute autre amélioration.
 
 \section{Difficultés rencontrées}
 
@@ -488,7 +487,7 @@ Le contraste des moyennes mérite aussi d'être noté : 10,35 lignes par méthod
 
 \textbf{L'attribution des appels dans les lambdas.} La subtilité qui a demandé le plus de réflexion est la différence de traitement entre A2 et A3 : les types des lambdas et classes anonymes ne comptent pas, ce qui invite à les élaguer, mais les appels qu'elles contiennent doivent être attribués à la méthode englobante. Le même élagage dans les deux visiteurs nous aurait donné 93 appels au lieu de 94.
 
-\textbf{Parties incomplètes.} Toutes les étapes A0 à B4 sont franchies, ainsi que les trois bonus. Deux imperfections connues subsistent, l'une et l'autre repérées en analysant des projets extérieurs (sections \ref{sec:second-projet} et \ref{sec:bonus}) : l'étiquette « interne » de la liste des appels et le compteur de sites internes du graphe ne recouvrent pas la même notion en présence de \textit{records} ; et le \textit{classpath} de JAR externes, prévu dans \texttt{JdtParser}, n'est exposé nulle part sur la ligne de commande, ce qui laisse 24 \% des appels non résolus sur un projet à dépendances. Nous les documentons plutôt que de les corriger dans l'urgence ; la seconde est notre première priorité.
+\textbf{Parties incomplètes.} Toutes les étapes A0 à B4 sont franchies, ainsi que les trois bonus. Deux imperfections connues subsistent, l'une et l'autre repérées en analysant des projets extérieurs (sections \ref{sec:second-projet} et \ref{sec:bonus}) : l'étiquette « interne » de la liste des appels et le compteur de sites internes du graphe ne recouvrent pas la même notion en présence de \textit{records} ; et le \textit{classpath} de JAR externes, prévu dans \texttt{JdtParser}, n'est exposé nulle part sur la ligne de commande, ce qui laisse 23 \% des appels non résolus sur un projet à dépendances. Nous les documentons plutôt que de les corriger dans l'urgence ; la seconde est notre première priorité.
 
 Un défaut repéré de la même façon a en revanche été corrigé : l'ordre de validation des arguments, décrit en B4, qui faisait répondre « le seuil X est obligatoire » à un utilisateur ayant simplement mal tapé son chemin.
 
@@ -538,7 +537,7 @@ java -jar target/hai913i-tp1-analyzer.jar resources/validation --x 5
 \end{lstlisting}
 
 Dépôt Git : \url{https://github.com/AdrienSmbr/TP1-HAI913I} \\
-Vidéo de démonstration : \textcolor{red}{\texttt{[URL à compléter]}}
+Vidéo de démonstration : \url{https://youtu.be/UB8gPc2GF-g}
 
 \section*{Références}
 \addcontentsline{toc}{section}{Références}

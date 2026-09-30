@@ -10,11 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import hai913i.tp1.metrics.Ranking;
 
-/**
- * La regle des « 10 % » (section 4.3), testee sur des donnees construites a la
- * main : aucun fichier analyse, aucune classe de JDT. C'est l'interet du modele
- * de faits, un traitement se teste sans l'extracteur.
- */
 class RankingTest {
 
     private record Candidate(String name, int value) {
@@ -70,7 +65,6 @@ class RankingTest {
     @Test
     @DisplayName("les zeros sont ecartes meme parmi les k premiers")
     void zeroDroppedInsideQuota() {
-        // n = 11 donc k = 2 ; le 2e vaut 0, il est ecarte malgre son rang
         assertEquals(List.of("c00"), top(of(3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)));
     }
 }

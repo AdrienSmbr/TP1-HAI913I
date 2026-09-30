@@ -6,11 +6,6 @@ import hai913i.tp1.cli.Options;
 import hai913i.tp1.cli.UsageException;
 import hai913i.tp1.ui.AnalyzerWindow;
 
-/**
- * Point d'entree. Lit les arguments, delegue, rend un code de sortie.
- *
- * Usage : java -jar target/hai913i-tp1-analyzer.jar PROJET [OPTIONS]
- */
 public final class Main {
 
     private Main() {

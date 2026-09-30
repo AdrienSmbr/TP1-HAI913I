@@ -22,10 +22,6 @@ import hai913i.tp1.model.TypeFact;
 import hai913i.tp1.parse.JdtParser;
 import hai913i.tp1.parse.ProjectSources;
 
-/**
- * Points de controle A0 a B3 sur le projet de validation fourni.
- * Un echec ici signale une regression sur des chiffres connus.
- */
 class ValidationCheckpointTest {
 
     private static final Path VALIDATION = TestProjects.validation();
@@ -193,8 +189,6 @@ class ValidationCheckpointTest {
         assertEquals(facts.callCount(), again.callCount());
         assertEquals(CallGraphBuilder.build(facts).outgoing(),
                 CallGraphBuilder.build(again).outgoing());
-        // equals ignore l'ordre, et deux appels dans la meme JVM le partagent :
-        // on verifie donc directement que chaque liste d'appelees est triee.
         for (Map<String, Integer> callees : CallGraphBuilder.build(facts).outgoing().values()) {
             List<String> keys = List.copyOf(callees.keySet());
             assertEquals(keys.stream().sorted().toList(), keys);

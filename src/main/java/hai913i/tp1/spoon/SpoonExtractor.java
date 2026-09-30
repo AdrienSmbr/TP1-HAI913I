@@ -33,16 +33,6 @@ import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtTypeReference;
 import spoon.reflect.visitor.filter.TypeFilter;
 
-/**
- * Bonus C1 : seconde extraction, avec Spoon 11.5.0, vers le <b>meme</b> modele
- * de faits que l'extraction JDT.
- *
- * <p>C'est l'interet du decouplage de l'etape B1 : les metriques et le graphe
- * d'appel fonctionnent a l'identique sur l'une ou l'autre extraction, sans
- * qu'une ligne de traitement ne change. Les conventions de comptage du sujet
- * sont reappliquees ici, car celles de Spoon different (voir
- * {@link SpoonRawCounts}).</p>
- */
 public final class SpoonExtractor {
 
     private SpoonExtractor() {
@@ -51,7 +41,6 @@ public final class SpoonExtractor {
     public static CtModel buildModel(Path sourceRoot) {
         Launcher launcher = new Launcher();
         launcher.addInputResource(sourceRoot.toString());
-        // Classpath complet : on veut les memes exigences de resolution que JDT.
         launcher.getEnvironment().setNoClasspath(true);
         launcher.getEnvironment().setComplianceLevel(17);
         launcher.getEnvironment().setCommentEnabled(false);
@@ -81,7 +70,6 @@ public final class SpoonExtractor {
         return new ProjectFacts(List.copyOf(types), List.copyOf(sourceFiles));
     }
 
-    /** Types nommes, de premier niveau ou membres. Ni anonymes, ni locaux. */
     private static boolean isCounted(CtType<?> type) {
         if (type.isAnonymous() || type.isImplicit()) {
             return false;
@@ -92,7 +80,6 @@ public final class SpoonExtractor {
         return !type.isShadow();
     }
 
-    /** Spoon separe les types membres par $ ; le sujet demande des points. */
     private static String qualifiedName(CtType<?> type) {
         return type.getQualifiedName().replace('$', '.');
     }
@@ -124,7 +111,6 @@ public final class SpoonExtractor {
                 .toList();
     }
 
-    /** getFields() inclut les constantes d'enumeration : le sujet les exclut. */
     private static List<FieldFact> fieldsOf(CtType<?> type) {
         List<FieldFact> fields = new ArrayList<>();
         for (CtField<?> field : type.getFields()) {
@@ -138,11 +124,6 @@ public final class SpoonExtractor {
         return fields;
     }
 
-    /**
-     * getMethods() rend les methodes <b>sans</b> les constructeurs, qui
-     * s'obtiennent par CtClass.getConstructors(). Les membres implicites
-     * (constructeur par defaut, values() d'une enumeration) sont ecartes.
-     */
     private static List<MethodFact> methodsOf(CtType<?> type) {
         List<CtExecutable<?>> executables = new ArrayList<>();
         type.getMethods().stream()
@@ -181,11 +162,6 @@ public final class SpoonExtractor {
                 - executable.getBody().getPosition().getLine() + 1;
     }
 
-    /**
-     * Appels contenus dans le corps. Les CtInvocation dont l'executable est un
-     * constructeur (super(...), this(...)) sont ecartes : le sujet ne les compte
-     * pas comme des appels de methode.
-     */
     private static List<CallFact> callsOf(CtExecutable<?> executable, String callerId) {
         if (executable.getBody() == null) {
             return List.of();
@@ -217,7 +193,6 @@ public final class SpoonExtractor {
         return calls;
     }
 
-    /** Type statique du receveur : le type de la cible d'appel, sinon le type declarant. */
     private static CtTypeReference<?> receiverOf(CtInvocation<?> invocation,
             CtExecutableReference<?> target) {
         if (invocation.getTarget() != null && invocation.getTarget().getType() != null) {

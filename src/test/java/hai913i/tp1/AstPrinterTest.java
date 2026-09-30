@@ -16,10 +16,8 @@ import org.junit.jupiter.api.Test;
 import hai913i.tp1.cli.Analyzer;
 import hai913i.tp1.cli.CommandLine;
 
-/** Point de controle A1 : l'arbre de Dvd.java et de Category.java. */
 class AstPrinterTest {
 
-    /** Lance l'action ast depuis la ligne de commande et renvoie les noms de noeuds, sans indentation. */
     private static List<String> ast(String file) throws Exception {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try (PrintStream stream = new PrintStream(out, true, StandardCharsets.UTF_8)) {

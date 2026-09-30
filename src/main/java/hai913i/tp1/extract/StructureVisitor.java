@@ -153,11 +153,6 @@ public class StructureVisitor extends ASTVisitor {
         return methods;
     }
 
-    /**
-     * Appels contenus dans le corps de la methode. Une methode sans corps
-     * (abstraite ou d'interface) n'en contient aucun ; les appels situes hors
-     * de toute methode (initialiseur de champ) ne sont donc jamais vus.
-     */
     private List<CallFact> callsOf(MethodDeclaration method, String callerId) {
         if (method.getBody() == null) {
             return List.of();

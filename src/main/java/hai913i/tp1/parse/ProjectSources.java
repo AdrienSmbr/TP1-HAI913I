@@ -31,7 +31,6 @@ public record ProjectSources(Path projectDirectory, Path sourceRoot, List<Path> 
     }
 
     private static List<Path> collectJavaFiles(Path root) throws IOException {
-        // try-with-resources : Files.walk ouvre des descripteurs qu'il faut refermer.
         try (Stream<Path> paths = Files.walk(root)) {
             return paths.filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().endsWith(".java"))

@@ -11,13 +11,6 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.visitor.filter.TypeFilter;
 
-/**
- * Comptages <b>bruts</b> de Spoon, sans appliquer les conventions du sujet.
- *
- * <p>Sert a la comparaison demandee par le bonus C1 : ce sont ces chiffres qui
- * different de ceux de JDT, et la difference vient des definitions, pas d'un
- * bug d'un des deux outils.</p>
- */
 public record SpoonRawCounts(int allTypes,
                              int topLevelTypes,
                              int methods,

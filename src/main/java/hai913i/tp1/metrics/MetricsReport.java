@@ -6,11 +6,6 @@ import java.util.Map;
 import hai913i.tp1.model.MethodFact;
 import hai913i.tp1.model.TypeFact;
 
-/**
- * Les 13 metriques du sujet, section B2. Les numeros correspondent aux
- * questions ; les listes sont ordonnees, les moyennes brutes (l'arrondi a deux
- * decimales est un choix d'affichage, pas de calcul).
- */
 public record MetricsReport(int classCount,
                             int applicationLines,
                             int methodCount,

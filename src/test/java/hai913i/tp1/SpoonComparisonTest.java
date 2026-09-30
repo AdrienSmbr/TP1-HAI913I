@@ -18,12 +18,6 @@ import hai913i.tp1.parse.ProjectSources;
 import hai913i.tp1.spoon.SpoonExtractor;
 import hai913i.tp1.spoon.SpoonRawCounts;
 
-/**
- * Bonus C1 : la seconde extraction, avec Spoon, alimente le meme modele de
- * faits et doit donner les memes chiffres une fois les conventions du sujet
- * appliquees. Les comptages bruts de Spoon, eux, different : c'est ce que la
- * comparaison doit expliquer.
- */
 class SpoonComparisonTest {
 
     private static final Path VALIDATION = TestProjects.validation();

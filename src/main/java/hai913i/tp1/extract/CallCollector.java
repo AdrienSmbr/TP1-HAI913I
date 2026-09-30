@@ -18,15 +18,6 @@ import org.eclipse.jdt.core.dom.SuperMethodInvocation;
 
 import hai913i.tp1.model.CallFact;
 
-/**
- * Ramasse les appels contenus dans le corps d'une methode comptee.
- *
- * <p>Applique la semantique du sujet, section 4.4 : seuls MethodInvocation et
- * SuperMethodInvocation sont des appels ; les references de methode (T::m) et
- * les creations d'instance n'en sont pas. Le sous-arbre est parcouru en entier,
- * lambdas et classes anonymes comprises, car les appels qui s'y trouvent sont
- * attribues a la methode qui les contient.</p>
- */
 class CallCollector extends ASTVisitor {
 
     private static final String UNKNOWN = "(inconnu)";
@@ -70,13 +61,6 @@ class CallCollector extends ASTVisitor {
         return true;
     }
 
-    /**
-     * Type statique du receveur d'un MethodInvocation.
-     *
-     * <p>Receveur explicite : type declare de l'expression, pas la classe de
-     * l'objet reel. Receveur implicite : type qui declare la methode si elle est
-     * statique (import statique compris), sinon type englobant (this implicite).</p>
-     */
     private String receiverOf(MethodInvocation node, IMethodBinding target) {
         Expression receiver = node.getExpression();
         if (receiver != null) {
@@ -88,16 +72,11 @@ class CallCollector extends ASTVisitor {
         return nameOf(enclosingTypeOf(node));
     }
 
-    /** super.m() : superclasse directe du type englobant. */
     private String superReceiverOf(SuperMethodInvocation node) {
         ITypeBinding enclosing = enclosingTypeOf(node);
         return enclosing != null ? nameOf(enclosing.getSuperclass()) : UNKNOWN;
     }
 
-    /**
-     * Identifiant textuel de la cible. getMethodDeclaration() remonte de
-     * List&lt;Item&gt;#add(Item) a la declaration generique List#add(Object).
-     */
     private Optional<String> targetIdOf(IMethodBinding target) {
         if (target == null) {
             return Optional.empty();
@@ -114,7 +93,6 @@ class CallCollector extends ASTVisitor {
                 + "#" + declaration.getName() + "(" + parameters + ")");
     }
 
-    /** Vrai si la cible est declaree dans les sources analysees. */
     private boolean isInternal(IMethodBinding target) {
         if (target == null) {
             return false;
@@ -123,7 +101,6 @@ class CallCollector extends ASTVisitor {
         return owner != null && owner.isFromSource();
     }
 
-    /** Type qui contient syntaxiquement le noeud, classe anonyme comprise. */
     private ITypeBinding enclosingTypeOf(ASTNode node) {
         for (ASTNode current = node; current != null; current = current.getParent()) {
             if (current instanceof AnonymousClassDeclaration anonymous) {

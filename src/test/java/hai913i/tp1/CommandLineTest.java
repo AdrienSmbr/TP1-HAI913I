@@ -13,7 +13,6 @@ import hai913i.tp1.cli.CommandLine;
 import hai913i.tp1.cli.Options;
 import hai913i.tp1.cli.UsageException;
 
-/** Point de controle B4 : la ligne de commande refuse proprement les entrees invalides. */
 class CommandLineTest {
 
     @Test
@@ -40,8 +39,6 @@ class CommandLineTest {
     @Test
     @DisplayName("X absent : la lecture des arguments ne tranche pas, Analyzer le fera")
     void missingThreshold() throws UsageException {
-        // Le refus a lieu dans Analyzer, apres verification du projet, pour qu'un
-        // chemin invalide soit diagnostique avant le seuil (voir RobustnessTest).
         assertFalse(CommandLine.parse(new String[] {"p", "--action", "metrics"}).hasThreshold());
         assertFalse(CommandLine.parse(new String[] {"p"}).hasThreshold());
     }

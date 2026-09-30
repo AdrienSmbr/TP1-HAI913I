@@ -41,14 +41,6 @@ import hai913i.tp1.parse.JdtParser;
 import hai913i.tp1.parse.ProjectSources;
 import hai913i.tp1.report.TextReport;
 
-/**
- * Interface graphique (bonus C2).
- *
- * <p>Ce n'est qu'une seconde facon d'afficher les resultats du <b>meme</b>
- * modele de faits : la fenetre appelle exactement les memes composants que la
- * ligne de commande ({@code FactExtractor}, {@code MetricsService},
- * {@code CallGraphBuilder}) et ne calcule rien elle-meme.</p>
- */
 public class AnalyzerWindow extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +56,7 @@ public class AnalyzerWindow extends JFrame {
             "Methode appelante", "Ligne", "Appel", "Receveur (type statique)", "Cible", "Portee");
     private final DefaultTableModel arcsModel = readOnlyModel("Source", "Cible", "Poids");
     private final JTextArea metricsArea = new JTextArea();
-    private final JTextArea neighboursArea = new JTextArea();
+    private final JTextArea neighboursArea = new JTextArea(6, 0);
     private final JComboBox<String> methodChooser = new JComboBox<>();
 
     private CallGraph graph;

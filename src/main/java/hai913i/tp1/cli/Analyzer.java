@@ -23,7 +23,6 @@ import hai913i.tp1.spoon.SpoonExtractor;
 import hai913i.tp1.spoon.SpoonRawCounts;
 import hai913i.tp1.report.TextReport;
 
-/** Enchaine les etapes : sources, AST, faits, traitements, sorties. */
 public final class Analyzer {
 
     public static final int OK = 0;
@@ -51,9 +50,6 @@ public final class Analyzer {
             return NO_SOURCES;
         }
 
-        // Le seuil est exige ici, et non a la lecture des arguments, pour que
-        // « dossier inexistant » et « aucun fichier .java » soient diagnostiques
-        // avant lui : sans cela, oublier --x masquait le vrai probleme.
         if (options.action().needsThreshold() && !options.hasThreshold()) {
             err.println("Erreur : le seuil X est obligatoire pour l'action "
                     + options.action().name().toLowerCase(Locale.ROOT) + " : ajoutez --x N");
@@ -70,7 +66,6 @@ public final class Analyzer {
         out.println("Erreurs de compilation : " + errors);
         out.println();
 
-        // A1 : l'arbre brut, avant toute extraction de faits.
         if (options.action() == Action.AST) {
             return printAst(files, options, out, err);
         }

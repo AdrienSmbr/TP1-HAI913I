@@ -14,10 +14,6 @@ import hai913i.tp1.model.MethodFact;
 import hai913i.tp1.model.ProjectFacts;
 import hai913i.tp1.model.TypeFact;
 
-/**
- * Construit le graphe d'appel a partir du seul modele de faits.
- * Aucune classe d'org.eclipse.jdt n'intervient ici (exigence B1).
- */
 public final class CallGraphBuilder {
 
     private CallGraphBuilder() {
@@ -29,7 +25,6 @@ public final class CallGraphBuilder {
                 .map(MethodFact::id)
                 .sorted()
                 .toList();
-        // Recherche en O(1) : le test ci-dessous est fait pour chaque appel.
         Set<String> nodeIds = Set.copyOf(nodes);
 
         Map<String, Map<String, Integer>> outgoing = new TreeMap<>();
@@ -61,7 +56,6 @@ public final class CallGraphBuilder {
         index.computeIfAbsent(from, key -> new TreeMap<>()).merge(to, 1, Integer::sum);
     }
 
-    /** Copies triees : deux executions doivent donner la meme sortie. */
     private static Map<String, Map<String, Integer>> freeze(Map<String, Map<String, Integer>> index) {
         Map<String, Map<String, Integer>> frozen = new LinkedHashMap<>();
         List<String> keys = new ArrayList<>(index.keySet());

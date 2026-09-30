@@ -12,12 +12,6 @@ import hai913i.tp1.model.MethodFact;
 import hai913i.tp1.model.ProjectFacts;
 import hai913i.tp1.model.TypeFact;
 
-/**
- * Calcule les 13 metriques a partir du seul modele de faits.
- *
- * <p>Aucune classe d'{@code org.eclipse.jdt} n'apparait ici : c'est l'exigence
- * B1. Seule la question 2 relit les fichiers, pour compter des lignes physiques.</p>
- */
 public final class MetricsService {
 
     private MetricsService() {
@@ -83,10 +77,6 @@ public final class MetricsService {
                 bodyLines);
     }
 
-    /**
-     * Question 2 : lignes physiques des fichiers .java analyses, lignes vides et
-     * commentaires compris, ce que compte Files.readAllLines(chemin).size().
-     */
     private static int countApplicationLines(List<Path> sourceFiles) throws IOException {
         int total = 0;
         for (Path file : sourceFiles) {

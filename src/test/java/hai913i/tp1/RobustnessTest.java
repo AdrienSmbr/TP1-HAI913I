@@ -18,7 +18,6 @@ import hai913i.tp1.cli.Action;
 import hai913i.tp1.cli.Analyzer;
 import hai913i.tp1.cli.Options;
 
-/** Point de controle B4 : les trois echantillons de robustesse. */
 class RobustnessTest {
 
     private record Run(int code, String out, String err) {
@@ -41,7 +40,6 @@ class RobustnessTest {
                 err.toString(StandardCharsets.UTF_8));
     }
 
-    /** Seuil absent : Options le porte a null, comme apres lecture de la ligne de commande. */
     private static Options withoutThreshold(String projectDirectory, Action action) {
         return new Options(Path.of(projectDirectory), action, null,
                 Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
@@ -79,17 +77,14 @@ class RobustnessTest {
     @Test
     @DisplayName("X absent : le projet est verifie avant le seuil")
     void projectCheckedBeforeThreshold() {
-        // Chemin invalide et seuil manquant : c'est le chemin qui doit etre signale.
         Run invalidPath = run(withoutThreshold(TestProjects.missing().toString(), Action.ALL));
         assertEquals(Analyzer.BAD_PROJECT, invalidPath.code());
         assertFalse(invalidPath.err().contains("seuil X"),
                 "le seuil ne doit pas masquer un chemin invalide");
 
-        // Dossier sans source et seuil manquant : c'est l'absence de .java qui prime.
         Run noSources = run(withoutThreshold(TestProjects.robustness("no-java-files").toString(), Action.ALL));
         assertEquals(Analyzer.NO_SOURCES, noSources.code());
 
-        // Projet valide : le seuil manquant est alors le seul reproche.
         Run validProject = run(withoutThreshold(TestProjects.validation().toString(), Action.ALL));
         assertEquals(Analyzer.BAD_USAGE, validProject.code());
         assertTrue(validProject.err().contains("seuil X"));

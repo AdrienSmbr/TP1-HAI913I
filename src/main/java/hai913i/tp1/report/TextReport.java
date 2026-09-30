@@ -14,7 +14,6 @@ import hai913i.tp1.model.ProjectFacts;
 import hai913i.tp1.model.TypeFact;
 import hai913i.tp1.spoon.SpoonRawCounts;
 
-/** Mise en forme texte. Ne calcule rien : lit le modele et les traitements. */
 public final class TextReport {
 
     private TextReport() {
@@ -134,7 +133,6 @@ public final class TextReport {
         neighbours.forEach((id, weight) -> out.println("    " + id + "  (poids " + weight + ")"));
     }
 
-    /** Bonus C1 : JDT contre Spoon, brut puis apres conventions du sujet. */
     public static void comparison(PrintStream out, ProjectFacts jdt, ProjectFacts spoon,
             SpoonRawCounts raw) {
         out.println();
