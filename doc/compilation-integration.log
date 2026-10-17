@@ -1,0 +1,72 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< hai913i.tp1:hai913i-tp1-analyzer >------------------
+[INFO] Building HAI913I — Analyse statique et architectures (TP1 + TP2) 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ hai913i-tp1-analyzer ---
+[INFO] skip non existing resourceDirectory /tmp/tp2-publication-github/src/main/resources
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ hai913i-tp1-analyzer ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 47 source files with javac [debug release 17] to target/classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hai913i-tp1-analyzer ---
+[INFO] skip non existing resourceDirectory /tmp/tp2-publication-github/src/test/resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ hai913i-tp1-analyzer ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug release 17] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hai913i-tp1-analyzer ---
+[INFO] Tests are skipped.
+[INFO]
+[INFO] --- jar:3.4.1:jar (default-jar) @ hai913i-tp1-analyzer ---
+[INFO] Building jar: /tmp/tp2-publication-github/target/hai913i-tp1-analyzer.jar
+[INFO]
+[INFO] --- shade:3.6.1:shade (default) @ hai913i-tp1-analyzer ---
+[WARNING] org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource:
+[WARNING]   - plugin.xml
+[WARNING] jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar define 1 overlapping resource:
+[WARNING]   - META-INF/LICENSE
+[WARNING] org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource:
+[WARNING]   - .options
+[WARNING] ecj-3.46.0.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar, org.eclipse.text-3.14.700.jar define 2 overlapping resources:
+[WARNING]   - .api_description
+[WARNING]   - about.html
+[WARNING] org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.text-3.14.700.jar define 1 overlapping resource:
+[WARNING]   - plugin.properties
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jspecify-1.0.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar define 1 overlapping classes:
+[WARNING]   - META-INF.versions.9.module-info
+[WARNING] maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar define 1 overlapping resource:
+[WARNING]   - META-INF/DEPENDENCIES
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, ecj-3.46.0.jar, hai913i-tp1-analyzer.jar, jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar, jsap-2.1.jar, jspecify-1.0.0.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar, org.eclipse.text-3.14.700.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar, spoon-core-11.5.0.jar define 1 overlapping resource:
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource:
+[WARNING]   - about_files/LICENSE-2.0.txt
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar define 1 overlapping resource:
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING] jna-5.18.1.jar, jna-platform-5.18.1.jar define 2 overlapping resources:
+[WARNING]   - META-INF/AL2.0
+[WARNING]   - META-INF/LGPL2.1
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar define 1 overlapping resource:
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING] ecj-3.46.0.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.jdt.core-3.46.0.jar define 1 overlapping resource:
+[WARNING]   - META-INF/eclipse.inf
+[WARNING] jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar define 1 overlapping resource:
+[WARNING]   - META-INF/NOTICE
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.622 s
+[INFO] Finished at: 2026-10-17T15:03:05+02:00
+[INFO] ------------------------------------------------------------------------

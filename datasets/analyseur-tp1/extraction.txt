@@ -1,0 +1,12 @@
+Extracteur : TP1, JDT Core 3.46.0, visiteurs originaux + complétion des cibles implicites dans le pont
+Unités : 29
+Classes : 30
+Méthodes : 199
+Arcs : 267
+Sites internes : 326
+Sites hors graphe (externes ou cible non déclarée) : 740
+Sites internes réintégrés vers des méthodes implicites : 144
+Méthodes implicites cibles ajoutées : 69
+Arcs avant complétion : 146
+Sites non résolus exclus : 0
+Erreurs de compilation : 0

@@ -1,0 +1,6 @@
+kind;classA;classB;weight
+node;demo.A;;
+node;demo.B;;
+node;demo.C;;
+edge;demo.A;demo.B;0.6666666666666666
+edge;demo.B;demo.C;0.3333333333333333

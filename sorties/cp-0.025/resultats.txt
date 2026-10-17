@@ -1,0 +1,49 @@
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE

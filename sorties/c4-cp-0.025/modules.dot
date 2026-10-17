@@ -1,0 +1,78 @@
+graph Modules {
+  node [shape=box, fontname="DejaVu Sans"];
+  subgraph cluster_1 { label="Module 1 | C=NA";"hai913i.tp1.Main";}
+  subgraph cluster_2 { label="Module 2 | C=0.0315789474";"hai913i.tp1.callgraph.CallGraph";"hai913i.tp1.metrics.MetricsReport";"hai913i.tp1.report.TextReport";"hai913i.tp1.spoon.SpoonRawCounts";}
+  subgraph cluster_3 { label="Module 3 | C=NA";"hai913i.tp1.callgraph.CallGraphBuilder";}
+  subgraph cluster_4 { label="Module 4 | C=NA";"hai913i.tp1.cli.Action";}
+  subgraph cluster_5 { label="Module 5 | C=0.0473684211";"hai913i.tp1.cli.Analyzer";"hai913i.tp1.cli.Options";}
+  subgraph cluster_6 { label="Module 6 | C=NA";"hai913i.tp1.cli.CommandLine";}
+  subgraph cluster_7 { label="Module 7 | C=NA";"hai913i.tp1.cli.UsageException";}
+  subgraph cluster_8 { label="Module 8 | C=NA";"hai913i.tp1.extract.AstPrinter";}
+  subgraph cluster_9 { label="Module 9 | C=NA";"hai913i.tp1.extract.CallCollector";}
+  subgraph cluster_10 { label="Module 10 | C=NA";"hai913i.tp1.extract.FactExtractor";}
+  subgraph cluster_11 { label="Module 11 | C=NA";"hai913i.tp1.extract.StructureVisitor";}
+  subgraph cluster_12 { label="Module 12 | C=0.0271929825";"hai913i.tp1.metrics.MetricsService";"hai913i.tp1.model.ProjectFacts";"hai913i.tp1.model.TypeFact";"hai913i.tp1.ui.AnalyzerWindow";}
+  subgraph cluster_13 { label="Module 13 | C=NA";"hai913i.tp1.metrics.Ranking";}
+  subgraph cluster_14 { label="Module 14 | C=NA";"hai913i.tp1.model.CallFact";}
+  subgraph cluster_15 { label="Module 15 | C=NA";"hai913i.tp1.model.FieldFact";}
+  subgraph cluster_16 { label="Module 16 | C=NA";"hai913i.tp1.model.MethodFact";}
+  subgraph cluster_17 { label="Module 17 | C=NA";"hai913i.tp1.model.TypeKind";}
+  subgraph cluster_18 { label="Module 18 | C=NA";"hai913i.tp1.model.Visibility";}
+  subgraph cluster_19 { label="Module 19 | C=NA";"hai913i.tp1.parse.JdtParser";}
+  subgraph cluster_20 { label="Module 20 | C=NA";"hai913i.tp1.parse.JdtParser.ParsedFile";}
+  subgraph cluster_21 { label="Module 21 | C=NA";"hai913i.tp1.parse.ProjectSources";}
+  subgraph cluster_22 { label="Module 22 | C=NA";"hai913i.tp1.report.DotReport";}
+  subgraph cluster_23 { label="Module 23 | C=NA";"hai913i.tp1.spoon.SpoonExtractor";}
+"hai913i.tp1.Main" -- "hai913i.tp1.cli.Analyzer" [style=dashed, label="0.0053"];
+"hai913i.tp1.Main" -- "hai913i.tp1.cli.CommandLine" [style=dashed, label="0.0053"];
+"hai913i.tp1.Main" -- "hai913i.tp1.cli.Options" [style=dashed, label="0.0105"];
+"hai913i.tp1.Main" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0053"];
+"hai913i.tp1.callgraph.CallGraph" -- "hai913i.tp1.report.DotReport" [style=dashed, label="0.0105"];
+"hai913i.tp1.callgraph.CallGraph" -- "hai913i.tp1.report.TextReport" [style=solid, label="0.0474"];
+"hai913i.tp1.callgraph.CallGraph" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0316"];
+"hai913i.tp1.callgraph.CallGraphBuilder" -- "hai913i.tp1.cli.Analyzer" [style=dashed, label="0.0053"];
+"hai913i.tp1.callgraph.CallGraphBuilder" -- "hai913i.tp1.model.CallFact" [style=dashed, label="0.0158"];
+"hai913i.tp1.callgraph.CallGraphBuilder" -- "hai913i.tp1.model.MethodFact" [style=dashed, label="0.0105"];
+"hai913i.tp1.callgraph.CallGraphBuilder" -- "hai913i.tp1.model.ProjectFacts" [style=dashed, label="0.0053"];
+"hai913i.tp1.callgraph.CallGraphBuilder" -- "hai913i.tp1.model.TypeFact" [style=dashed, label="0.0053"];
+"hai913i.tp1.callgraph.CallGraphBuilder" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Action" -- "hai913i.tp1.cli.Analyzer" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Action" -- "hai913i.tp1.cli.CommandLine" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.cli.Options" [style=solid, label="0.0474"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.extract.FactExtractor" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.metrics.MetricsService" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.parse.JdtParser" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.parse.JdtParser.ParsedFile" [style=dashed, label="0.0211"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.parse.ProjectSources" [style=dashed, label="0.0211"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.report.DotReport" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.report.TextReport" [style=dashed, label="0.0368"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.spoon.SpoonExtractor" [style=dashed, label="0.0053"];
+"hai913i.tp1.cli.Analyzer" -- "hai913i.tp1.spoon.SpoonRawCounts" [style=dashed, label="0.0053"];
+"hai913i.tp1.extract.CallCollector" -- "hai913i.tp1.extract.StructureVisitor" [style=dashed, label="0.0053"];
+"hai913i.tp1.extract.FactExtractor" -- "hai913i.tp1.extract.StructureVisitor" [style=dashed, label="0.0053"];
+"hai913i.tp1.extract.FactExtractor" -- "hai913i.tp1.parse.JdtParser.ParsedFile" [style=dashed, label="0.0105"];
+"hai913i.tp1.extract.FactExtractor" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0053"];
+"hai913i.tp1.metrics.MetricsReport" -- "hai913i.tp1.report.TextReport" [style=solid, label="0.0895"];
+"hai913i.tp1.metrics.MetricsService" -- "hai913i.tp1.metrics.Ranking" [style=dashed, label="0.0053"];
+"hai913i.tp1.metrics.MetricsService" -- "hai913i.tp1.model.MethodFact" [style=dashed, label="0.0105"];
+"hai913i.tp1.metrics.MetricsService" -- "hai913i.tp1.model.ProjectFacts" [style=solid, label="0.0263"];
+"hai913i.tp1.metrics.MetricsService" -- "hai913i.tp1.model.TypeFact" [style=solid, label="0.0158"];
+"hai913i.tp1.metrics.MetricsService" -- "hai913i.tp1.ui.AnalyzerWindow" [style=solid, label="0.0053"];
+"hai913i.tp1.model.CallFact" -- "hai913i.tp1.model.ProjectFacts" [style=dashed, label="0.0105"];
+"hai913i.tp1.model.CallFact" -- "hai913i.tp1.report.TextReport" [style=dashed, label="0.0316"];
+"hai913i.tp1.model.CallFact" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0368"];
+"hai913i.tp1.model.FieldFact" -- "hai913i.tp1.report.TextReport" [style=dashed, label="0.0158"];
+"hai913i.tp1.model.MethodFact" -- "hai913i.tp1.model.ProjectFacts" [style=dashed, label="0.0053"];
+"hai913i.tp1.model.MethodFact" -- "hai913i.tp1.report.TextReport" [style=dashed, label="0.0474"];
+"hai913i.tp1.model.ProjectFacts" -- "hai913i.tp1.model.TypeFact" [style=solid, label="0.0211"];
+"hai913i.tp1.model.ProjectFacts" -- "hai913i.tp1.report.TextReport" [style=dashed, label="0.0895"];
+"hai913i.tp1.model.ProjectFacts" -- "hai913i.tp1.ui.AnalyzerWindow" [style=solid, label="0.0526"];
+"hai913i.tp1.model.TypeFact" -- "hai913i.tp1.report.TextReport" [style=dashed, label="0.0421"];
+"hai913i.tp1.model.TypeFact" -- "hai913i.tp1.ui.AnalyzerWindow" [style=solid, label="0.0421"];
+"hai913i.tp1.parse.JdtParser" -- "hai913i.tp1.parse.ProjectSources" [style=dashed, label="0.0105"];
+"hai913i.tp1.parse.JdtParser" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0053"];
+"hai913i.tp1.parse.ProjectSources" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0158"];
+"hai913i.tp1.report.TextReport" -- "hai913i.tp1.spoon.SpoonRawCounts" [style=solid, label="0.0526"];
+"hai913i.tp1.report.TextReport" -- "hai913i.tp1.ui.AnalyzerWindow" [style=dashed, label="0.0053"];
+"hai913i.tp1.spoon.SpoonExtractor" -- "hai913i.tp1.spoon.SpoonRawCounts" [style=dashed, label="0.0053"];
+}

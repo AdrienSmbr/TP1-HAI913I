@@ -1,0 +1,9 @@
+graph Couplage {
+  graph [overlap=false];
+  node [shape=box, fontname="DejaVu Sans"];
+  "demo.A";
+  "demo.B";
+  "demo.C";
+  "demo.A" -- "demo.B" [label="0.6667"];
+  "demo.B" -- "demo.C" [label="0.3333"];
+}

@@ -1,93 +1,76 @@
-# HAI913I — TP 1 : Analyseur statique Java
+# HAI913I — Analyse statique et architectures (TP1 + TP2)
 
-Analyseur statique en ligne de commande. À partir du chemin d'un projet Java, il extrait
-la structure et les appels de méthodes avec Eclipse JDT Core, construit un **modèle de faits
-indépendant de JDT**, puis calcule 13 métriques et un graphe d'appel interrogeable dans les
-deux sens.
+Adrien SAMBARREY et Pierre PREVOST-AVENEL — Université de Montpellier, 2026–2027.
 
-SAMBARREY Adrien et PREVOST-AVENEL Pierre — 2026/2027 — enseignant : Bachar Rima.
+Un seul projet Maven transforme les **sources Java → faits → métriques / graphe d’appel → couplage → dendrogramme → modules candidats**. L’analyseur TP1 demeure utilisable ; le TP2 prolonge son modèle sans dupliquer l’extracteur ni imposer un aller-retour CSV.
 
-## Environnement
+## Construire
 
-| Élément | Version |
-|---|---|
-| JDK | 17 minimum (validé sur OpenJDK 17.0.16) |
-| Maven | 3.9.11 |
-| Eclipse JDT Core | 3.46.0 |
-| Spoon (bonus C1) | 11.5.0 |
-| JUnit Jupiter | 5.14.4 |
-| Graphviz (bonus C2) | 14.1.0 |
-
-Aucun JAR à installer à la main. Projet sur le classpath, pas de `module-info.java`.
-
-## Construction
+Java **17 minimum**, Maven **3.9.x**. Depuis la racine :
 
 ```bash
 mvn clean package
 ```
 
-## Exécution
+Un seul JAR exécutable avec ses dépendances : `target/hai913i-tp1-analyzer.jar` (nom historique conservé). JDT 3.46.0, Spoon 11.5.0, SLF4J 2.0.18 ; JUnit 5.14.4 pour les tests. Graphviz sert uniquement aux images ; Python et les outils de bureau servent à la documentation et aux vidéos.
+
+## Ligne de commande commune
 
 ```bash
-java -jar target/hai913i-tp1-analyzer.jar ../validation --x 5
+# TP1 : faits, métriques et graphe d’appel (les anciennes commandes sans « tp1 » fonctionnent aussi)
+java -jar target/hai913i-tp1-analyzer.jar tp1 resources/validation --action all --x 5
+
+# TP2 : jeu canonique fourni, seuil obligatoire
+java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --out target/modules
+
+# Chaîne intégrée : extraction JDT du TP1 puis analyse TP2, sans CSV intermédiaire
+java -jar target/hai913i-tp1-analyzer.jar tp2 --sources resources/validation --cp 0.025 --out target/modules-sources
+
+# Lien simple (C1), héritage/implémentation (C2), second projet figé (C4)
+java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --linkage single --out target/single
+java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.020 --inheritance resources/facts-validation-inheritance.csv --out target/enrichi
+java -jar target/hai913i-tp1-analyzer.jar tp2 --sources resources/projects/analyseur-tp1 --cp 0.010 --out target/second-projet
+
+# Export de faits réutilisable et rechargement du graphe pondéré
+java -jar target/hai913i-tp1-analyzer.jar export-facts resources/validation target/faits
+java -jar target/hai913i-tp1-analyzer.jar tp2 target/faits --cp 0.025 --out target/relecture
+java -jar target/hai913i-tp1-analyzer.jar tp2 --graph target/modules/graphe.csv --cp 0.025 --out target/graphe-recharge
 ```
 
-| Option | Rôle |
-|---|---|
-| `--action` | `ast` \| `structure` \| `calls` \| `metrics` \| `graph` \| `spoon` \| `all` (défaut : `all`) |
-| `--x N` | seuil X, entier positif ou nul ; obligatoire pour `metrics` et `all` |
-| `--callees ID` | méthodes appelées par `ID` |
-| `--callers ID` | méthodes appelantes de `ID` |
-| `--dot FICHIER` | export Graphviz |
-| `--dot-package P` | limite l'export DOT à un paquetage |
-| `--file NOM` | avec `--action ast` : arbre du seul fichier `NOM` (ex. `Dvd.java`) |
-| `--gui` | interface graphique (le chemin devient facultatif) |
+Pour TP2 : **0** coupe acceptée, **2** entrée/extraction invalide, **3** coupe rejetée par le plafond M/2 (exports conservés). Les anciens codes TP1 sont décrits dans [sa documentation](doc/README-TP1.md). Ne pas confondre le seuil entier X des métriques et le seuil décimal CP de la coupe.
 
-`ID` a la forme `paquetage.Classe#methode(Type,Type)`.
+Le jeu canonique contient 15 classes, 59 méthodes, 44 arcs, dont 37 interclasses : 19 arêtes et 14 fusions. CP=0,015 / 0,025 / 0,045 donnent respectivement 4 / 7 / 10 modules ; la dernière coupe est rejetée. Les poids comptent les arcs uniques, pas les sites. Le lien moyen inclut les zéros ; la coupe impose une moyenne interne **strictement supérieure** à CP.
 
-Codes de sortie : `0` succès, `2` usage incorrect, `3` chemin invalide, `4` aucun `.java`.
-
-## Validation
-
-Sur le projet de validation fourni :
-
-```
-Unites de compilation  : 14        Erreurs de compilation : 0
-Types : 15   Methodes : 59 (9 constructeurs)   Attributs : 21   Paquetages : 4
-Appels : 94 (46 internes, 48 externes, 0 non resolus)
-Graphe : 59 noeuds, 44 arcs, 46 sites
-Metriques (X=5) : 493 lignes, 3.93 meth/classe, 4.64 lignes/meth, 1.40 attr/classe
-```
-
-Vérification automatique de tous les points de contrôle A0 à B4 :
+## Interface graphique commune
 
 ```bash
-mvn clean test     # 37 tests, 0 echec
+java -jar target/hai913i-tp1-analyzer.jar --gui
+# Ou ouvrir directement l’explorateur TP2 à partir des sources ou des CSV :
+java -jar target/hai913i-tp1-analyzer.jar tp2 --sources resources/validation --cp 0.025 --gui
 ```
 
-## Organisation
+Dans l’analyseur, choisir un projet et cliquer sur **Analyser**, régler **CP**, puis **Modules (TP2)**. Le bouton partage les faits déjà extraits, puis ouvre l’explorateur de couplage, d’arbre et de modules. Modifier le chemin invalide ces faits et désactive le bouton jusqu’à une nouvelle analyse. L’explorateur permet recherche, sélection, changement de CP ou de liaison, filtrage visuel et export.
 
+## Architecture et fichiers
+
+- `src/main/java/hai913i/tp1/` : extraction JDT/Spoon, modèle de faits, métriques, graphe d’appel et interface initiale.
+- `src/main/java/hai913i/tp2/` : calcul du couplage, regroupement, coupe, exports et explorateur.
+- `src/main/java/hai913i/integration/` : adaptateur direct et export CSV partagés par la CLI et l’interface.
+- `src/test/` : tests TP1 existants et 24 tests TP2 repris du rendu autonome.
+- `resources/`, `examples/`, `datasets/` : faits canoniques, micro jeu, corpus et extraction C4.
+- `sorties/` : résultats et journaux du rendu TP2 autonome ; leur date et leur contexte ne constituent pas une validation nouvelle de l’intégration.
+- `rapport/` : rapport TP1 ; [rapport TP2](rapport/tp2/Compte-Rendu.pdf), [README TP2 historique](rapport/tp2/README.pdf), audit et guide de soutenance.
+- [Vidéo TP2](video/demonstration.mp4), [aperçu](video/apercu-style-tp1.png), chapitres et transcription : démonstration du rendu autonome du 16 octobre. Le moteur est intégré ici, mais cette vidéo ne prétend pas montrer les nouvelles commandes ou le bouton de liaison ajouté le 17 octobre.
+
+## Validation et reproduction
+
+```bash
+mvn test
+sh scripts/valider-bonus.sh
+# Écran X11 disponible pour le contrôle de l’explorateur :
+sh scripts/verifier-gui.sh
 ```
-hai913i.tp1
-├── Main          lit les arguments, délègue
-├── cli           Action, Options, CommandLine, Analyzer
-├── parse         ProjectSources, JdtParser              ← connaît JDT
-├── extract       StructureVisitor, CallCollector, …     ← connaît JDT
-├── model         TypeFact, FieldFact, MethodFact, …     ← ne dépend de rien
-├── metrics       Ranking, MetricsService
-├── callgraph     CallGraph, CallGraphBuilder
-├── report        TextReport, DotReport
-├── ui            AnalyzerWindow                  (bonus C2)
-└── spoon         SpoonExtractor, SpoonRawCounts  (bonus C1)
-```
 
-`metrics`, `callgraph`, `report` et `ui` ne contiennent aucun `import org.eclipse`.
+Les scripts sont adaptés à la racine du projet commun et au JAR unique. Le corpus C4 conserve les 29 fichiers d’origine comme données d’entrée (pas comme second projet Maven), avec un manifeste SHA-256. L’adaptateur conserve les méthodes implicites internes effectivement appelées et résolues : pour ce corpus, 199 méthodes, 267 arcs et 144 sites réintégrés. Il ne reconstruit ni corps synthétiques ni appels de constructeurs.
 
-## Dépannage
-
-| Symptôme | Remède |
-|---|---|
-| `UnsupportedClassVersionError` | `java -version` et `JAVA_HOME` doivent pointer le même JDK 17 |
-| `SecurityException: Invalid signature file digest` | reconstruire avec `mvn clean package` (le pom exclut les signatures Eclipse) |
-| Moitié des appels non résolus, sans erreur | racine des sources mal détectée : vérifier la ligne « Racine des sources » |
-| Image DOT illisible | filtrer avec `--dot-package library.service` |
+Voir [la note d’intégration](doc/INTEGRATION-TP2.md) pour les différences avec le rendu autonome, la portée des contrôles effectués et la reproduction des documents/vidéos. Usage de l’IA : l’implémentation et l’intégration TP2 ont été produites avec Codex ; la déclaration détaillée est conservée dans le rapport. Les deux étudiants doivent pouvoir expliquer l’ensemble.

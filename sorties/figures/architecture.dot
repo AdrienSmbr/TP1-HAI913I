@@ -1,0 +1,13 @@
+digraph Architecture {
+ rankdir=TB; node [shape=box, style="rounded,filled", fillcolor="#eef4fa", fontname="DejaVu Sans"];
+ input [label="CSV canoniques (chemin 2)"];
+ source [label="FactsSource / CsvFactsSource\nvalidation des références et unicité"];
+ facts [label="Facts : classes, méthodes, arcs"];
+ coupling [label="CouplingCalculator\n37 arcs interclasses / r(A,B)"];
+ weighted [label="WeightedGraph\n15 nœuds / 19 arêtes / C(A,B)"];
+ tree [label="AgglomerativeClusterer\nlien moyen / 14 fusions"];
+ cut [label="ModuleCutter\nmoyenne interne > CP, puis M/2"];
+ exports [label="Exports + Main\nCSV, DOT, texte et codes de retour"];
+ input -> source -> facts -> coupling -> weighted -> tree -> cut -> exports;
+ weighted -> exports; tree -> exports;
+}

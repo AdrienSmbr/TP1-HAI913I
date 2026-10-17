@@ -1,0 +1,3 @@
+step;id;left;right;similarity;internalMean;members
+1;3;0;1;0.6666666666666666;0.6666666666666666;demo.A|demo.B
+2;4;2;3;0.16666666666666666;0.3333333333333333;demo.A|demo.B|demo.C

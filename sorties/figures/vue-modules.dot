@@ -1,0 +1,13 @@
+graph Vue { graph [rankdir=LR]; node [shape=box,style="rounded,filled",fillcolor="#eef5fa",fontname="DejaVu Sans"];
+m1 [label="Module 1 (n=7)\nLibraryApp\nBook\nItem\nCatalog\nLoanService\nLoan\nNotifier"];
+m2 [label="Module 2 (n=1)\nCategory"];
+m3 [label="Module 3 (n=1)\nDvd"];
+m4 [label="Module 4 (n=1)\nLoanable"];
+m5 [label="Module 5 (n=2)\nMember\nConsoleNotifier"];
+m6 [label="Module 6 (n=1)\nLoanException"];
+m7 [label="Module 7 (n=2)\nStatistics\nTextUtils"];
+m1 -- m7 [label="0.0541"];
+m1 -- m2 [label="0.0270"];
+m1 -- m5 [label="0.1081"];
+m1 -- m4 [label="0.0270"];
+}

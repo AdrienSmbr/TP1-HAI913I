@@ -1,0 +1,91 @@
+A0 | Classes : 30 | Méthodes : 199 | Arcs : 267
+A1 | Arcs internes écartés : 77 | Arcs inter-classes : 190
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 30 | Arêtes : 52
+A2 | Classes isolées : hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  hai913i.tp1.metrics.MetricsReport -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.ui.AnalyzerWindow : 0.0526315789
+  hai913i.tp1.report.TextReport -- hai913i.tp1.spoon.SpoonRawCounts : 0.0526315789
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.cli.Options : 0.0473684211
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.report.TextReport : 0.0421052632
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0421052632
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.TextReport : 0.0368421053
+  hai913i.tp1.model.CallFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0368421053
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.ui.AnalyzerWindow : 0.0315789474
+  hai913i.tp1.model.CallFact -- hai913i.tp1.report.TextReport : 0.0315789474
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.ProjectFacts : 0.0263157895
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0210526316
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.ProjectSources : 0.0210526316
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.model.TypeFact : 0.0210526316
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.CallFact : 0.0157894737
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.TypeFact : 0.0157894737
+  hai913i.tp1.model.FieldFact -- hai913i.tp1.report.TextReport : 0.0157894737
+  hai913i.tp1.parse.ProjectSources -- hai913i.tp1.ui.AnalyzerWindow : 0.0157894737
+  hai913i.tp1.Main -- hai913i.tp1.cli.Options : 0.0105263158
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.DotReport : 0.0105263158
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0105263158
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.model.CallFact -- hai913i.tp1.model.ProjectFacts : 0.0105263158
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.parse.ProjectSources : 0.0105263158
+  hai913i.tp1.Main -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.TypeFact : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.extract.FactExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.metrics.MetricsService : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.DotReport : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+  hai913i.tp1.extract.CallCollector -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.metrics.Ranking : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.report.TextReport -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.spoon.SpoonExtractor -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+B1/B2 | Fusions : 29
+  1 : (12,26) -> 30 | S=0.0894736842
+  2 : (18,29) -> 31 | S=0.0526315789
+  3 : (4,6) -> 32 | S=0.0473684211
+  4 : (19,31) -> 33 | S=0.0315789474
+  5 : (28,30) -> 34 | S=0.0263157895
+  6 : (1,34) -> 35 | S=0.0157894737
+  7 : (2,15) -> 36 | S=0.0157894737
+  8 : (13,33) -> 37 | S=0.0157894737
+  9 : (17,35) -> 38 | S=0.0118421053
+  10 : (10,23) -> 39 | S=0.0105263158
+  11 : (22,24) -> 40 | S=0.0105263158
+  12 : (37,38) -> 41 | S=0.0092105263
+  13 : (0,32) -> 42 | S=0.0078947368
+  14 : (36,41) -> 43 | S=0.0058479532
+  15 : (3,5) -> 44 | S=0.0052631579
+  16 : (9,11) -> 45 | S=0.0052631579
+  17 : (39,42) -> 46 | S=0.0043859649
+  18 : (40,46) -> 47 | S=0.0026315789
+  19 : (16,43) -> 48 | S=0.0014354067
+  20 : (47,48) -> 49 | S=0.0010025063
+  21 : (25,49) -> 50 | S=0.0008310249
+  22 : (27,50) -> 51 | S=0.0005263158
+  23 : (14,51) -> 52 | S=0.0002506266
+  24 : (44,52) -> 53 | S=0.0002392344
+  25 : (45,53) -> 54 | S=0.0001096491
+  26 : (7,8) -> 55 | S=0.0000000000
+  27 : (20,21) -> 56 | S=0.0000000000
+  28 : (54,55) -> 57 | S=0.0000000000
+  29 : (56,57) -> 58 | S=0.0000000000
+B3 | CP=0.001 | Modules : 1 | Maximum M/2 : 15
+  Module 1 | n=30 | C=0.0022988506 | hai913i.tp1.Main, hai913i.tp1.callgraph.CallGraph, hai913i.tp1.callgraph.CallGraphBuilder, hai913i.tp1.cli.Action, hai913i.tp1.cli.Analyzer, hai913i.tp1.cli.CommandLine, hai913i.tp1.cli.Options, hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.extract.CallCollector, hai913i.tp1.extract.FactExtractor, hai913i.tp1.extract.StructureVisitor, hai913i.tp1.metrics.MetricsReport, hai913i.tp1.metrics.MetricsService, hai913i.tp1.metrics.Ranking, hai913i.tp1.model.CallFact, hai913i.tp1.model.FieldFact, hai913i.tp1.model.MethodFact, hai913i.tp1.model.ProjectFacts, hai913i.tp1.model.TypeFact, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility, hai913i.tp1.parse.JdtParser, hai913i.tp1.parse.JdtParser.ParsedFile, hai913i.tp1.parse.ProjectSources, hai913i.tp1.report.DotReport, hai913i.tp1.report.TextReport, hai913i.tp1.spoon.SpoonExtractor, hai913i.tp1.spoon.SpoonRawCounts, hai913i.tp1.ui.AnalyzerWindow
+B3 | COUPE ACCEPTÉE

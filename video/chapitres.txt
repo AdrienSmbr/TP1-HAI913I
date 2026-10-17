@@ -1,0 +1,25 @@
+00:00  Construction propre et tests
+00:13  A1 · Du code à la formule du couplage
+00:32  A0–A2 · Charger les faits et calculer le couplage
+00:46  A2 · Graphe pondéré et image produite
+01:20  B1 · Lire le lien moyen dans le code
+01:38  B1 · Départager les égalités sans dérive
+01:57  B1–B2 · Fusions et dendrogramme
+02:27  B3 · La coupe est une lecture de branches
+02:45  B3 · Coupe à CP = 0,025
+02:54  B3 · Coupe rejetée à CP = 0,045
+03:10  B4 · Pourquoi retenir CP = 0,025 ?
+03:26  B4 · Member–ConsoleNotifier : un module discutable
+03:38  Déterminisme et rechargement
+04:07  Robustesse · Un seuil CP absent est refusé
+04:23  Robustesse · Un seuil CP mal formé est refusé
+04:39  Robustesse · Un dossier inexistant est refusé
+04:56  C1 · Lien simple : divergence dès la deuxième fusion
+05:15  C2 · Ajouter héritage et implémentation
+05:34  C2 · Recalibrer CP en déclarant le changement
+05:48  C4 · Réextraction réelle du second projet par le TP1
+06:04  C4 · Comparer les modules du second système
+06:22  C4 · Cibles implicites réintégrées et effet du seuil
+06:43  C3 · Explorer les mêmes calculs dans Swing
+07:14  C3 · Exporter la coupe courante
+07:32  Export interactif vérifié et fin de démonstration

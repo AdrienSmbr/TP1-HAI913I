@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "executions": 112,
+  "random_systems": 16,
+  "arithmetic": "fractions exactes Python",
+  "checks": [
+    "couplages",
+    "normalisation",
+    "identifiants et départage",
+    "fusions",
+    "membres",
+    "coupe et codes 0/3"
+  ]
+}

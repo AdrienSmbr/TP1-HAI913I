@@ -1,0 +1,13 @@
+# Documents et captures binaires.
+*.pdf binary
+*.png binary
+*.mp4 binary
+# Données et transcriptions historiques : conserver les octets du rendu.
+resources/*.csv -whitespace
+resources/*.json -whitespace
+resources/*.txt -whitespace
+examples/*.csv -whitespace
+examples/*.json -whitespace
+examples/*.txt -whitespace
+sorties/** -whitespace
+video/terminal.txt -whitespace

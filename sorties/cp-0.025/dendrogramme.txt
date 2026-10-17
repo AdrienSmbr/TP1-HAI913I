@@ -1,0 +1,29 @@
+#28 S=0.0000000000 n=15
+  #26 S=0.0024570025 n=13
+    #18 S=0.0540540541 n=2
+      #13 library.util.Statistics
+      #14 library.util.TextUtils
+    #25 S=0.0027027027 n=11
+      #5 library.model.Loanable
+      #24 S=0.0030030030 n=10
+        #2 library.model.Category
+        #23 S=0.0077220077 n=9
+          #20 S=0.0270270270 n=2
+            #6 library.model.Member
+            #8 library.service.ConsoleNotifier
+          #22 S=0.0090090090 n=7
+            #12 library.service.Notifier
+            #21 S=0.0108108108 n=6
+              #1 library.model.Book
+              #19 S=0.0405405405 n=5
+                #11 library.service.LoanService.Loan
+                #17 S=0.0608108108 n=4
+                  #15 S=0.1081081081 n=2
+                    #4 library.model.Item
+                    #10 library.service.LoanService
+                  #16 S=0.0810810811 n=2
+                    #0 library.app.LibraryApp
+                    #7 library.service.Catalog
+  #27 S=0.0000000000 n=2
+    #3 library.model.Dvd
+    #9 library.service.LoanException

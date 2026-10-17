@@ -1,0 +1,5 @@
+Could not load native libraries for ScreencastHelper
+GUI CONFORME : recherche, sélection, changement de CP, rejet, liaison, arbre, filtre d'arêtes et dialogue réel d'export avec résumé à jour.
+Fermeture GUI après CP=0.025 : code 0 conforme.
+Fermeture GUI après CP=0.045 : code 3 conforme.
+Mode sans écran : diagnostic et code 2 conformes.

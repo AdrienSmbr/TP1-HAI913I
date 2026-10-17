@@ -1,0 +1,15 @@
+Capture continue d’un vrai bureau : VS Code avec véritable terminal Bash intégré, feh et fenêtre Swing.
+Les caractères sont saisis dans le véritable terminal ; Bash exécute les commandes. Aucune console simulée.
+Habillage inspiré du TP1 : cartouche jaune, explication en bandeau inférieur et encadré jaune autour de la sélection réelle du code.
+Journal des commandes : executions.log ; transcription du véritable PTY : terminal.txt.
+Sous-titres intégrés : étapes A0 à B4, choix de CP, interprétation, conventions, bonus C1 à C4 et limites. Sans voix.
+Quatre lectures des sources réelles : couplage, lien moyen, départage et coupe ; coloration syntaxique et sélection dans VS Code.
+Trois erreurs provoquées : CP absent, CP mal formé et dossier inexistant, code 2 ; coupe rejetée, code 3.
+Repères jaunes sur les isolés du graphe et la branche du module principal ; données inchangées.
+La réextraction TP1 est exécutée pendant la capture. Les images du graphe et du dendrogramme sont régénérées.
+C4 conserve les appels résolus aux méthodes implicites de records/enum.
+C3 est inclus dans la vidéo principale, y compris le dialogue d’export. Les interactions sont pilotées.
+Les frappes et les mouvements de souris sont réellement injectés par Robot, à cadence variable.
+Les corrections de frappe sont scénarisées ; ce rendu ne prétend pas être une intervention humaine.
+Durée : 463.2 secondes. Voir chapitres.txt et executions.log.
+Reproduction : python3 video/enregistrer.py --xvfb (Maven, JDK, Graphviz, Xvfb, VS Code, openbox, xdotool, feh et script dans PATH).

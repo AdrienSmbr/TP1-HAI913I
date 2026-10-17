@@ -1,0 +1,150 @@
+{
+  "cp-0.025": {
+    "classes": 15,
+    "edges": 19,
+    "merges": 14,
+    "modules": 7,
+    "sizes": [
+      7,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "accepted": true,
+    "cp": 0.025
+  },
+  "c1-lien-simple": {
+    "classes": 15,
+    "edges": 19,
+    "merges": 14,
+    "modules": 7,
+    "sizes": [
+      8,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "accepted": true,
+    "cp": 0.025
+  },
+  "c2-relations-enrichies": {
+    "classes": 15,
+    "edges": 22,
+    "merges": 14,
+    "modules": 8,
+    "sizes": [
+      7,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "accepted": false,
+    "cp": 0.025
+  },
+  "c2-cp-0.020": {
+    "classes": 15,
+    "edges": 22,
+    "merges": 14,
+    "modules": 7,
+    "sizes": [
+      7,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "accepted": true,
+    "cp": 0.02
+  },
+  "c4-cp-0.010": {
+    "classes": 30,
+    "edges": 52,
+    "merges": 29,
+    "modules": 15,
+    "sizes": [
+      3,
+      12,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "accepted": true,
+    "cp": 0.01
+  },
+  "c4-cp-0.025": {
+    "classes": 30,
+    "edges": 52,
+    "merges": 29,
+    "modules": 23,
+    "sizes": [
+      1,
+      4,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "accepted": false,
+    "cp": 0.025
+  },
+  "first_divergence": {
+    "step": 2,
+    "average": {
+      "step": "2",
+      "id": "16",
+      "left": "0",
+      "right": "7",
+      "similarity": "0.08108108108108109",
+      "internalMean": "0.08108108108108109",
+      "members": "library.app.LibraryApp|library.service.Catalog"
+    },
+    "single": {
+      "step": "2",
+      "id": "16",
+      "left": "11",
+      "right": "15",
+      "similarity": "0.10810810810810811",
+      "internalMean": "0.07207207207207207",
+      "members": "library.model.Item|library.service.LoanService|library.service.LoanService.Loan"
+    }
+  }
+}

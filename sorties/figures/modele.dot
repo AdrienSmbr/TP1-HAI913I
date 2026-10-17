@@ -1,0 +1,24 @@
+digraph Modele {
+ rankdir=TB; node [shape=record,fontname="DejaVu Sans",fontsize=11];
+ FactsSource [label="{«interface» FactsSource|+ load() : Facts}"];
+ CsvFactsSource [label="{CsvFactsSource|directory : Path\lprefix : String\l}"];
+ Facts [label="{Facts|classes : List[String]\lmethodOwners : Map[String,String]\lcalls : List[CallArc]\l}"];
+ CallArc [label="{CallArc|caller : String\lcallee : String\lsites : int\l}"];
+ WeightedGraph [label="{WeightedGraph|classes : List[String]\ledges : Map[Pair,Double]\l|weight(a,b)\linternalMean(members)\lsave / load\l}"];
+ ClusterNode [label="{ClusterNode|id : int\lsimilarity : double\lmembers : List[String]\l|isLeaf()}"];
+ Module [label="{Module|node : ClusterNode\linternalMean : double\l}"];
+ CsvFactsSource -> FactsSource [arrowhead=empty,style=dashed,label="implémente"];
+ FactsSource -> Facts [label="produit"];
+ Facts -> CallArc [label="0..*",arrowtail=diamond,dir=both];
+ ClusterNode -> ClusterNode [label="left / right : 0 ou 2"];
+ Module -> ClusterNode [label="1"];
+ Facts -> WeightedGraph [style=dashed,label="calcul du couplage"];
+ WeightedGraph -> ClusterNode [style=dashed,label="clustering"];
+ExplorerModel [label="{ExplorerModel|graph, tree, cut, cp, linkage|setCp / setLinkage / export}"];
+AnalysisReport [label="{AnalysisReport|format : résumé commun}"];
+Exports [label="{Exports|saveBundle : CSV, DOT, résumé, paramètres}"];
+ExplorerModel -> WeightedGraph [label="réutilise"];
+ExplorerModel -> ClusterNode [label="arbre courant"];
+ExplorerModel -> Exports [label="export cohérent"];
+Exports -> AnalysisReport [label="texte CLI et GUI"];
+}

@@ -1,0 +1,813 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< fr.umontpellier.hai913i:hai913i-tp2 >-----------------
+[INFO] Building hai913i-tp2 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hai913i-tp2 ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hai913i-tp2 ---
+[INFO] skip non existing resourceDirectory /tmp/tp2-final-audit/source/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ hai913i-tp2 ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 15 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hai913i-tp2 ---
+[INFO] skip non existing resourceDirectory /tmp/tp2-final-audit/source/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ hai913i-tp2 ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ hai913i-tp2 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running hai913i.tp2.AuditTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.153 s -- in hai913i.tp2.AuditTest
+[INFO] Running hai913i.tp2.PipelineTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s -- in hai913i.tp2.PipelineTest
+[INFO] Running hai913i.tp2.BonusTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in hai913i.tp2.BonusTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ hai913i-tp2 ---
+[INFO] Building jar: /tmp/tp2-final-audit/source/target/hai913i-tp2.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.698 s
+[INFO] Finished at: 2026-10-16T15:02:29+02:00
+[INFO] ------------------------------------------------------------------------
+A0 | Classes : 3 | Méthodes : 5 | Arcs : 4
+A1 | Arcs internes écartés : 1 | Arcs inter-classes : 3
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 3 | Arêtes : 2
+A2 | Classes isolées : 
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  demo.A -- demo.B : 0.6666666667
+  demo.B -- demo.C : 0.3333333333
+B1/B2 | Fusions : 2
+  1 : (0,1) -> 3 | S=0.6666666667
+  2 : (2,3) -> 4 | S=0.1666666667
+B3 | CP=0.2 | Modules : 1 | Maximum M/2 : 1
+  Module 1 | n=3 | C=0.3333333333 | demo.A, demo.B, demo.C
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 3 | Méthodes : 5 | Arcs : 4
+A1 | Arcs internes écartés : 1 | Arcs inter-classes : 3
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 3 | Arêtes : 2
+A2 | Classes isolées : 
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  demo.A -- demo.B : 0.6666666667
+  demo.B -- demo.C : 0.3333333333
+B1/B2 | Fusions : 2
+  1 : (0,1) -> 3 | S=0.6666666667
+  2 : (2,3) -> 4 | S=0.1666666667
+B3 | CP=0.5 | Modules : 2 | Maximum M/2 : 1
+  Module 1 | n=2 | C=0.6666666667 | demo.A, demo.B
+  Module 2 | n=1 | C=NA (feuille) | demo.C
+B3 | COUPE REJETÉE : contrainte M/2 violée
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.015 | Modules : 4 | Maximum M/2 : 7
+  Module 1 | n=11 | C=0.0162162162 | library.app.LibraryApp, library.model.Book, library.model.Category, library.model.Item, library.model.Loanable, library.model.Member, library.service.Catalog, library.service.ConsoleNotifier, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 3 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 4 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.045 | Modules : 10 | Maximum M/2 : 7
+  Module 1 | n=5 | C=0.0594594595 | library.app.LibraryApp, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Book
+  Module 3 | n=1 | C=NA (feuille) | library.model.Category
+  Module 4 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 5 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 6 | n=1 | C=NA (feuille) | library.model.Member
+  Module 7 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 8 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 9 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 10 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE REJETÉE : contrainte M/2 violée
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A2 | Graphe rechargé : target/validation/cp-0.025/graphe.csv
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+Erreur : dossier introuvable : inexistant
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+Erreur : --cp obligatoire : nombre fini entre 0 et 1
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+VALIDATION TERMINÉE : contrôles, rejets attendus, rechargement et déterminisme conformes.
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+C1 | Variante : lien simple (maximum des couplages intergroupes)
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (11,15) -> 16 | S=0.1081081081
+  3 : (0,7) -> 17 | S=0.0810810811
+  4 : (16,17) -> 18 | S=0.0810810811
+  5 : (6,18) -> 19 | S=0.0540540541
+  6 : (12,19) -> 20 | S=0.0540540541
+  7 : (13,14) -> 21 | S=0.0540540541
+  8 : (1,20) -> 22 | S=0.0270270270
+  9 : (2,22) -> 23 | S=0.0270270270
+  10 : (5,23) -> 24 | S=0.0270270270
+  11 : (8,24) -> 25 | S=0.0270270270
+  12 : (21,25) -> 26 | S=0.0270270270
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=8 | C=0.0289575290 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Member, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+C2 | Appels + héritage/implémentation : 37 arcs + 4 relations internes ; dénominateur = 41 ; relations externes ignorées = 3
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 22
+A2 | Classes isolées : library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.0975609756
+  library.service.LoanService -- library.service.LoanService.Loan : 0.0975609756
+  library.app.LibraryApp -- library.model.Item : 0.0731707317
+  library.app.LibraryApp -- library.service.Catalog : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0487804878
+  library.model.Book -- library.model.Item : 0.0487804878
+  library.model.Item -- library.model.Member : 0.0487804878
+  library.model.Item -- library.service.Catalog : 0.0487804878
+  library.model.Member -- library.service.LoanService : 0.0487804878
+  library.service.LoanService -- library.service.Notifier : 0.0487804878
+  library.util.Statistics -- library.util.TextUtils : 0.0487804878
+  library.app.LibraryApp -- library.model.Book : 0.0243902439
+  library.app.LibraryApp -- library.util.Statistics : 0.0243902439
+  library.model.Category -- library.model.Item : 0.0243902439
+  library.model.Dvd -- library.model.Item : 0.0243902439
+  library.model.Item -- library.model.Loanable : 0.0243902439
+  library.model.Loanable -- library.service.LoanService : 0.0243902439
+  library.model.Member -- library.service.ConsoleNotifier : 0.0243902439
+  library.service.Catalog -- library.service.LoanService : 0.0243902439
+  library.service.ConsoleNotifier -- library.service.Notifier : 0.0243902439
+  library.service.LoanService -- library.util.TextUtils : 0.0243902439
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.0975609756
+  2 : (0,7) -> 16 | S=0.0731707317
+  3 : (15,16) -> 17 | S=0.0548780488
+  4 : (13,14) -> 18 | S=0.0487804878
+  5 : (11,17) -> 19 | S=0.0365853659
+  6 : (6,8) -> 20 | S=0.0243902439
+  7 : (1,19) -> 21 | S=0.0146341463
+  8 : (12,20) -> 22 | S=0.0121951220
+  9 : (5,21) -> 23 | S=0.0081300813
+  10 : (22,23) -> 24 | S=0.0069686411
+  11 : (2,24) -> 25 | S=0.0024390244
+  12 : (3,25) -> 26 | S=0.0022172949
+  13 : (18,26) -> 27 | S=0.0020325203
+  14 : (9,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 8 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0313588850 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Loanable, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Member
+  Module 5 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 8 | n=2 | C=0.0487804878 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE REJETÉE : contrainte M/2 violée
+C2 | Appels + héritage/implémentation : 37 arcs + 4 relations internes ; dénominateur = 41 ; relations externes ignorées = 3
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 22
+A2 | Classes isolées : library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.0975609756
+  library.service.LoanService -- library.service.LoanService.Loan : 0.0975609756
+  library.app.LibraryApp -- library.model.Item : 0.0731707317
+  library.app.LibraryApp -- library.service.Catalog : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0487804878
+  library.model.Book -- library.model.Item : 0.0487804878
+  library.model.Item -- library.model.Member : 0.0487804878
+  library.model.Item -- library.service.Catalog : 0.0487804878
+  library.model.Member -- library.service.LoanService : 0.0487804878
+  library.service.LoanService -- library.service.Notifier : 0.0487804878
+  library.util.Statistics -- library.util.TextUtils : 0.0487804878
+  library.app.LibraryApp -- library.model.Book : 0.0243902439
+  library.app.LibraryApp -- library.util.Statistics : 0.0243902439
+  library.model.Category -- library.model.Item : 0.0243902439
+  library.model.Dvd -- library.model.Item : 0.0243902439
+  library.model.Item -- library.model.Loanable : 0.0243902439
+  library.model.Loanable -- library.service.LoanService : 0.0243902439
+  library.model.Member -- library.service.ConsoleNotifier : 0.0243902439
+  library.service.Catalog -- library.service.LoanService : 0.0243902439
+  library.service.ConsoleNotifier -- library.service.Notifier : 0.0243902439
+  library.service.LoanService -- library.util.TextUtils : 0.0243902439
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.0975609756
+  2 : (0,7) -> 16 | S=0.0731707317
+  3 : (15,16) -> 17 | S=0.0548780488
+  4 : (13,14) -> 18 | S=0.0487804878
+  5 : (11,17) -> 19 | S=0.0365853659
+  6 : (6,8) -> 20 | S=0.0243902439
+  7 : (1,19) -> 21 | S=0.0146341463
+  8 : (12,20) -> 22 | S=0.0121951220
+  9 : (5,21) -> 23 | S=0.0081300813
+  10 : (22,23) -> 24 | S=0.0069686411
+  11 : (2,24) -> 25 | S=0.0024390244
+  12 : (3,25) -> 26 | S=0.0022172949
+  13 : (18,26) -> 27 | S=0.0020325203
+  14 : (9,27) -> 28 | S=0.0000000000
+B3 | CP=0.02 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0313588850 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Loanable, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=2 | C=0.0243902439 | library.model.Member, library.service.ConsoleNotifier
+  Module 5 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 6 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 7 | n=2 | C=0.0487804878 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 30 | Méthodes : 199 | Arcs : 267
+A1 | Arcs internes écartés : 77 | Arcs inter-classes : 190
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 30 | Arêtes : 52
+A2 | Classes isolées : hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  hai913i.tp1.metrics.MetricsReport -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.ui.AnalyzerWindow : 0.0526315789
+  hai913i.tp1.report.TextReport -- hai913i.tp1.spoon.SpoonRawCounts : 0.0526315789
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.cli.Options : 0.0473684211
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.report.TextReport : 0.0421052632
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0421052632
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.TextReport : 0.0368421053
+  hai913i.tp1.model.CallFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0368421053
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.ui.AnalyzerWindow : 0.0315789474
+  hai913i.tp1.model.CallFact -- hai913i.tp1.report.TextReport : 0.0315789474
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.ProjectFacts : 0.0263157895
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0210526316
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.ProjectSources : 0.0210526316
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.model.TypeFact : 0.0210526316
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.CallFact : 0.0157894737
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.TypeFact : 0.0157894737
+  hai913i.tp1.model.FieldFact -- hai913i.tp1.report.TextReport : 0.0157894737
+  hai913i.tp1.parse.ProjectSources -- hai913i.tp1.ui.AnalyzerWindow : 0.0157894737
+  hai913i.tp1.Main -- hai913i.tp1.cli.Options : 0.0105263158
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.DotReport : 0.0105263158
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0105263158
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.model.CallFact -- hai913i.tp1.model.ProjectFacts : 0.0105263158
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.parse.ProjectSources : 0.0105263158
+  hai913i.tp1.Main -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.TypeFact : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.extract.FactExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.metrics.MetricsService : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.DotReport : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+  hai913i.tp1.extract.CallCollector -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.metrics.Ranking : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.report.TextReport -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.spoon.SpoonExtractor -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+B1/B2 | Fusions : 29
+  1 : (12,26) -> 30 | S=0.0894736842
+  2 : (18,29) -> 31 | S=0.0526315789
+  3 : (4,6) -> 32 | S=0.0473684211
+  4 : (19,31) -> 33 | S=0.0315789474
+  5 : (28,30) -> 34 | S=0.0263157895
+  6 : (1,34) -> 35 | S=0.0157894737
+  7 : (2,15) -> 36 | S=0.0157894737
+  8 : (13,33) -> 37 | S=0.0157894737
+  9 : (17,35) -> 38 | S=0.0118421053
+  10 : (10,23) -> 39 | S=0.0105263158
+  11 : (22,24) -> 40 | S=0.0105263158
+  12 : (37,38) -> 41 | S=0.0092105263
+  13 : (0,32) -> 42 | S=0.0078947368
+  14 : (36,41) -> 43 | S=0.0058479532
+  15 : (3,5) -> 44 | S=0.0052631579
+  16 : (9,11) -> 45 | S=0.0052631579
+  17 : (39,42) -> 46 | S=0.0043859649
+  18 : (40,46) -> 47 | S=0.0026315789
+  19 : (16,43) -> 48 | S=0.0014354067
+  20 : (47,48) -> 49 | S=0.0010025063
+  21 : (25,49) -> 50 | S=0.0008310249
+  22 : (27,50) -> 51 | S=0.0005263158
+  23 : (14,51) -> 52 | S=0.0002506266
+  24 : (44,52) -> 53 | S=0.0002392344
+  25 : (45,53) -> 54 | S=0.0001096491
+  26 : (7,8) -> 55 | S=0.0000000000
+  27 : (20,21) -> 56 | S=0.0000000000
+  28 : (54,55) -> 57 | S=0.0000000000
+  29 : (56,57) -> 58 | S=0.0000000000
+B3 | CP=0.01 | Modules : 15 | Maximum M/2 : 15
+  Module 1 | n=3 | C=0.0210526316 | hai913i.tp1.Main, hai913i.tp1.cli.Analyzer, hai913i.tp1.cli.Options
+  Module 2 | n=12 | C=0.0109250399 | hai913i.tp1.callgraph.CallGraph, hai913i.tp1.callgraph.CallGraphBuilder, hai913i.tp1.metrics.MetricsReport, hai913i.tp1.metrics.MetricsService, hai913i.tp1.model.CallFact, hai913i.tp1.model.FieldFact, hai913i.tp1.model.MethodFact, hai913i.tp1.model.ProjectFacts, hai913i.tp1.model.TypeFact, hai913i.tp1.report.TextReport, hai913i.tp1.spoon.SpoonRawCounts, hai913i.tp1.ui.AnalyzerWindow
+  Module 3 | n=1 | C=NA (feuille) | hai913i.tp1.cli.Action
+  Module 4 | n=1 | C=NA (feuille) | hai913i.tp1.cli.CommandLine
+  Module 5 | n=1 | C=NA (feuille) | hai913i.tp1.cli.UsageException
+  Module 6 | n=1 | C=NA (feuille) | hai913i.tp1.extract.AstPrinter
+  Module 7 | n=1 | C=NA (feuille) | hai913i.tp1.extract.CallCollector
+  Module 8 | n=2 | C=0.0105263158 | hai913i.tp1.extract.FactExtractor, hai913i.tp1.parse.JdtParser.ParsedFile
+  Module 9 | n=1 | C=NA (feuille) | hai913i.tp1.extract.StructureVisitor
+  Module 10 | n=1 | C=NA (feuille) | hai913i.tp1.metrics.Ranking
+  Module 11 | n=1 | C=NA (feuille) | hai913i.tp1.model.TypeKind
+  Module 12 | n=1 | C=NA (feuille) | hai913i.tp1.model.Visibility
+  Module 13 | n=2 | C=0.0105263158 | hai913i.tp1.parse.JdtParser, hai913i.tp1.parse.ProjectSources
+  Module 14 | n=1 | C=NA (feuille) | hai913i.tp1.report.DotReport
+  Module 15 | n=1 | C=NA (feuille) | hai913i.tp1.spoon.SpoonExtractor
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 30 | Méthodes : 199 | Arcs : 267
+A1 | Arcs internes écartés : 77 | Arcs inter-classes : 190
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 30 | Arêtes : 52
+A2 | Classes isolées : hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  hai913i.tp1.metrics.MetricsReport -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.ui.AnalyzerWindow : 0.0526315789
+  hai913i.tp1.report.TextReport -- hai913i.tp1.spoon.SpoonRawCounts : 0.0526315789
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.cli.Options : 0.0473684211
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.report.TextReport : 0.0421052632
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0421052632
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.TextReport : 0.0368421053
+  hai913i.tp1.model.CallFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0368421053
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.ui.AnalyzerWindow : 0.0315789474
+  hai913i.tp1.model.CallFact -- hai913i.tp1.report.TextReport : 0.0315789474
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.ProjectFacts : 0.0263157895
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0210526316
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.ProjectSources : 0.0210526316
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.model.TypeFact : 0.0210526316
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.CallFact : 0.0157894737
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.TypeFact : 0.0157894737
+  hai913i.tp1.model.FieldFact -- hai913i.tp1.report.TextReport : 0.0157894737
+  hai913i.tp1.parse.ProjectSources -- hai913i.tp1.ui.AnalyzerWindow : 0.0157894737
+  hai913i.tp1.Main -- hai913i.tp1.cli.Options : 0.0105263158
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.DotReport : 0.0105263158
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0105263158
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.model.CallFact -- hai913i.tp1.model.ProjectFacts : 0.0105263158
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.parse.ProjectSources : 0.0105263158
+  hai913i.tp1.Main -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.TypeFact : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.extract.FactExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.metrics.MetricsService : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.DotReport : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+  hai913i.tp1.extract.CallCollector -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.metrics.Ranking : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.report.TextReport -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.spoon.SpoonExtractor -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+B1/B2 | Fusions : 29
+  1 : (12,26) -> 30 | S=0.0894736842
+  2 : (18,29) -> 31 | S=0.0526315789
+  3 : (4,6) -> 32 | S=0.0473684211
+  4 : (19,31) -> 33 | S=0.0315789474
+  5 : (28,30) -> 34 | S=0.0263157895
+  6 : (1,34) -> 35 | S=0.0157894737
+  7 : (2,15) -> 36 | S=0.0157894737
+  8 : (13,33) -> 37 | S=0.0157894737
+  9 : (17,35) -> 38 | S=0.0118421053
+  10 : (10,23) -> 39 | S=0.0105263158
+  11 : (22,24) -> 40 | S=0.0105263158
+  12 : (37,38) -> 41 | S=0.0092105263
+  13 : (0,32) -> 42 | S=0.0078947368
+  14 : (36,41) -> 43 | S=0.0058479532
+  15 : (3,5) -> 44 | S=0.0052631579
+  16 : (9,11) -> 45 | S=0.0052631579
+  17 : (39,42) -> 46 | S=0.0043859649
+  18 : (40,46) -> 47 | S=0.0026315789
+  19 : (16,43) -> 48 | S=0.0014354067
+  20 : (47,48) -> 49 | S=0.0010025063
+  21 : (25,49) -> 50 | S=0.0008310249
+  22 : (27,50) -> 51 | S=0.0005263158
+  23 : (14,51) -> 52 | S=0.0002506266
+  24 : (44,52) -> 53 | S=0.0002392344
+  25 : (45,53) -> 54 | S=0.0001096491
+  26 : (7,8) -> 55 | S=0.0000000000
+  27 : (20,21) -> 56 | S=0.0000000000
+  28 : (54,55) -> 57 | S=0.0000000000
+  29 : (56,57) -> 58 | S=0.0000000000
+B3 | CP=0.025 | Modules : 23 | Maximum M/2 : 15
+  Module 1 | n=1 | C=NA (feuille) | hai913i.tp1.Main
+  Module 2 | n=4 | C=0.0315789474 | hai913i.tp1.callgraph.CallGraph, hai913i.tp1.metrics.MetricsReport, hai913i.tp1.report.TextReport, hai913i.tp1.spoon.SpoonRawCounts
+  Module 3 | n=1 | C=NA (feuille) | hai913i.tp1.callgraph.CallGraphBuilder
+  Module 4 | n=1 | C=NA (feuille) | hai913i.tp1.cli.Action
+  Module 5 | n=2 | C=0.0473684211 | hai913i.tp1.cli.Analyzer, hai913i.tp1.cli.Options
+  Module 6 | n=1 | C=NA (feuille) | hai913i.tp1.cli.CommandLine
+  Module 7 | n=1 | C=NA (feuille) | hai913i.tp1.cli.UsageException
+  Module 8 | n=1 | C=NA (feuille) | hai913i.tp1.extract.AstPrinter
+  Module 9 | n=1 | C=NA (feuille) | hai913i.tp1.extract.CallCollector
+  Module 10 | n=1 | C=NA (feuille) | hai913i.tp1.extract.FactExtractor
+  Module 11 | n=1 | C=NA (feuille) | hai913i.tp1.extract.StructureVisitor
+  Module 12 | n=4 | C=0.0271929825 | hai913i.tp1.metrics.MetricsService, hai913i.tp1.model.ProjectFacts, hai913i.tp1.model.TypeFact, hai913i.tp1.ui.AnalyzerWindow
+  Module 13 | n=1 | C=NA (feuille) | hai913i.tp1.metrics.Ranking
+  Module 14 | n=1 | C=NA (feuille) | hai913i.tp1.model.CallFact
+  Module 15 | n=1 | C=NA (feuille) | hai913i.tp1.model.FieldFact
+  Module 16 | n=1 | C=NA (feuille) | hai913i.tp1.model.MethodFact
+  Module 17 | n=1 | C=NA (feuille) | hai913i.tp1.model.TypeKind
+  Module 18 | n=1 | C=NA (feuille) | hai913i.tp1.model.Visibility
+  Module 19 | n=1 | C=NA (feuille) | hai913i.tp1.parse.JdtParser
+  Module 20 | n=1 | C=NA (feuille) | hai913i.tp1.parse.JdtParser.ParsedFile
+  Module 21 | n=1 | C=NA (feuille) | hai913i.tp1.parse.ProjectSources
+  Module 22 | n=1 | C=NA (feuille) | hai913i.tp1.report.DotReport
+  Module 23 | n=1 | C=NA (feuille) | hai913i.tp1.spoon.SpoonExtractor
+B3 | COUPE REJETÉE : contrainte M/2 violée
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< hai913i.tp1:hai913i-tp1-analyzer >------------------
+[INFO] Building hai913i-tp1-analyzer 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hai913i-tp1-analyzer ---
+[INFO] skip non existing resourceDirectory /tmp/tp2-final-audit/source/bonus/tp1-extracteur/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ hai913i-tp1-analyzer ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 29 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hai913i-tp1-analyzer ---
+[INFO] skip non existing resourceDirectory /tmp/tp2-final-audit/source/bonus/tp1-extracteur/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ hai913i-tp1-analyzer ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ hai913i-tp1-analyzer ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ hai913i-tp1-analyzer ---
+[INFO] Building jar: /tmp/tp2-final-audit/source/bonus/tp1-extracteur/target/hai913i-tp1-analyzer.jar
+[INFO] 
+[INFO] --- shade:3.6.1:shade (default) @ hai913i-tp1-analyzer ---
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, ecj-3.46.0.jar, hai913i-tp1-analyzer.jar, jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar, jsap-2.1.jar, jspecify-1.0.0.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar, org.eclipse.text-3.14.700.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar, spoon-core-11.5.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource: 
+[WARNING]   - plugin.xml
+[WARNING] jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE
+[WARNING] org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource: 
+[WARNING]   - .options
+[WARNING] ecj-3.46.0.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar, org.eclipse.text-3.14.700.jar define 2 overlapping resources: 
+[WARNING]   - .api_description
+[WARNING]   - about.html
+[WARNING] org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.text-3.14.700.jar define 1 overlapping resource: 
+[WARNING]   - plugin.properties
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jspecify-1.0.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar define 1 overlapping classes: 
+[WARNING]   - META-INF.versions.9.module-info
+[WARNING] maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/DEPENDENCIES
+[WARNING] org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource: 
+[WARNING]   - about_files/LICENSE-2.0.txt
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING] jna-5.18.1.jar, jna-platform-5.18.1.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/AL2.0
+[WARNING]   - META-INF/LGPL2.1
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING] ecj-3.46.0.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.jdt.core-3.46.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/eclipse.inf
+[WARNING] jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.406 s
+[INFO] Finished at: 2026-10-16T15:02:34+02:00
+[INFO] ------------------------------------------------------------------------
+Extracteur : TP1, JDT Core 3.46.0, visiteurs originaux + complétion des cibles implicites dans le pont
+Unités : 29
+Classes : 30
+Méthodes : 199
+Arcs : 267
+Sites internes : 326
+Sites hors graphe (externes ou cible non déclarée) : 740
+Sites internes réintégrés vers des méthodes implicites : 144
+Méthodes implicites cibles ajoutées : 69
+Arcs avant complétion : 146
+Sites non résolus exclus : 0
+Erreurs de compilation : 0
+Extracteur : TP1, JDT Core 3.46.0, visiteurs originaux + complétion des cibles implicites dans le pont
+Unités : 14
+Classes : 15
+Méthodes : 59
+Arcs : 44
+Sites internes : 46
+Sites hors graphe (externes ou cible non déclarée) : 48
+Sites internes réintégrés vers des méthodes implicites : 0
+Méthodes implicites cibles ajoutées : 0
+Arcs avant complétion : 44
+Sites non résolus exclus : 0
+Erreurs de compilation : 0
+Pont TP1 conforme sur validation : classes, méthodes et arcs/sites identiques aux faits canoniques.
+Corpus C4 : empreintes SHA-256 des 29 fichiers conformes.
+Complétion C4 : 69 cibles, 121 arcs supplémentaires et 144 sites conservés ; aucun corps synthétique inventé.
+{"status": "PASS", "executions": 112, "random_systems": 16, "arithmetic": "fractions exactes Python", "checks": ["couplages", "normalisation", "identifiants et départage", "fusions", "membres", "coupe et codes 0/3"]}
+BONUS VALIDÉS : C1, C2, C4 et invariants du modèle graphique. Le test de fenêtre C3 exige un écran.

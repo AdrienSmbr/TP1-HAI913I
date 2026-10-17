@@ -1,0 +1,11 @@
+module;node;size;internalMean;cp;accepted;classes
+1;19;5;0.05945945945945946;0.045;false;library.app.LibraryApp|library.model.Item|library.service.Catalog|library.service.LoanService|library.service.LoanService.Loan
+2;1;1;NA;0.045;false;library.model.Book
+3;2;1;NA;0.045;false;library.model.Category
+4;3;1;NA;0.045;false;library.model.Dvd
+5;5;1;NA;0.045;false;library.model.Loanable
+6;6;1;NA;0.045;false;library.model.Member
+7;8;1;NA;0.045;false;library.service.ConsoleNotifier
+8;9;1;NA;0.045;false;library.service.LoanException
+9;12;1;NA;0.045;false;library.service.Notifier
+10;18;2;0.05405405405405406;0.045;false;library.util.Statistics|library.util.TextUtils

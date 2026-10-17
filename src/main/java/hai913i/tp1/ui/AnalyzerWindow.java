@@ -60,9 +60,12 @@ public class AnalyzerWindow extends JFrame {
     private final JComboBox<String> methodChooser = new JComboBox<>();
 
     private CallGraph graph;
+    private ProjectFacts latestFacts;
+    private final JSpinner cpField = new JSpinner(new SpinnerNumberModel(0.025, 0.0, 1.0, 0.005));
+    private final JButton modulesButton = new JButton("Modules (TP2)");
 
     public AnalyzerWindow(String initialProject) {
-        super("HAI913I TP1 - Analyseur statique");
+        super("HAI913I — Analyse statique et modules (TP1 + TP2)");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         projectField.setText(initialProject == null ? "" : initialProject);
         if (projectField.getText().isBlank()) {
@@ -92,6 +95,15 @@ public class AnalyzerWindow extends JFrame {
         JButton analyse = new JButton("Analyser");
         analyse.addActionListener(event -> analyse());
         panel.add(analyse);
+        panel.add(new JLabel("CP :")); panel.add(cpField);
+        modulesButton.setEnabled(false);
+        modulesButton.addActionListener(event -> showModules()); panel.add(modulesButton);
+        projectField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            private void invalidateFacts() { latestFacts = null; modulesButton.setEnabled(false); }
+            public void insertUpdate(javax.swing.event.DocumentEvent e) { invalidateFacts(); }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) { invalidateFacts(); }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) { invalidateFacts(); }
+        });
         return panel;
     }
 
@@ -133,19 +145,25 @@ public class AnalyzerWindow extends JFrame {
     }
 
     private void analyse() {
+        latestFacts = null; modulesButton.setEnabled(false);
         try {
             ProjectSources sources = ProjectSources.of(Path.of(projectField.getText().trim()));
             if (sources.isEmpty()) {
                 fail("Aucun fichier .java sous " + sources.sourceRoot());
                 return;
             }
-            ProjectFacts facts = FactExtractor.extract(JdtParser.parse(sources, List.of()));
+            var parsed = JdtParser.parse(sources, java.util.Arrays.stream(System.getProperty("java.class.path")
+                    .split(java.io.File.pathSeparator)).map(s -> Path.of(s).toAbsolutePath().toString()).toList());
+            long errors = parsed.stream().flatMap(f -> java.util.Arrays.stream(f.unit().getProblems())).filter(p -> p.isError()).count();
+            if (errors != 0) { fail("Extraction refusée : " + errors + " erreurs de compilation."); return; }
+            ProjectFacts facts = FactExtractor.extract(parsed);
             graph = CallGraphBuilder.build(facts);
 
             fillStructure(facts);
             fillCalls(facts);
             fillMetrics(facts);
             fillGraph(facts);
+            latestFacts = facts; modulesButton.setEnabled(true);
 
             status.setText(facts.types().size() + " types  |  " + facts.methodCount()
                     + " methodes  |  " + facts.fieldCount() + " attributs  |  "
@@ -157,6 +175,19 @@ public class AnalyzerWindow extends JFrame {
         } catch (IllegalArgumentException | IOException e) {
             fail(e.getMessage());
         }
+    }
+
+    private void showModules() {
+        if (latestFacts == null) return;
+        try {
+            var facts = hai913i.integration.Tp1FactsSource.adapt(latestFacts).facts();
+            var graph = new hai913i.tp2.CouplingCalculator().compute(facts).graph();
+            double cp = ((Number) cpField.getValue()).doubleValue();
+            var model = new hai913i.tp2.ExplorerModel(graph, cp,
+                    hai913i.tp2.AgglomerativeClusterer.Linkage.AVERAGE, "calls",
+                    "Entrée : faits déjà extraits dans l’analyseur TP1 ; cibles implicites résolues conservées\n");
+            hai913i.tp2.ExplorerWindow.open(model, null);
+        } catch (IOException | IllegalArgumentException e) { fail(e.getMessage()); }
     }
 
     private void fillStructure(ProjectFacts facts) {

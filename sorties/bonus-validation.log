@@ -1,0 +1,1223 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< fr.umontpellier.hai913i:hai913i-tp2 >-----------------
+[INFO] Building hai913i-tp2 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hai913i-tp2 ---
+[INFO] Deleting /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hai913i-tp2 ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ hai913i-tp2 ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 15 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hai913i-tp2 ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ hai913i-tp2 ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ hai913i-tp2 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running hai913i.tp2.AuditTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 s -- in hai913i.tp2.AuditTest
+[INFO] Running hai913i.tp2.PipelineTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in hai913i.tp2.PipelineTest
+[INFO] Running hai913i.tp2.BonusTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in hai913i.tp2.BonusTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ hai913i-tp2 ---
+[INFO] Building jar: /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/target/hai913i-tp2.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.518 s
+[INFO] Finished at: 2026-10-16T15:00:47+02:00
+[INFO] ------------------------------------------------------------------------
+A0 | Classes : 3 | Méthodes : 5 | Arcs : 4
+A1 | Arcs internes écartés : 1 | Arcs inter-classes : 3
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 3 | Arêtes : 2
+A2 | Classes isolées : 
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  demo.A -- demo.B : 0.6666666667
+  demo.B -- demo.C : 0.3333333333
+B1/B2 | Fusions : 2
+  1 : (0,1) -> 3 | S=0.6666666667
+  2 : (2,3) -> 4 | S=0.1666666667
+B3 | CP=0.2 | Modules : 1 | Maximum M/2 : 1
+  Module 1 | n=3 | C=0.3333333333 | demo.A, demo.B, demo.C
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 3 | Méthodes : 5 | Arcs : 4
+A1 | Arcs internes écartés : 1 | Arcs inter-classes : 3
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 3 | Arêtes : 2
+A2 | Classes isolées : 
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  demo.A -- demo.B : 0.6666666667
+  demo.B -- demo.C : 0.3333333333
+B1/B2 | Fusions : 2
+  1 : (0,1) -> 3 | S=0.6666666667
+  2 : (2,3) -> 4 | S=0.1666666667
+B3 | CP=0.5 | Modules : 2 | Maximum M/2 : 1
+  Module 1 | n=2 | C=0.6666666667 | demo.A, demo.B
+  Module 2 | n=1 | C=NA (feuille) | demo.C
+B3 | COUPE REJETÉE : contrainte M/2 violée
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.015 | Modules : 4 | Maximum M/2 : 7
+  Module 1 | n=11 | C=0.0162162162 | library.app.LibraryApp, library.model.Book, library.model.Category, library.model.Item, library.model.Loanable, library.model.Member, library.service.Catalog, library.service.ConsoleNotifier, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 3 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 4 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.045 | Modules : 10 | Maximum M/2 : 7
+  Module 1 | n=5 | C=0.0594594595 | library.app.LibraryApp, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Book
+  Module 3 | n=1 | C=NA (feuille) | library.model.Category
+  Module 4 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 5 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 6 | n=1 | C=NA (feuille) | library.model.Member
+  Module 7 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 8 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 9 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 10 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE REJETÉE : contrainte M/2 violée
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A2 | Graphe rechargé : target/validation/cp-0.025/graphe.csv
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+Erreur : dossier introuvable : inexistant
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+Erreur : --cp obligatoire : nombre fini entre 0 et 1
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+VALIDATION TERMINÉE : contrôles, rejets attendus, rechargement et déterminisme conformes.
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+C1 | Variante : lien simple (maximum des couplages intergroupes)
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (11,15) -> 16 | S=0.1081081081
+  3 : (0,7) -> 17 | S=0.0810810811
+  4 : (16,17) -> 18 | S=0.0810810811
+  5 : (6,18) -> 19 | S=0.0540540541
+  6 : (12,19) -> 20 | S=0.0540540541
+  7 : (13,14) -> 21 | S=0.0540540541
+  8 : (1,20) -> 22 | S=0.0270270270
+  9 : (2,22) -> 23 | S=0.0270270270
+  10 : (5,23) -> 24 | S=0.0270270270
+  11 : (8,24) -> 25 | S=0.0270270270
+  12 : (21,25) -> 26 | S=0.0270270270
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=8 | C=0.0289575290 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Member, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+C2 | Appels + héritage/implémentation : 37 arcs + 4 relations internes ; dénominateur = 41 ; relations externes ignorées = 3
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 22
+A2 | Classes isolées : library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.0975609756
+  library.service.LoanService -- library.service.LoanService.Loan : 0.0975609756
+  library.app.LibraryApp -- library.model.Item : 0.0731707317
+  library.app.LibraryApp -- library.service.Catalog : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0487804878
+  library.model.Book -- library.model.Item : 0.0487804878
+  library.model.Item -- library.model.Member : 0.0487804878
+  library.model.Item -- library.service.Catalog : 0.0487804878
+  library.model.Member -- library.service.LoanService : 0.0487804878
+  library.service.LoanService -- library.service.Notifier : 0.0487804878
+  library.util.Statistics -- library.util.TextUtils : 0.0487804878
+  library.app.LibraryApp -- library.model.Book : 0.0243902439
+  library.app.LibraryApp -- library.util.Statistics : 0.0243902439
+  library.model.Category -- library.model.Item : 0.0243902439
+  library.model.Dvd -- library.model.Item : 0.0243902439
+  library.model.Item -- library.model.Loanable : 0.0243902439
+  library.model.Loanable -- library.service.LoanService : 0.0243902439
+  library.model.Member -- library.service.ConsoleNotifier : 0.0243902439
+  library.service.Catalog -- library.service.LoanService : 0.0243902439
+  library.service.ConsoleNotifier -- library.service.Notifier : 0.0243902439
+  library.service.LoanService -- library.util.TextUtils : 0.0243902439
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.0975609756
+  2 : (0,7) -> 16 | S=0.0731707317
+  3 : (15,16) -> 17 | S=0.0548780488
+  4 : (13,14) -> 18 | S=0.0487804878
+  5 : (11,17) -> 19 | S=0.0365853659
+  6 : (6,8) -> 20 | S=0.0243902439
+  7 : (1,19) -> 21 | S=0.0146341463
+  8 : (12,20) -> 22 | S=0.0121951220
+  9 : (5,21) -> 23 | S=0.0081300813
+  10 : (22,23) -> 24 | S=0.0069686411
+  11 : (2,24) -> 25 | S=0.0024390244
+  12 : (3,25) -> 26 | S=0.0022172949
+  13 : (18,26) -> 27 | S=0.0020325203
+  14 : (9,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 8 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0313588850 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Loanable, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Member
+  Module 5 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 8 | n=2 | C=0.0487804878 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE REJETÉE : contrainte M/2 violée
+C2 | Appels + héritage/implémentation : 37 arcs + 4 relations internes ; dénominateur = 41 ; relations externes ignorées = 3
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 22
+A2 | Classes isolées : library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.0975609756
+  library.service.LoanService -- library.service.LoanService.Loan : 0.0975609756
+  library.app.LibraryApp -- library.model.Item : 0.0731707317
+  library.app.LibraryApp -- library.service.Catalog : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService : 0.0731707317
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0487804878
+  library.model.Book -- library.model.Item : 0.0487804878
+  library.model.Item -- library.model.Member : 0.0487804878
+  library.model.Item -- library.service.Catalog : 0.0487804878
+  library.model.Member -- library.service.LoanService : 0.0487804878
+  library.service.LoanService -- library.service.Notifier : 0.0487804878
+  library.util.Statistics -- library.util.TextUtils : 0.0487804878
+  library.app.LibraryApp -- library.model.Book : 0.0243902439
+  library.app.LibraryApp -- library.util.Statistics : 0.0243902439
+  library.model.Category -- library.model.Item : 0.0243902439
+  library.model.Dvd -- library.model.Item : 0.0243902439
+  library.model.Item -- library.model.Loanable : 0.0243902439
+  library.model.Loanable -- library.service.LoanService : 0.0243902439
+  library.model.Member -- library.service.ConsoleNotifier : 0.0243902439
+  library.service.Catalog -- library.service.LoanService : 0.0243902439
+  library.service.ConsoleNotifier -- library.service.Notifier : 0.0243902439
+  library.service.LoanService -- library.util.TextUtils : 0.0243902439
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.0975609756
+  2 : (0,7) -> 16 | S=0.0731707317
+  3 : (15,16) -> 17 | S=0.0548780488
+  4 : (13,14) -> 18 | S=0.0487804878
+  5 : (11,17) -> 19 | S=0.0365853659
+  6 : (6,8) -> 20 | S=0.0243902439
+  7 : (1,19) -> 21 | S=0.0146341463
+  8 : (12,20) -> 22 | S=0.0121951220
+  9 : (5,21) -> 23 | S=0.0081300813
+  10 : (22,23) -> 24 | S=0.0069686411
+  11 : (2,24) -> 25 | S=0.0024390244
+  12 : (3,25) -> 26 | S=0.0022172949
+  13 : (18,26) -> 27 | S=0.0020325203
+  14 : (9,27) -> 28 | S=0.0000000000
+B3 | CP=0.02 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0313588850 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Loanable, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=2 | C=0.0243902439 | library.model.Member, library.service.ConsoleNotifier
+  Module 5 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 6 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 7 | n=2 | C=0.0487804878 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 30 | Méthodes : 199 | Arcs : 267
+A1 | Arcs internes écartés : 77 | Arcs inter-classes : 190
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 30 | Arêtes : 52
+A2 | Classes isolées : hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  hai913i.tp1.metrics.MetricsReport -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.ui.AnalyzerWindow : 0.0526315789
+  hai913i.tp1.report.TextReport -- hai913i.tp1.spoon.SpoonRawCounts : 0.0526315789
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.cli.Options : 0.0473684211
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.report.TextReport : 0.0421052632
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0421052632
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.TextReport : 0.0368421053
+  hai913i.tp1.model.CallFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0368421053
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.ui.AnalyzerWindow : 0.0315789474
+  hai913i.tp1.model.CallFact -- hai913i.tp1.report.TextReport : 0.0315789474
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.ProjectFacts : 0.0263157895
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0210526316
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.ProjectSources : 0.0210526316
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.model.TypeFact : 0.0210526316
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.CallFact : 0.0157894737
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.TypeFact : 0.0157894737
+  hai913i.tp1.model.FieldFact -- hai913i.tp1.report.TextReport : 0.0157894737
+  hai913i.tp1.parse.ProjectSources -- hai913i.tp1.ui.AnalyzerWindow : 0.0157894737
+  hai913i.tp1.Main -- hai913i.tp1.cli.Options : 0.0105263158
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.DotReport : 0.0105263158
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0105263158
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.model.CallFact -- hai913i.tp1.model.ProjectFacts : 0.0105263158
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.parse.ProjectSources : 0.0105263158
+  hai913i.tp1.Main -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.TypeFact : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.extract.FactExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.metrics.MetricsService : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.DotReport : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+  hai913i.tp1.extract.CallCollector -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.metrics.Ranking : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.report.TextReport -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.spoon.SpoonExtractor -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+B1/B2 | Fusions : 29
+  1 : (12,26) -> 30 | S=0.0894736842
+  2 : (18,29) -> 31 | S=0.0526315789
+  3 : (4,6) -> 32 | S=0.0473684211
+  4 : (19,31) -> 33 | S=0.0315789474
+  5 : (28,30) -> 34 | S=0.0263157895
+  6 : (1,34) -> 35 | S=0.0157894737
+  7 : (2,15) -> 36 | S=0.0157894737
+  8 : (13,33) -> 37 | S=0.0157894737
+  9 : (17,35) -> 38 | S=0.0118421053
+  10 : (10,23) -> 39 | S=0.0105263158
+  11 : (22,24) -> 40 | S=0.0105263158
+  12 : (37,38) -> 41 | S=0.0092105263
+  13 : (0,32) -> 42 | S=0.0078947368
+  14 : (36,41) -> 43 | S=0.0058479532
+  15 : (3,5) -> 44 | S=0.0052631579
+  16 : (9,11) -> 45 | S=0.0052631579
+  17 : (39,42) -> 46 | S=0.0043859649
+  18 : (40,46) -> 47 | S=0.0026315789
+  19 : (16,43) -> 48 | S=0.0014354067
+  20 : (47,48) -> 49 | S=0.0010025063
+  21 : (25,49) -> 50 | S=0.0008310249
+  22 : (27,50) -> 51 | S=0.0005263158
+  23 : (14,51) -> 52 | S=0.0002506266
+  24 : (44,52) -> 53 | S=0.0002392344
+  25 : (45,53) -> 54 | S=0.0001096491
+  26 : (7,8) -> 55 | S=0.0000000000
+  27 : (20,21) -> 56 | S=0.0000000000
+  28 : (54,55) -> 57 | S=0.0000000000
+  29 : (56,57) -> 58 | S=0.0000000000
+B3 | CP=0.01 | Modules : 15 | Maximum M/2 : 15
+  Module 1 | n=3 | C=0.0210526316 | hai913i.tp1.Main, hai913i.tp1.cli.Analyzer, hai913i.tp1.cli.Options
+  Module 2 | n=12 | C=0.0109250399 | hai913i.tp1.callgraph.CallGraph, hai913i.tp1.callgraph.CallGraphBuilder, hai913i.tp1.metrics.MetricsReport, hai913i.tp1.metrics.MetricsService, hai913i.tp1.model.CallFact, hai913i.tp1.model.FieldFact, hai913i.tp1.model.MethodFact, hai913i.tp1.model.ProjectFacts, hai913i.tp1.model.TypeFact, hai913i.tp1.report.TextReport, hai913i.tp1.spoon.SpoonRawCounts, hai913i.tp1.ui.AnalyzerWindow
+  Module 3 | n=1 | C=NA (feuille) | hai913i.tp1.cli.Action
+  Module 4 | n=1 | C=NA (feuille) | hai913i.tp1.cli.CommandLine
+  Module 5 | n=1 | C=NA (feuille) | hai913i.tp1.cli.UsageException
+  Module 6 | n=1 | C=NA (feuille) | hai913i.tp1.extract.AstPrinter
+  Module 7 | n=1 | C=NA (feuille) | hai913i.tp1.extract.CallCollector
+  Module 8 | n=2 | C=0.0105263158 | hai913i.tp1.extract.FactExtractor, hai913i.tp1.parse.JdtParser.ParsedFile
+  Module 9 | n=1 | C=NA (feuille) | hai913i.tp1.extract.StructureVisitor
+  Module 10 | n=1 | C=NA (feuille) | hai913i.tp1.metrics.Ranking
+  Module 11 | n=1 | C=NA (feuille) | hai913i.tp1.model.TypeKind
+  Module 12 | n=1 | C=NA (feuille) | hai913i.tp1.model.Visibility
+  Module 13 | n=2 | C=0.0105263158 | hai913i.tp1.parse.JdtParser, hai913i.tp1.parse.ProjectSources
+  Module 14 | n=1 | C=NA (feuille) | hai913i.tp1.report.DotReport
+  Module 15 | n=1 | C=NA (feuille) | hai913i.tp1.spoon.SpoonExtractor
+B3 | COUPE ACCEPTÉE
+A0 | Classes : 30 | Méthodes : 199 | Arcs : 267
+A1 | Arcs internes écartés : 77 | Arcs inter-classes : 190
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 30 | Arêtes : 52
+A2 | Classes isolées : hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  hai913i.tp1.metrics.MetricsReport -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.report.TextReport : 0.0894736842
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.ui.AnalyzerWindow : 0.0526315789
+  hai913i.tp1.report.TextReport -- hai913i.tp1.spoon.SpoonRawCounts : 0.0526315789
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.cli.Options : 0.0473684211
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.report.TextReport : 0.0473684211
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.report.TextReport : 0.0421052632
+  hai913i.tp1.model.TypeFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0421052632
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.TextReport : 0.0368421053
+  hai913i.tp1.model.CallFact -- hai913i.tp1.ui.AnalyzerWindow : 0.0368421053
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.ui.AnalyzerWindow : 0.0315789474
+  hai913i.tp1.model.CallFact -- hai913i.tp1.report.TextReport : 0.0315789474
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.ProjectFacts : 0.0263157895
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0210526316
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.ProjectSources : 0.0210526316
+  hai913i.tp1.model.ProjectFacts -- hai913i.tp1.model.TypeFact : 0.0210526316
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.CallFact : 0.0157894737
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.TypeFact : 0.0157894737
+  hai913i.tp1.model.FieldFact -- hai913i.tp1.report.TextReport : 0.0157894737
+  hai913i.tp1.parse.ProjectSources -- hai913i.tp1.ui.AnalyzerWindow : 0.0157894737
+  hai913i.tp1.Main -- hai913i.tp1.cli.Options : 0.0105263158
+  hai913i.tp1.callgraph.CallGraph -- hai913i.tp1.report.DotReport : 0.0105263158
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.parse.JdtParser.ParsedFile : 0.0105263158
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.model.MethodFact : 0.0105263158
+  hai913i.tp1.model.CallFact -- hai913i.tp1.model.ProjectFacts : 0.0105263158
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.parse.ProjectSources : 0.0105263158
+  hai913i.tp1.Main -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.Main -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.model.TypeFact : 0.0052631579
+  hai913i.tp1.callgraph.CallGraphBuilder -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.Analyzer : 0.0052631579
+  hai913i.tp1.cli.Action -- hai913i.tp1.cli.CommandLine : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.extract.FactExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.metrics.MetricsService : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.parse.JdtParser : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.report.DotReport : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonExtractor : 0.0052631579
+  hai913i.tp1.cli.Analyzer -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+  hai913i.tp1.extract.CallCollector -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.extract.StructureVisitor : 0.0052631579
+  hai913i.tp1.extract.FactExtractor -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.metrics.Ranking : 0.0052631579
+  hai913i.tp1.metrics.MetricsService -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.model.MethodFact -- hai913i.tp1.model.ProjectFacts : 0.0052631579
+  hai913i.tp1.parse.JdtParser -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.report.TextReport -- hai913i.tp1.ui.AnalyzerWindow : 0.0052631579
+  hai913i.tp1.spoon.SpoonExtractor -- hai913i.tp1.spoon.SpoonRawCounts : 0.0052631579
+B1/B2 | Fusions : 29
+  1 : (12,26) -> 30 | S=0.0894736842
+  2 : (18,29) -> 31 | S=0.0526315789
+  3 : (4,6) -> 32 | S=0.0473684211
+  4 : (19,31) -> 33 | S=0.0315789474
+  5 : (28,30) -> 34 | S=0.0263157895
+  6 : (1,34) -> 35 | S=0.0157894737
+  7 : (2,15) -> 36 | S=0.0157894737
+  8 : (13,33) -> 37 | S=0.0157894737
+  9 : (17,35) -> 38 | S=0.0118421053
+  10 : (10,23) -> 39 | S=0.0105263158
+  11 : (22,24) -> 40 | S=0.0105263158
+  12 : (37,38) -> 41 | S=0.0092105263
+  13 : (0,32) -> 42 | S=0.0078947368
+  14 : (36,41) -> 43 | S=0.0058479532
+  15 : (3,5) -> 44 | S=0.0052631579
+  16 : (9,11) -> 45 | S=0.0052631579
+  17 : (39,42) -> 46 | S=0.0043859649
+  18 : (40,46) -> 47 | S=0.0026315789
+  19 : (16,43) -> 48 | S=0.0014354067
+  20 : (47,48) -> 49 | S=0.0010025063
+  21 : (25,49) -> 50 | S=0.0008310249
+  22 : (27,50) -> 51 | S=0.0005263158
+  23 : (14,51) -> 52 | S=0.0002506266
+  24 : (44,52) -> 53 | S=0.0002392344
+  25 : (45,53) -> 54 | S=0.0001096491
+  26 : (7,8) -> 55 | S=0.0000000000
+  27 : (20,21) -> 56 | S=0.0000000000
+  28 : (54,55) -> 57 | S=0.0000000000
+  29 : (56,57) -> 58 | S=0.0000000000
+B3 | CP=0.025 | Modules : 23 | Maximum M/2 : 15
+  Module 1 | n=1 | C=NA (feuille) | hai913i.tp1.Main
+  Module 2 | n=4 | C=0.0315789474 | hai913i.tp1.callgraph.CallGraph, hai913i.tp1.metrics.MetricsReport, hai913i.tp1.report.TextReport, hai913i.tp1.spoon.SpoonRawCounts
+  Module 3 | n=1 | C=NA (feuille) | hai913i.tp1.callgraph.CallGraphBuilder
+  Module 4 | n=1 | C=NA (feuille) | hai913i.tp1.cli.Action
+  Module 5 | n=2 | C=0.0473684211 | hai913i.tp1.cli.Analyzer, hai913i.tp1.cli.Options
+  Module 6 | n=1 | C=NA (feuille) | hai913i.tp1.cli.CommandLine
+  Module 7 | n=1 | C=NA (feuille) | hai913i.tp1.cli.UsageException
+  Module 8 | n=1 | C=NA (feuille) | hai913i.tp1.extract.AstPrinter
+  Module 9 | n=1 | C=NA (feuille) | hai913i.tp1.extract.CallCollector
+  Module 10 | n=1 | C=NA (feuille) | hai913i.tp1.extract.FactExtractor
+  Module 11 | n=1 | C=NA (feuille) | hai913i.tp1.extract.StructureVisitor
+  Module 12 | n=4 | C=0.0271929825 | hai913i.tp1.metrics.MetricsService, hai913i.tp1.model.ProjectFacts, hai913i.tp1.model.TypeFact, hai913i.tp1.ui.AnalyzerWindow
+  Module 13 | n=1 | C=NA (feuille) | hai913i.tp1.metrics.Ranking
+  Module 14 | n=1 | C=NA (feuille) | hai913i.tp1.model.CallFact
+  Module 15 | n=1 | C=NA (feuille) | hai913i.tp1.model.FieldFact
+  Module 16 | n=1 | C=NA (feuille) | hai913i.tp1.model.MethodFact
+  Module 17 | n=1 | C=NA (feuille) | hai913i.tp1.model.TypeKind
+  Module 18 | n=1 | C=NA (feuille) | hai913i.tp1.model.Visibility
+  Module 19 | n=1 | C=NA (feuille) | hai913i.tp1.parse.JdtParser
+  Module 20 | n=1 | C=NA (feuille) | hai913i.tp1.parse.JdtParser.ParsedFile
+  Module 21 | n=1 | C=NA (feuille) | hai913i.tp1.parse.ProjectSources
+  Module 22 | n=1 | C=NA (feuille) | hai913i.tp1.report.DotReport
+  Module 23 | n=1 | C=NA (feuille) | hai913i.tp1.spoon.SpoonExtractor
+B3 | COUPE REJETÉE : contrainte M/2 violée
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< hai913i.tp1:hai913i-tp1-analyzer >------------------
+[INFO] Building hai913i-tp1-analyzer 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hai913i-tp1-analyzer ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/bonus/tp1-extracteur/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ hai913i-tp1-analyzer ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hai913i-tp1-analyzer ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/bonus/tp1-extracteur/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ hai913i-tp1-analyzer ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ hai913i-tp1-analyzer ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ hai913i-tp1-analyzer ---
+[INFO] 
+[INFO] --- shade:3.6.1:shade (default) @ hai913i-tp1-analyzer ---
+[WARNING] hai913i-tp1-analyzer.jar, org.osgi.service.prefs-1.1.2.jar define 10 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.osgi/org.osgi.service.prefs/pom.properties
+[WARNING]   - META-INF/maven/org.osgi/org.osgi.service.prefs/pom.xml
+[WARNING]   - OSGI-OPT/src/org/osgi/service/prefs/BackingStoreException.java
+[WARNING]   - OSGI-OPT/src/org/osgi/service/prefs/Preferences.java
+[WARNING]   - OSGI-OPT/src/org/osgi/service/prefs/PreferencesService.java
+[WARNING]   - OSGI-OPT/src/org/osgi/service/prefs/package-info.java
+[WARNING]   - org.osgi.service.prefs.BackingStoreException
+[WARNING]   - org.osgi.service.prefs.Preferences
+[WARNING]   - org.osgi.service.prefs.PreferencesService
+[WARNING]   - org.osgi.service.prefs.package-info
+[WARNING] ecj-3.46.0.jar, hai913i-tp1-analyzer.jar define 949 overlapping classes and resources: 
+[WARNING]   - org.eclipse.jdt.core.JDTCompilerAdapter
+[WARNING]   - org.eclipse.jdt.core.JDTCompilerAdapter$1
+[WARNING]   - org.eclipse.jdt.core.compiler.CategorizedProblem
+[WARNING]   - org.eclipse.jdt.core.compiler.CharOperation
+[WARNING]   - org.eclipse.jdt.core.compiler.CompilationProgress
+[WARNING]   - org.eclipse.jdt.core.compiler.IProblem
+[WARNING]   - org.eclipse.jdt.core.compiler.InvalidInputException
+[WARNING]   - org.eclipse.jdt.core.compiler.SubwordMatcher
+[WARNING]   - org.eclipse.jdt.core.compiler.SubwordMatcher$Case
+[WARNING]   - org.eclipse.jdt.core.compiler.batch.BatchCompiler
+[WARNING]   - 939 more...
+[WARNING] hai913i-tp1-analyzer.jar, jspecify-1.0.0.jar define 5 overlapping class and resource: 
+[WARNING]   - META-INF/versions/9/OSGI-INF/MANIFEST.MF
+[WARNING]   - org.jspecify.annotations.NonNull
+[WARNING]   - org.jspecify.annotations.NullMarked
+[WARNING]   - org.jspecify.annotations.NullUnmarked
+[WARNING]   - org.jspecify.annotations.Nullable
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.jdt.core-3.46.0.jar define 1456 overlapping classes and resources: 
+[WARNING]   - META-INF/p2.inf
+[WARNING]   - jdtCompilerAdapter.jar
+[WARNING]   - org.eclipse.jdt.core.BindingKey
+[WARNING]   - org.eclipse.jdt.core.BufferChangedEvent
+[WARNING]   - org.eclipse.jdt.core.ClasspathContainerInitializer
+[WARNING]   - org.eclipse.jdt.core.ClasspathContainerInitializer$1
+[WARNING]   - org.eclipse.jdt.core.ClasspathVariableInitializer
+[WARNING]   - org.eclipse.jdt.core.CompletionContext
+[WARNING]   - org.eclipse.jdt.core.CompletionFlags
+[WARNING]   - org.eclipse.jdt.core.CompletionProposal
+[WARNING]   - 1446 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.runtime-3.34.200.jar define 29 overlapping class and resource: 
+[WARNING]   - org.eclipse.core.internal.preferences.legacy.InitLegacyPreferences
+[WARNING]   - org.eclipse.core.internal.preferences.legacy.PreferenceForwarder
+[WARNING]   - org.eclipse.core.internal.preferences.legacy.ProductPreferencesService
+[WARNING]   - org.eclipse.core.internal.runtime.AuthorizationHandler
+[WARNING]   - org.eclipse.core.internal.runtime.CollectionTrustManager
+[WARNING]   - org.eclipse.core.internal.runtime.InternalPlatform
+[WARNING]   - org.eclipse.core.internal.runtime.KeyStoreUtil
+[WARNING]   - org.eclipse.core.internal.runtime.KeyStoreUtil$KeyStoreAndPassword
+[WARNING]   - org.eclipse.core.internal.runtime.Log
+[WARNING]   - org.eclipse.core.internal.runtime.Log$1
+[WARNING]   - 19 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.text-3.14.700.jar define 215 overlapping classes and resources: 
+[WARNING]   - org.eclipse.jface.text.AbstractDocument
+[WARNING]   - org.eclipse.jface.text.AbstractDocument$1
+[WARNING]   - org.eclipse.jface.text.AbstractDocument$RegisteredReplace
+[WARNING]   - org.eclipse.jface.text.AbstractLineTracker
+[WARNING]   - org.eclipse.jface.text.AbstractLineTracker$1
+[WARNING]   - org.eclipse.jface.text.AbstractLineTracker$2
+[WARNING]   - org.eclipse.jface.text.AbstractLineTracker$DelimiterInfo
+[WARNING]   - org.eclipse.jface.text.AbstractLineTracker$Request
+[WARNING]   - org.eclipse.jface.text.AbstractLineTracker$SessionData
+[WARNING]   - org.eclipse.jface.text.BadLocationException
+[WARNING]   - 205 more...
+[WARNING] hai913i-tp1-analyzer.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/AL2.0
+[WARNING]   - META-INF/LGPL2.1
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource: 
+[WARNING]   - plugin.xml
+[WARNING] hai913i-tp1-analyzer.jar, jackson-core-2.22.1.jar define 225 overlapping classes and resources: 
+[WARNING]   - META-INF.versions.11.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.BigSignificand
+[WARNING]   - META-INF.versions.11.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.FastDoubleSwar
+[WARNING]   - META-INF.versions.11.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.FastIntegerMath
+[WARNING]   - META-INF.versions.17.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.FastDoubleSwar
+[WARNING]   - META-INF.versions.17.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.FastIntegerMath
+[WARNING]   - META-INF.versions.21.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.FastDoubleSwar
+[WARNING]   - META-INF.versions.21.com.fasterxml.jackson.core.internal.shaded.fdp.v2_22_1.FastIntegerMath
+[WARNING]   - META-INF/FastDoubleParser-LICENSE
+[WARNING]   - META-INF/FastDoubleParser-ThirdParty-LICENSE
+[WARNING]   - META-INF/Schubfach-LICENSE
+[WARNING]   - 215 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.jobs-3.15.700.jar define 48 overlapping class and resource: 
+[WARNING]   - org.eclipse.core.internal.jobs.Deadlock
+[WARNING]   - org.eclipse.core.internal.jobs.DeadlockDetector
+[WARNING]   - org.eclipse.core.internal.jobs.ImplicitJobs
+[WARNING]   - org.eclipse.core.internal.jobs.InternalJob
+[WARNING]   - org.eclipse.core.internal.jobs.InternalJobGroup
+[WARNING]   - org.eclipse.core.internal.jobs.InternalWorker
+[WARNING]   - org.eclipse.core.internal.jobs.JobActivator
+[WARNING]   - org.eclipse.core.internal.jobs.JobChangeEvent
+[WARNING]   - org.eclipse.core.internal.jobs.JobListeners
+[WARNING]   - org.eclipse.core.internal.jobs.JobListeners$IListenerDoit
+[WARNING]   - 38 more...
+[WARNING] hai913i-tp1-analyzer.jar, jackson-databind-2.22.1.jar define 814 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.properties
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.xml
+[WARNING]   - com.fasterxml.jackson.databind.AbstractTypeResolver
+[WARNING]   - com.fasterxml.jackson.databind.AnnotationIntrospector
+[WARNING]   - com.fasterxml.jackson.databind.AnnotationIntrospector$ReferenceProperty
+[WARNING]   - com.fasterxml.jackson.databind.AnnotationIntrospector$ReferenceProperty$Type
+[WARNING]   - com.fasterxml.jackson.databind.AnnotationIntrospector$XmlExtensions
+[WARNING]   - com.fasterxml.jackson.databind.BeanDescription
+[WARNING]   - com.fasterxml.jackson.databind.BeanProperty
+[WARNING]   - com.fasterxml.jackson.databind.BeanProperty$Bogus
+[WARNING]   - 804 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.osgi-3.24.200.jar define 826 overlapping classes and resources: 
+[WARNING]   - CDC-1.0_Foundation-1.0.profile
+[WARNING]   - CDC-1.1_Foundation-1.1.profile
+[WARNING]   - J2SE-1.2.profile
+[WARNING]   - J2SE-1.3.profile
+[WARNING]   - J2SE-1.4.profile
+[WARNING]   - J2SE-1.5.profile
+[WARNING]   - JRE-1.1.profile
+[WARNING]   - JavaSE-1.6.profile
+[WARNING]   - JavaSE-1.7.profile
+[WARNING]   - JavaSE-1.8.profile
+[WARNING]   - 816 more...
+[WARNING] hai913i-tp1-analyzer.jar, jsap-2.1.jar define 69 overlapping classes: 
+[WARNING]   - com.martiansoftware.jsap.CommandLineTokenizer
+[WARNING]   - com.martiansoftware.jsap.DefaultSource
+[WARNING]   - com.martiansoftware.jsap.Defaults
+[WARNING]   - com.martiansoftware.jsap.ExceptionMap
+[WARNING]   - com.martiansoftware.jsap.Flagged
+[WARNING]   - com.martiansoftware.jsap.FlaggedOption
+[WARNING]   - com.martiansoftware.jsap.IDMap
+[WARNING]   - com.martiansoftware.jsap.IllegalMultipleDeclarationException
+[WARNING]   - com.martiansoftware.jsap.JSAP
+[WARNING]   - com.martiansoftware.jsap.JSAPException
+[WARNING]   - 59 more...
+[WARNING] hai913i-tp1-analyzer.jar, jna-5.18.1.jar define 152 overlapping classes and resources: 
+[WARNING]   - com.sun.jna.AltCallingConvention
+[WARNING]   - com.sun.jna.Callback
+[WARNING]   - com.sun.jna.Callback$UncaughtExceptionHandler
+[WARNING]   - com.sun.jna.CallbackParameterContext
+[WARNING]   - com.sun.jna.CallbackProxy
+[WARNING]   - com.sun.jna.CallbackReference
+[WARNING]   - com.sun.jna.CallbackReference$AttachOptions
+[WARNING]   - com.sun.jna.CallbackReference$CallbackReferenceDisposer
+[WARNING]   - com.sun.jna.CallbackReference$DefaultCallbackProxy
+[WARNING]   - com.sun.jna.CallbackReference$NativeFunctionHandler
+[WARNING]   - 142 more...
+[WARNING] commons-lang3-3.20.0.jar, hai913i-tp1-analyzer.jar define 423 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.apache.commons/commons-lang3/pom.properties
+[WARNING]   - META-INF/maven/org.apache.commons/commons-lang3/pom.xml
+[WARNING]   - org.apache.commons.lang3.AnnotationUtils
+[WARNING]   - org.apache.commons.lang3.AnnotationUtils$1
+[WARNING]   - org.apache.commons.lang3.AppendableJoiner
+[WARNING]   - org.apache.commons.lang3.AppendableJoiner$1
+[WARNING]   - org.apache.commons.lang3.AppendableJoiner$Builder
+[WARNING]   - org.apache.commons.lang3.ArchUtils
+[WARNING]   - org.apache.commons.lang3.ArrayFill
+[WARNING]   - org.apache.commons.lang3.ArraySorter
+[WARNING]   - 413 more...
+[WARNING] ecj-3.46.0.jar, hai913i-tp1-analyzer.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar, org.eclipse.text-3.14.700.jar define 2 overlapping resources: 
+[WARNING]   - .api_description
+[WARNING]   - about.html
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.expressions-3.9.600.jar define 51 overlapping class and resource: 
+[WARNING]   - org.eclipse.core.expressions.AndExpression
+[WARNING]   - org.eclipse.core.expressions.CompositeExpression
+[WARNING]   - org.eclipse.core.expressions.CountExpression
+[WARNING]   - org.eclipse.core.expressions.ElementHandler
+[WARNING]   - org.eclipse.core.expressions.EqualsExpression
+[WARNING]   - org.eclipse.core.expressions.EvaluationContext
+[WARNING]   - org.eclipse.core.expressions.EvaluationResult
+[WARNING]   - org.eclipse.core.expressions.Expression
+[WARNING]   - org.eclipse.core.expressions.Expression$1
+[WARNING]   - org.eclipse.core.expressions.Expression$2
+[WARNING]   - 41 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.equinox.registry-3.12.600.jar define 91 overlapping classes and resources: 
+[WARNING]   - about_files/NOTICE.txt
+[WARNING]   - org.eclipse.core.internal.adapter.AdapterFactoryProxy
+[WARNING]   - org.eclipse.core.internal.adapter.AdapterManagerListener
+[WARNING]   - org.eclipse.core.internal.registry.BaseExtensionHandle
+[WARNING]   - org.eclipse.core.internal.registry.BaseExtensionPointHandle
+[WARNING]   - org.eclipse.core.internal.registry.BufferedRandomInputStream
+[WARNING]   - org.eclipse.core.internal.registry.CombinedEventDelta
+[WARNING]   - org.eclipse.core.internal.registry.ConfigurationElement
+[WARNING]   - org.eclipse.core.internal.registry.ConfigurationElementHandle
+[WARNING]   - org.eclipse.core.internal.registry.ConfigurationElementMulti
+[WARNING]   - 81 more...
+[WARNING] commons-io-2.22.0.jar, hai913i-tp1-analyzer.jar define 430 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/commons-io/commons-io/pom.properties
+[WARNING]   - META-INF/maven/commons-io/commons-io/pom.xml
+[WARNING]   - org.apache.commons.io.ByteBuffers
+[WARNING]   - org.apache.commons.io.ByteOrderMark
+[WARNING]   - org.apache.commons.io.ByteOrderParser
+[WARNING]   - org.apache.commons.io.Charsets
+[WARNING]   - org.apache.commons.io.CloseableURLConnection
+[WARNING]   - org.apache.commons.io.CopyUtils
+[WARNING]   - org.apache.commons.io.DirectoryWalker
+[WARNING]   - org.apache.commons.io.DirectoryWalker$CancelException
+[WARNING]   - 420 more...
+[WARNING] hai913i-tp1-analyzer.jar, jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE
+[WARNING] hai913i-tp1-analyzer.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/DEPENDENCIES
+[WARNING] hai913i-tp1-analyzer.jar, spoon-core-11.5.0.jar define 1201 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/fr.inria.gforge.spoon/spoon-core/pom.properties
+[WARNING]   - META-INF/maven/fr.inria.gforge.spoon/spoon-core/pom.xml
+[WARNING]   - properties.dtd
+[WARNING]   - spoon.ContractVerifier
+[WARNING]   - spoon.ContractVerifier$1
+[WARNING]   - spoon.ContractVerifier$1ActualCounterScanner
+[WARNING]   - spoon.ContractVerifier$1Counter
+[WARNING]   - spoon.ContractVerifier$2
+[WARNING]   - spoon.ContractVerifier$3
+[WARNING]   - spoon.ContractVerifier$4
+[WARNING]   - 1191 more...
+[WARNING] hai913i-tp1-analyzer.jar, jackson-annotations-2.22.jar define 79 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/pom.properties
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/pom.xml
+[WARNING]   - com.fasterxml.jackson.annotation.JacksonAnnotation
+[WARNING]   - com.fasterxml.jackson.annotation.JacksonAnnotationValue
+[WARNING]   - com.fasterxml.jackson.annotation.JacksonAnnotationsInside
+[WARNING]   - com.fasterxml.jackson.annotation.JacksonInject
+[WARNING]   - com.fasterxml.jackson.annotation.JacksonInject$Value
+[WARNING]   - com.fasterxml.jackson.annotation.JsonAlias
+[WARNING]   - com.fasterxml.jackson.annotation.JsonAnyGetter
+[WARNING]   - com.fasterxml.jackson.annotation.JsonAnySetter
+[WARNING]   - 69 more...
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, hai913i-tp1-analyzer.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.filesystem-1.11.400.jar define 35 overlapping class and resource: 
+[WARNING]   - org.eclipse.core.filesystem.EFS
+[WARNING]   - org.eclipse.core.filesystem.IFileInfo
+[WARNING]   - org.eclipse.core.filesystem.IFileStore
+[WARNING]   - org.eclipse.core.filesystem.IFileSystem
+[WARNING]   - org.eclipse.core.filesystem.IFileTree
+[WARNING]   - org.eclipse.core.filesystem.URIUtil
+[WARNING]   - org.eclipse.core.filesystem.provider.FileInfo
+[WARNING]   - org.eclipse.core.filesystem.provider.FileStore
+[WARNING]   - org.eclipse.core.filesystem.provider.FileSystem
+[WARNING]   - org.eclipse.core.filesystem.provider.FileTree
+[WARNING]   - 25 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.equinox.common-3.20.300.jar define 80 overlapping class and resource: 
+[WARNING]   - org.eclipse.core.internal.boot.PlatformURLBaseConnection
+[WARNING]   - org.eclipse.core.internal.boot.PlatformURLConnection
+[WARNING]   - org.eclipse.core.internal.boot.PlatformURLHandler
+[WARNING]   - org.eclipse.core.internal.runtime.Activator
+[WARNING]   - org.eclipse.core.internal.runtime.AdapterFactoryBridge
+[WARNING]   - org.eclipse.core.internal.runtime.AdapterFactoryBridge$LazyAdapterFactory
+[WARNING]   - org.eclipse.core.internal.runtime.AdapterFactoryBridge$LazyAdapterFactoryExtServiceProxy
+[WARNING]   - org.eclipse.core.internal.runtime.AdapterManager
+[WARNING]   - org.eclipse.core.internal.runtime.AdapterManager$AdapterLookup
+[WARNING]   - org.eclipse.core.internal.runtime.CommonMessages
+[WARNING]   - 70 more...
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, hai913i-tp1-analyzer.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource: 
+[WARNING]   - .options
+[WARNING] hai913i-tp1-analyzer.jar, maven-shared-utils-3.4.2.jar define 82 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.apache.maven.shared/maven-shared-utils/pom.properties
+[WARNING]   - META-INF/maven/org.apache.maven.shared/maven-shared-utils/pom.xml
+[WARNING]   - org.apache.maven.shared.utils.Os
+[WARNING]   - org.apache.maven.shared.utils.PathTool
+[WARNING]   - org.apache.maven.shared.utils.PropertyUtils
+[WARNING]   - org.apache.maven.shared.utils.ReaderFactory
+[WARNING]   - org.apache.maven.shared.utils.StringUtils
+[WARNING]   - org.apache.maven.shared.utils.WriterFactory
+[WARNING]   - org.apache.maven.shared.utils.cli.AbstractStreamHandler
+[WARNING]   - org.apache.maven.shared.utils.cli.Arg
+[WARNING]   - 72 more...
+[WARNING] hai913i-tp1-analyzer.jar, osgi.annotation-8.0.1.jar define 35 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.osgi/osgi.annotation/pom.properties
+[WARNING]   - META-INF/maven/org.osgi/osgi.annotation/pom.xml
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Attribute.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Capabilities.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Capability.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Directive.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Export.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Header.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Headers.java
+[WARNING]   - OSGI-OPT/src/org/osgi/annotation/bundle/Referenced.java
+[WARNING]   - 25 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.text-3.14.700.jar define 1 overlapping resource: 
+[WARNING]   - plugin.properties
+[WARNING] hai913i-tp1-analyzer.jar, javax.inject-1.jar define 6 overlapping classes: 
+[WARNING]   - javax.inject.Inject
+[WARNING]   - javax.inject.Named
+[WARNING]   - javax.inject.Provider
+[WARNING]   - javax.inject.Qualifier
+[WARNING]   - javax.inject.Scope
+[WARNING]   - javax.inject.Singleton
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, hai913i-tp1-analyzer.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jspecify-1.0.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar define 1 overlapping classes: 
+[WARNING]   - META-INF.versions.9.module-info
+[WARNING] ecj-3.46.0.jar, hai913i-tp1-analyzer.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.jdt.core-3.46.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/eclipse.inf
+[WARNING] commons-compress-1.28.0.jar, hai913i-tp1-analyzer.jar define 591 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.apache.commons/commons-compress/pom.properties
+[WARNING]   - META-INF/maven/org.apache.commons/commons-compress/pom.xml
+[WARNING]   - org.apache.commons.compress.CompressException
+[WARNING]   - org.apache.commons.compress.CompressFilterOutputStream
+[WARNING]   - org.apache.commons.compress.MemoryLimitException
+[WARNING]   - org.apache.commons.compress.PasswordRequiredException
+[WARNING]   - org.apache.commons.compress.archivers.ArchiveEntry
+[WARNING]   - org.apache.commons.compress.archivers.ArchiveException
+[WARNING]   - org.apache.commons.compress.archivers.ArchiveInputStream
+[WARNING]   - org.apache.commons.compress.archivers.ArchiveInputStream$ArchiveEntryIOIterator
+[WARNING]   - 581 more...
+[WARNING] hai913i-tp1-analyzer.jar, maven-model-3.6.0.jar define 56 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.apache.maven/maven-model/pom.properties
+[WARNING]   - META-INF/maven/org.apache.maven/maven-model/pom.xml
+[WARNING]   - org.apache.maven.model.Activation
+[WARNING]   - org.apache.maven.model.ActivationFile
+[WARNING]   - org.apache.maven.model.ActivationOS
+[WARNING]   - org.apache.maven.model.ActivationProperty
+[WARNING]   - org.apache.maven.model.Build
+[WARNING]   - org.apache.maven.model.BuildBase
+[WARNING]   - org.apache.maven.model.CiManagement
+[WARNING]   - org.apache.maven.model.ConfigurationContainer
+[WARNING]   - 46 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.commands-3.12.500.jar define 84 overlapping classes: 
+[WARNING]   - org.eclipse.core.commands.AbstractHandler
+[WARNING]   - org.eclipse.core.commands.AbstractHandlerWithState
+[WARNING]   - org.eclipse.core.commands.AbstractParameterValueConverter
+[WARNING]   - org.eclipse.core.commands.Category
+[WARNING]   - org.eclipse.core.commands.CategoryEvent
+[WARNING]   - org.eclipse.core.commands.Command
+[WARNING]   - org.eclipse.core.commands.Command$1
+[WARNING]   - org.eclipse.core.commands.CommandEvent
+[WARNING]   - org.eclipse.core.commands.CommandManager
+[WARNING]   - org.eclipse.core.commands.CommandManager$ExecutionListener
+[WARNING]   - 74 more...
+[WARNING] hai913i-tp1-analyzer.jar, plexus-utils-3.1.0.jar define 109 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.codehaus.plexus/plexus-utils/pom.properties
+[WARNING]   - META-INF/maven/org.codehaus.plexus/plexus-utils/pom.xml
+[WARNING]   - licenses/extreme.indiana.edu.license.TXT
+[WARNING]   - licenses/javolution.license.TXT
+[WARNING]   - licenses/thoughtworks.TXT
+[WARNING]   - org.codehaus.plexus.util.AbstractScanner
+[WARNING]   - org.codehaus.plexus.util.Base64
+[WARNING]   - org.codehaus.plexus.util.CachedMap
+[WARNING]   - org.codehaus.plexus.util.CollectionUtils
+[WARNING]   - org.codehaus.plexus.util.DirectoryScanner
+[WARNING]   - 99 more...
+[WARNING] hai913i-tp1-analyzer.jar, jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.contenttype-3.9.800.jar define 48 overlapping classes and resources: 
+[WARNING]   - OSGI-INF/org.eclipse.core.internal.content.ContentTypeManager.xml
+[WARNING]   - org.eclipse.core.internal.content.BasicDescription
+[WARNING]   - org.eclipse.core.internal.content.ContentDescription
+[WARNING]   - org.eclipse.core.internal.content.ContentMessages
+[WARNING]   - org.eclipse.core.internal.content.ContentType
+[WARNING]   - org.eclipse.core.internal.content.ContentType$InvalidDescriber
+[WARNING]   - org.eclipse.core.internal.content.ContentTypeBuilder
+[WARNING]   - org.eclipse.core.internal.content.ContentTypeCatalog
+[WARNING]   - org.eclipse.core.internal.content.ContentTypeCatalog$1
+[WARNING]   - org.eclipse.core.internal.content.ContentTypeHandler
+[WARNING]   - 38 more...
+[WARNING] hai913i-tp1-analyzer.jar, slf4j-api-2.0.18.jar define 57 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.slf4j/slf4j-api/pom.properties
+[WARNING]   - META-INF/maven/org.slf4j/slf4j-api/pom.xml
+[WARNING]   - org.slf4j.ILoggerFactory
+[WARNING]   - org.slf4j.IMarkerFactory
+[WARNING]   - org.slf4j.Logger
+[WARNING]   - org.slf4j.LoggerFactory
+[WARNING]   - org.slf4j.LoggerFactoryFriend
+[WARNING]   - org.slf4j.MDC
+[WARNING]   - org.slf4j.MDC$1
+[WARNING]   - org.slf4j.MDC$MDCCloseable
+[WARNING]   - 47 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.core.resources-3.24.0.jar define 378 overlapping classes and resources: 
+[WARNING]   - OSGI-INF/org.eclipse.core.internal.resources.CheckMissingNaturesListener.xml
+[WARNING]   - OSGI-INF/org.eclipse.core.internal.resources.ResourceChangeListenerRegistrar.xml
+[WARNING]   - ant_tasks/resources-ant.jar
+[WARNING]   - org.eclipse.core.internal.dtree.AbstractDataTree
+[WARNING]   - org.eclipse.core.internal.dtree.AbstractDataTreeNode
+[WARNING]   - org.eclipse.core.internal.dtree.DataDeltaNode
+[WARNING]   - org.eclipse.core.internal.dtree.DataTreeLookup
+[WARNING]   - org.eclipse.core.internal.dtree.DataTreeNode
+[WARNING]   - org.eclipse.core.internal.dtree.DataTreeReader
+[WARNING]   - org.eclipse.core.internal.dtree.DataTreeWriter
+[WARNING]   - 368 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.osgi-3.24.200.jar define 1 overlapping resource: 
+[WARNING]   - about_files/LICENSE-2.0.txt
+[WARNING] commons-codec-1.19.0.jar, commons-compress-1.28.0.jar, commons-io-2.22.0.jar, commons-lang3-3.20.0.jar, ecj-3.46.0.jar, hai913i-tp1-analyzer.jar, jackson-annotations-2.22.jar, jackson-core-2.22.1.jar, jackson-databind-2.22.1.jar, jna-5.18.1.jar, jna-platform-5.18.1.jar, jsap-2.1.jar, jspecify-1.0.0.jar, maven-invoker-3.3.0.jar, maven-model-3.6.0.jar, maven-shared-utils-3.4.2.jar, org.eclipse.core.commands-3.12.500.jar, org.eclipse.core.contenttype-3.9.800.jar, org.eclipse.core.expressions-3.9.600.jar, org.eclipse.core.filesystem-1.11.400.jar, org.eclipse.core.jobs-3.15.700.jar, org.eclipse.core.resources-3.24.0.jar, org.eclipse.core.runtime-3.34.200.jar, org.eclipse.equinox.app-1.7.600.jar, org.eclipse.equinox.common-3.20.300.jar, org.eclipse.equinox.preferences-3.12.100.jar, org.eclipse.equinox.registry-3.12.600.jar, org.eclipse.jdt.core-3.46.0.jar, org.eclipse.osgi-3.24.200.jar, org.eclipse.text-3.14.700.jar, org.osgi.service.prefs-1.1.2.jar, osgi.annotation-8.0.1.jar, plexus-utils-3.1.0.jar, slf4j-api-2.0.18.jar, slf4j-nop-2.0.18.jar, spoon-core-11.5.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] hai913i-tp1-analyzer.jar, maven-invoker-3.3.0.jar define 21 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.apache.maven.shared/maven-invoker/pom.properties
+[WARNING]   - META-INF/maven/org.apache.maven.shared/maven-invoker/pom.xml
+[WARNING]   - META-INF/sisu/javax.inject.Named
+[WARNING]   - org.apache.maven.shared.invoker.CommandLineConfigurationException
+[WARNING]   - org.apache.maven.shared.invoker.DefaultInvocationRequest
+[WARNING]   - org.apache.maven.shared.invoker.DefaultInvocationResult
+[WARNING]   - org.apache.maven.shared.invoker.DefaultInvoker
+[WARNING]   - org.apache.maven.shared.invoker.InvocationOutputHandler
+[WARNING]   - org.apache.maven.shared.invoker.InvocationRequest
+[WARNING]   - org.apache.maven.shared.invoker.InvocationRequest$CheckSumPolicy
+[WARNING]   - 11 more...
+[WARNING] hai913i-tp1-analyzer.jar, slf4j-nop-2.0.18.jar define 3 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/org.slf4j/slf4j-nop/pom.properties
+[WARNING]   - META-INF/maven/org.slf4j/slf4j-nop/pom.xml
+[WARNING]   - org.slf4j.nop.NOPServiceProvider
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.equinox.app-1.7.600.jar define 29 overlapping class and resource: 
+[WARNING]   - org.eclipse.equinox.app.IApplication
+[WARNING]   - org.eclipse.equinox.app.IApplicationContext
+[WARNING]   - org.eclipse.equinox.internal.app.Activator
+[WARNING]   - org.eclipse.equinox.internal.app.AnyThreadAppLauncher
+[WARNING]   - org.eclipse.equinox.internal.app.AppCommands
+[WARNING]   - org.eclipse.equinox.internal.app.AppPersistence
+[WARNING]   - org.eclipse.equinox.internal.app.AppPersistence$AppTimer
+[WARNING]   - org.eclipse.equinox.internal.app.CommandLineArgs
+[WARNING]   - org.eclipse.equinox.internal.app.DefaultApplicationListener
+[WARNING]   - org.eclipse.equinox.internal.app.EclipseAppContainer
+[WARNING]   - 19 more...
+[WARNING] hai913i-tp1-analyzer.jar, jna-platform-5.18.1.jar define 1313 overlapping classes and resources: 
+[WARNING]   - com.sun.jna.platform.DesktopWindow
+[WARNING]   - com.sun.jna.platform.EnumConverter
+[WARNING]   - com.sun.jna.platform.EnumUtils
+[WARNING]   - com.sun.jna.platform.FileMonitor
+[WARNING]   - com.sun.jna.platform.FileMonitor$FileEvent
+[WARNING]   - com.sun.jna.platform.FileMonitor$FileListener
+[WARNING]   - com.sun.jna.platform.FileMonitor$Holder
+[WARNING]   - com.sun.jna.platform.FileUtils
+[WARNING]   - com.sun.jna.platform.FileUtils$1
+[WARNING]   - com.sun.jna.platform.FileUtils$DefaultFileUtils
+[WARNING]   - 1303 more...
+[WARNING] commons-codec-1.19.0.jar, hai913i-tp1-analyzer.jar define 245 overlapping classes and resources: 
+[WARNING]   - META-INF/maven/commons-codec/commons-codec/pom.properties
+[WARNING]   - META-INF/maven/commons-codec/commons-codec/pom.xml
+[WARNING]   - org.apache.commons.codec.BinaryDecoder
+[WARNING]   - org.apache.commons.codec.BinaryEncoder
+[WARNING]   - org.apache.commons.codec.CharEncoding
+[WARNING]   - org.apache.commons.codec.Charsets
+[WARNING]   - org.apache.commons.codec.CodecPolicy
+[WARNING]   - org.apache.commons.codec.Decoder
+[WARNING]   - org.apache.commons.codec.DecoderException
+[WARNING]   - org.apache.commons.codec.Encoder
+[WARNING]   - 235 more...
+[WARNING] hai913i-tp1-analyzer.jar, org.eclipse.equinox.preferences-3.12.100.jar define 60 overlapping class and resource: 
+[WARNING]   - org.eclipse.core.internal.preferences.AbstractScope
+[WARNING]   - org.eclipse.core.internal.preferences.Activator
+[WARNING]   - org.eclipse.core.internal.preferences.Activator$1
+[WARNING]   - org.eclipse.core.internal.preferences.Base64
+[WARNING]   - org.eclipse.core.internal.preferences.BundleDefaultPreferences
+[WARNING]   - org.eclipse.core.internal.preferences.BundleStateScope
+[WARNING]   - org.eclipse.core.internal.preferences.BundleStateScopeServiceFactory
+[WARNING]   - org.eclipse.core.internal.preferences.ConfigurationPreferences
+[WARNING]   - org.eclipse.core.internal.preferences.DefaultPreferences
+[WARNING]   - org.eclipse.core.internal.preferences.EclipsePreferences
+[WARNING]   - 50 more...
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.352 s
+[INFO] Finished at: 2026-10-16T15:00:51+02:00
+[INFO] ------------------------------------------------------------------------
+Extracteur : TP1, JDT Core 3.46.0, visiteurs originaux + complétion des cibles implicites dans le pont
+Unités : 29
+Classes : 30
+Méthodes : 199
+Arcs : 267
+Sites internes : 326
+Sites hors graphe (externes ou cible non déclarée) : 740
+Sites internes réintégrés vers des méthodes implicites : 144
+Méthodes implicites cibles ajoutées : 69
+Arcs avant complétion : 146
+Sites non résolus exclus : 0
+Erreurs de compilation : 0
+Extracteur : TP1, JDT Core 3.46.0, visiteurs originaux + complétion des cibles implicites dans le pont
+Unités : 14
+Classes : 15
+Méthodes : 59
+Arcs : 44
+Sites internes : 46
+Sites hors graphe (externes ou cible non déclarée) : 48
+Sites internes réintégrés vers des méthodes implicites : 0
+Méthodes implicites cibles ajoutées : 0
+Arcs avant complétion : 44
+Sites non résolus exclus : 0
+Erreurs de compilation : 0
+Pont TP1 conforme sur validation : classes, méthodes et arcs/sites identiques aux faits canoniques.
+Corpus C4 : empreintes SHA-256 des 29 fichiers conformes.
+Complétion C4 : 69 cibles, 121 arcs supplémentaires et 144 sites conservés ; aucun corps synthétique inventé.
+{"status": "PASS", "executions": 112, "random_systems": 16, "arithmetic": "fractions exactes Python", "checks": ["couplages", "normalisation", "identifiants et départage", "fusions", "membres", "coupe et codes 0/3"]}
+BONUS VALIDÉS : C1, C2, C4 et invariants du modèle graphique. Le test de fenêtre C3 exige un écran.

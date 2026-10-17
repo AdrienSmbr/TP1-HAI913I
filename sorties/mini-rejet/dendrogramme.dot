@@ -1,0 +1,12 @@
+digraph Dendrogramme {
+  node [fontname="DejaVu Sans", shape=box];
+  n4 [label="#4 S=0.1666666667"];
+  n4 -> n2;
+  n4 -> n3;
+  n2 [label="demo.C"];
+  n3 [label="#3 S=0.6666666667"];
+  n3 -> n0;
+  n3 -> n1;
+  n0 [label="demo.A"];
+  n1 [label="demo.B"];
+}

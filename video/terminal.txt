@@ -1,0 +1,322 @@
+Script started on 2026-10-16 16:06:04+02:00 [COMMAND="bash --noprofile --rcfile /tmp/tp2-ide-style/captures-final/bashrc -i" TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="161" LINES="10"]
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ 
+
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ pwd && java -version && mvn -B -Dstyle.color=never clean package | tail -28
+
+/home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source
+openjdk version "17.0.20" 2026-07-21
+OpenJDK Runtime Environment (build 17.0.20+8-1-24.04-Ubuntu)
+OpenJDK 64-Bit Server VM (build 17.0.20+8-1-24.04-Ubuntu, mixed mode, sharing)
+[INFO] Compiling 3 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ hai913i-tp2 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running hai913i.tp2.AuditTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.118 s -- in hai913i.tp2.AuditTest
+[INFO] Running hai913i.tp2.PipelineTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s -- in hai913i.tp2.PipelineTest
+[INFO] Running hai913i.tp2.BonusTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 s -- in hai913i.tp2.BonusTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ hai913i-tp2 ---
+[INFO] Building jar: /home/etudiant/Documents/HAI913I/TP2/SAMBARREY_PREVOST-AVENEL_HAI913I_TP2/source/target/hai913i-tp2.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.546 s
+[INFO] Finished at: 2026-10-16T16:06:13+02:00
+[INFO] ------------------------------------------------------------------------
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar resources --cp 0.025 --out target/demo-025 > target/demo-025.txt && head -25 target/demo-025.txt
+
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 19
+A2 | Classes isolées : library.model.Dvd, library.service.LoanException
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  library.model.Item -- library.service.LoanService : 0.1081081081
+  library.service.LoanService -- library.service.LoanService.Loan : 0.1081081081
+  library.app.LibraryApp -- library.model.Item : 0.0810810811
+  library.app.LibraryApp -- library.service.Catalog : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService : 0.0810810811
+  library.app.LibraryApp -- library.service.LoanService.Loan : 0.0540540541
+  library.model.Item -- library.model.Member : 0.0540540541
+  library.model.Item -- library.service.Catalog : 0.0540540541
+  library.model.Member -- library.service.LoanService : 0.0540540541
+  library.service.LoanService -- library.service.Notifier : 0.0540540541
+  library.util.Statistics -- library.util.TextUtils : 0.0540540541
+  library.app.LibraryApp -- library.model.Book : 0.0270270270
+  library.app.LibraryApp -- library.util.Statistics : 0.0270270270
+  library.model.Book -- library.model.Item : 0.0270270270
+  library.model.Category -- library.model.Item : 0.0270270270
+  library.model.Loanable -- library.service.LoanService : 0.0270270270
+  library.model.Member -- library.service.ConsoleNotifier : 0.0270270270
+  library.service.Catalog -- library.service.LoanService : 0.0270270270
+  library.service.LoanService -- library.util.TextUtils : 0.0270270270
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ python3 scripts/dessiner.py taxrget/demo-025 && python3 ../video/annoter.py target/demo-025
+
+Images réellement reconstruites depuis target/demo-025/graphe.csv et target/demo-025/dendrogramme.dot
+Repères jaunes : isolés du graphe et branche du module principal ; valeurs et topologie inchangées.
+etudiant@dptinfo-pret:source$ feh --auto-zoom --scale-down --geometry 1860x900+30+30 target/demo-025/graphe-focus.png
+
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ sed -n '/B1\/B2/,/B3 |/p' target/demo-025.txt
+
+B1/B2 | Fusions : 14
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (0,7) -> 16 | S=0.0810810811
+  3 : (15,16) -> 17 | S=0.0608108108
+  4 : (13,14) -> 18 | S=0.0540540541
+  5 : (11,17) -> 19 | S=0.0405405405
+  6 : (6,8) -> 20 | S=0.0270270270
+  7 : (1,19) -> 21 | S=0.0108108108
+  8 : (12,21) -> 22 | S=0.0090090090
+  9 : (20,22) -> 23 | S=0.0077220077
+  10 : (2,23) -> 24 | S=0.0030030030
+  11 : (5,24) -> 25 | S=0.0027027027
+  12 : (18,25) -> 26 | S=0.0024570025
+  13 : (3,9) -> 27 | S=0.0000000000
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+etudiant@dptinfo-pret:source$ feh --auto-zoom --scale-down --geometry 1860x900+30+30 target/demo-025/dendrogramme-focus.png
+
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ sed -n '/B3 |/,$p' target/demo-025.txt
+
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0334620335 | library.app.LibraryApp, library.model.Book, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=2 | C=0.0270270270 | library.model.Member, library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ (java -jar target/hai913i-tp2.jar resources --cp 0x.045 --out target/demo-045 > target/demo-045.txt; code=$?; tail -13 target/demo-0 
+45.txt; exit $code)
+
+  14 : (26,27) -> 28 | S=0.0000000000
+B3 | CP=0.045 | Modules : 10 | Maximum M/2 : 7
+  Module 1 | n=5 | C=0.0594594595 | library.app.LibraryApp, library.model.Item, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Book
+  Module 3 | n=1 | C=NA (feuille) | library.model.Category
+  Module 4 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 5 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 6 | n=1 | C=NA (feuille) | library.model.Member
+  Module 7 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 8 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 9 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 10 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE REJETÉE : contrainte M/2 violée
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar resources --cp 0.015 --out target/demo-015 > target/demo-015.txt && grep 'B3 |' target/demo-015.tx 
+t && cat target/demo-015/modules.csv
+
+B3 | CP=0.015 | Modules : 4 | Maximum M/2 : 7
+B3 | COUPE ACCEPTÉE
+module;node;size;internalMean;cp;accepted;classes
+1;25;11;0.016216216216216217;0.015;true;library.app.LibraryApp|library.model.Book|library.model.Category|library.model.Item|library.model.Loanable|library.model.Member|library.service.Catalog|library.service.ConsoleNotifier|library.service.LoanService|library.service.LoanService.Loan|library.service.Notifier
+2;3;1;NA;0.015;true;library.model.Dvd
+3;9;1;NA;0.015;true;library.service.LoanException
+4;18;2;0.05405405405405406;0.015;true;library.util.Statistics|library.util.TextUtils
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ grep 'Member.*ConsoleNotifier' target/demo-025/modules.csv && grep 'Member' target/demo-025/couplages.csv
+
+5;20;2;0.02702702702702703;0.025;true;library.model.Member|library.service.ConsoleNotifier
+class;library.app.LibraryApp;library.model.Book;library.model.Category;library.model.Dvd;library.model.Item;library.model.Loanable;library.model.Member;library.service.Catalog;library.service.ConsoleNotifier;library.service.LoanException;library.service.LoanService;library.service.LoanService.Loan;library.service.Notifier;library.util.Statistics;library.util.TextUtils
+library.model.Member;0.0;0.0;0.0;0.0;0.05405405405405406;0.0;0.0;0.0;0.02702702702702703;0.0;0.05405405405405406;0.0;0.0;0.0;0.0
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar resources --cp 0.025 --out target/demo-repeat > /dev/null && diff -qr target/demo-025 target/demo- 
+repeat --exclude='*-image.dot' --exclude='*.png' && java -jar target/hai913i-tp2.jar --graph target/demo-025/graphe.csv --cp 0.025 --out target/demo-recharge > / 
+dev/null && cmp target/demo-025/modules.csv target/demo-recharge/modules.csv && printf 'Exports identiques apres rechargement.\n'
+
+Exports identiques apres rechargement.
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar targxet/hai913i-tp2.jar resources
+
+Erreur : --cp obligatoire : nombre fini entre 0 et 1
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+etudiant@dptinfo-pret:source$ echo $?
+
+2
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar resources --cp abc
+
+Erreur : For input string: "abc"
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+etudiant@dptinfo-pret:source$ echo $?
+
+2
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar /chemin/inexistant --cp 0.025
+
+Erreur : dossier introuvable : /chemin/inexistant
+Usage : java -jar target/hai913i-tp2.jar DOSSIER --cp N [--prefix NOM] [--out DOSSIER]
+     ou java -jar target/hai913i-tp2.jar --graph FICHIER.csv --cp N [--out DOSSIER]
+Options bonus : --linkage average|single ; --inheritance FICHIER.csv ; --gui
+CP obligatoire, fini et compris entre 0 et 1 (point décimal).
+Codes : 0 = coupe acceptée, 2 = entrée invalide, 3 = coupe rejetée (exports conservés).
+--graph recharge notre export pondéré ; les compteurs de faits ne sont alors pas disponibles.
+etudiant@dptinfo-pret:source$ echo $?
+
+2
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar resources --cp 0.025 --linkage single --out target/demo-single > target/demo-single.txt && grep -E 
+ 'C1|  1 :|  2 :|B3' target/demo-single.txt && tail -9 target/demo-single.txt
+
+C1 | Variante : lien simple (maximum des couplages intergroupes)
+  1 : (4,10) -> 15 | S=0.1081081081
+  2 : (11,15) -> 16 | S=0.1081081081
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+B3 | COUPE ACCEPTÉE
+B3 | CP=0.025 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=8 | C=0.0289575290 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Member, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan, library.service.Notifier
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Loanable
+  Module 5 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=2 | C=0.0540540541 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ (java -jar target/hai913i-tp2.jar resources --cp 0.025 --inheritance resources/facts-validation-inheritance.csv --out target/demo-e 
+nrichi > target/demo-enrichi.txt; code=$?; head -6 target/demo-enrichi.txt; tail -10 target/demo-enrichi.txt; exit $code)
+
+C2 | Appels + héritage/implémentation : 37 arcs + 4 relations internes ; dénominateur = 41 ; relations externes ignorées = 3
+A0 | Classes : 15 | Méthodes : 59 | Arcs : 44
+A1 | Arcs internes écartés : 7 | Arcs inter-classes : 37
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 15 | Arêtes : 22
+A2 | Classes isolées : library.service.LoanException
+B3 | CP=0.025 | Modules : 8 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0313588850 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Loanable, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=1 | C=NA (feuille) | library.model.Member
+  Module 5 | n=1 | C=NA (feuille) | library.service.ConsoleNotifier
+  Module 6 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 7 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 8 | n=2 | C=0.0487804878 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE REJETÉE : contrainte M/2 violée
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar resources --cp 0.020 --inheritance resources/facts-validation-inheritance.csv --out target/demo-en 
+richi-020 | tail -10
+
+  14 : (9,27) -> 28 | S=0.0000000000
+B3 | CP=0.02 | Modules : 7 | Maximum M/2 : 7
+  Module 1 | n=7 | C=0.0313588850 | library.app.LibraryApp, library.model.Book, library.model.Item, library.model.Loanable, library.service.Catalog, library.service.LoanService, library.service.LoanService.Loan
+  Module 2 | n=1 | C=NA (feuille) | library.model.Category
+  Module 3 | n=1 | C=NA (feuille) | library.model.Dvd
+  Module 4 | n=2 | C=0.0243902439 | library.model.Member, library.service.ConsoleNotifier
+  Module 5 | n=1 | C=NA (feuille) | library.service.LoanException
+  Module 6 | n=1 | C=NA (feuille) | library.service.Notifier
+  Module 7 | n=2 | C=0.0487804878 | library.util.Statistics, library.util.TextUtils
+B3 | COUPE ACCEPTÉE
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ sh scripts/extraire-tp1.sh bonus/tp1-extracteur target/demo-extraction | tail -16
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.507 s
+[INFO] Finished at: 2026-10-16T16:12:03+02:00
+[INFO] ------------------------------------------------------------------------
+Extracteur : TP1, JDT Core 3.46.0, visiteurs originaux + complétion des cibles implicites dans le pont
+Unités : 29
+Classes : 30
+Méthodes : 199
+Arcs : 267
+Sites internes : 326
+Sites hors graphe (externes ou cible non déclarée) : 740
+Sites internes réintégrés vers des méthodes implicites : 144
+Méthodes implicites cibles ajoutées : 69
+Arcs avant complétion : 146
+Sites non résolus exclus : 0
+Erreurs de compilation : 0
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ java -jar target/hai913i-tp2.jar target/demo-extraction --cp 0.010 --out target/demo-second > target/demo-second.txt && head -5 tar 
+get/demo-second.txt && tail -17 target/demo-second.txt
+
+A0 | Classes : 30 | Méthodes : 199 | Arcs : 267
+A1 | Arcs internes écartés : 77 | Arcs inter-classes : 190
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 30 | Arêtes : 52
+A2 | Classes isolées : hai913i.tp1.cli.UsageException, hai913i.tp1.extract.AstPrinter, hai913i.tp1.model.TypeKind, hai913i.tp1.model.Visibility
+B3 | CP=0.01 | Modules : 15 | Maximum M/2 : 15
+  Module 1 | n=3 | C=0.0210526316 | hai913i.tp1.Main, hai913i.tp1.cli.Analyzer, hai913i.tp1.cli.Options
+  Module 2 | n=12 | C=0.0109250399 | hai913i.tp1.callgraph.CallGraph, hai913i.tp1.callgraph.CallGraphBuilder, hai913i.tp1.metrics.MetricsReport, hai913i.tp1.metrics.MetricsService, hai913i.tp1.model.CallFact, hai913i.tp1.model.FieldFact, hai913i.tp1.model.MethodFact, hai913i.tp1.model.ProjectFacts, hai913i.tp1.model.TypeFact, hai913i.tp1.report.TextReport, hai913i.tp1.spoon.SpoonRawCounts, hai913i.tp1.ui.AnalyzerWindow
+  Module 3 | n=1 | C=NA (feuille) | hai913i.tp1.cli.Action
+  Module 4 | n=1 | C=NA (feuille) | hai913i.tp1.cli.CommandLine
+  Module 5 | n=1 | C=NA (feuille) | hai913i.tp1.cli.UsageException
+  Module 6 | n=1 | C=NA (feuille) | hai913i.tp1.extract.AstPrinter
+  Module 7 | n=1 | C=NA (feuille) | hai913i.tp1.extract.CallCollector
+  Module 8 | n=2 | C=0.0105263158 | hai913i.tp1.extract.FactExtractor, hai913i.tp1.parse.JdtParser.ParsedFile
+  Module 9 | n=1 | C=NA (feuille) | hai913i.tp1.extract.StructureVisitor
+  Module 10 | n=1 | C=NA (feuille) | hai913i.tp1.metrics.Ranking
+  Module 11 | n=1 | C=NA (feuille) | hai913i.tp1.model.TypeKind
+  Module 12 | n=1 | C=NA (feuille) | hai913i.tp1.model.Visibility
+  Module 13 | n=2 | C=0.0105263158 | hai913i.tp1.parse.JdtParser, hai913i.tp1.parse.ProjectSources
+  Module 14 | n=1 | C=NA (feuille) | hai913i.tp1.report.DotReport
+  Module 15 | n=1 | C=NA (feuille) | hai913i.tp1.spoon.SpoonExtractor
+B3 | COUPE ACCEPTÉE
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ (head -12 target/demo-extraction/cibles-reintegrees.csv; java -jar target/hai913i-tp2.jar target/demo-extraction --cp 0.025 --out t 
+arget/demo-second-rejet > target/demo-second-rejet.txt; code=$?; grep 'B3 |' target/demo-second-rejet.txt; exit $code)
+
+target;sites;owner;kind
+hai913i.tp1.callgraph.CallGraph#externalCalls();1;hai913i.tp1.callgraph.CallGraph;RECORD
+hai913i.tp1.callgraph.CallGraph#nodes();1;hai913i.tp1.callgraph.CallGraph;RECORD
+hai913i.tp1.callgraph.CallGraph#outgoing();3;hai913i.tp1.callgraph.CallGraph;RECORD
+hai913i.tp1.callgraph.CallGraph#unresolvedCalls();1;hai913i.tp1.callgraph.CallGraph;RECORD
+hai913i.tp1.cli.Action#valueOf(java.lang.String);1;hai913i.tp1.cli.Action;ENUM
+hai913i.tp1.cli.Options#action();4;hai913i.tp1.cli.Options;RECORD
+hai913i.tp1.cli.Options#astFile();2;hai913i.tp1.cli.Options;RECORD
+hai913i.tp1.cli.Options#callees();1;hai913i.tp1.cli.Options;RECORD
+hai913i.tp1.cli.Options#callers();1;hai913i.tp1.cli.Options;RECORD
+hai913i.tp1.cli.Options#dotFile();3;hai913i.tp1.cli.Options;RECORD
+hai913i.tp1.cli.Options#dotPackage();1;hai913i.tp1.cli.Options;RECORD
+B3 | CP=0.025 | Modules : 23 | Maximum M/2 : 15
+B3 | COUPE REJETÉE : contrainte M/2 violée
+etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ etudiant@dptinfo-pret:source$ cat target/demo-export-gui/parametres.txt && grep 'B3 |' target/demo-export-gui/resultats.txt
+
+linkage=single
+relation=calls
+cp=0.045
+B3 | CP=0.045 | Modules : 9 | Maximum M/2 : 7
+B3 | COUPE REJETÉE : contrainte M/2 violée
+etudiant@dptinfo-pret:source$ 
+
+exit

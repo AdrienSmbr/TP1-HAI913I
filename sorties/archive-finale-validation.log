@@ -1,0 +1,6 @@
+Version finale : style TP1 sur un véritable éditeur VS Code avec terminal Bash intégré, feh et Swing.
+Le code, les données et les scripts d’analyse sont identiques octet par octet à la copie fraîche validée : 114 fichiers.
+Cette copie a passé la construction, les 24 tests JUnit, les extractions canonique et C4, le manifeste du corpus et 112 comparaisons oracle.
+Le README décrit le nouveau dispositif de capture ; seuls les documents et scripts vidéo ont changé.
+La construction et les 24 tests sont rejoués au début de la capture finale.
+Voir copie-fraiche.log et bonus-validation.log pour la validation du moteur.

@@ -1,0 +1,15 @@
+step;id;left;right;similarity;internalMean;members
+1;15;4;10;0.0975609756097561;0.0975609756097561;library.model.Item|library.service.LoanService
+2;16;0;7;0.07317073170731707;0.07317073170731707;library.app.LibraryApp|library.service.Catalog
+3;17;15;16;0.054878048780487805;0.06504065040650407;library.app.LibraryApp|library.model.Item|library.service.Catalog|library.service.LoanService
+4;18;13;14;0.04878048780487805;0.04878048780487805;library.util.Statistics|library.util.TextUtils
+5;19;11;17;0.03658536585365854;0.053658536585365846;library.app.LibraryApp|library.model.Item|library.service.Catalog|library.service.LoanService|library.service.LoanService.Loan
+6;20;6;8;0.024390243902439025;0.024390243902439025;library.model.Member|library.service.ConsoleNotifier
+7;21;1;19;0.014634146341463417;0.04065040650406504;library.app.LibraryApp|library.model.Book|library.model.Item|library.service.Catalog|library.service.LoanService|library.service.LoanService.Loan
+8;22;12;20;0.012195121951219513;0.016260162601626018;library.model.Member|library.service.ConsoleNotifier|library.service.Notifier
+9;23;5;21;0.008130081300813009;0.0313588850174216;library.app.LibraryApp|library.model.Book|library.model.Item|library.model.Loanable|library.service.Catalog|library.service.LoanService|library.service.LoanService.Loan
+10;24;22;23;0.006968641114982579;0.01897018970189702;library.app.LibraryApp|library.model.Book|library.model.Item|library.model.Loanable|library.model.Member|library.service.Catalog|library.service.ConsoleNotifier|library.service.LoanService|library.service.LoanService.Loan|library.service.Notifier
+11;25;2;24;0.0024390243902439024;0.015964523281596456;library.app.LibraryApp|library.model.Book|library.model.Category|library.model.Item|library.model.Loanable|library.model.Member|library.service.Catalog|library.service.ConsoleNotifier|library.service.LoanService|library.service.LoanService.Loan|library.service.Notifier
+12;26;3;25;0.0022172949002217295;0.013673318551367334;library.app.LibraryApp|library.model.Book|library.model.Category|library.model.Dvd|library.model.Item|library.model.Loanable|library.model.Member|library.service.Catalog|library.service.ConsoleNotifier|library.service.LoanService|library.service.LoanService.Loan|library.service.Notifier
+13;27;18;26;0.0020325203252032522;0.010989010989010992;library.app.LibraryApp|library.model.Book|library.model.Category|library.model.Dvd|library.model.Item|library.model.Loanable|library.model.Member|library.service.Catalog|library.service.ConsoleNotifier|library.service.LoanService|library.service.LoanService.Loan|library.service.Notifier|library.util.Statistics|library.util.TextUtils
+14;28;9;27;0.0;0.009523809523809526;library.app.LibraryApp|library.model.Book|library.model.Category|library.model.Dvd|library.model.Item|library.model.Loanable|library.model.Member|library.service.Catalog|library.service.ConsoleNotifier|library.service.LoanException|library.service.LoanService|library.service.LoanService.Loan|library.service.Notifier|library.util.Statistics|library.util.TextUtils

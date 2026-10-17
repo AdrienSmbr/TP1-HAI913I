@@ -1,0 +1,8 @@
+type;target;kind
+library.model.Book;library.model.Item;extends
+library.model.Category;java.lang.Enum;extends
+library.model.Dvd;library.model.Item;extends
+library.model.Item;library.model.Loanable;implements
+library.service.ConsoleNotifier;library.service.Notifier;implements
+library.service.LoanException;java.lang.Exception;extends
+library.service.LoanException;java.lang.Throwable;extends

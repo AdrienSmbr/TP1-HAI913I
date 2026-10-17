@@ -1,0 +1,29 @@
+graph Modules {
+  node [shape=box, fontname="DejaVu Sans"];
+  subgraph cluster_1 { label="Module 1 | C=0.0334620335";"library.app.LibraryApp" [label="LibraryApp", tooltip="library.app.LibraryApp"];"library.model.Book" [label="Book", tooltip="library.model.Book"];"library.model.Item" [label="Item", tooltip="library.model.Item"];"library.service.Catalog" [label="Catalog", tooltip="library.service.Catalog"];"library.service.LoanService" [label="LoanService", tooltip="library.service.LoanService"];"library.service.LoanService.Loan" [label="Loan", tooltip="library.service.LoanService.Loan"];"library.service.Notifier" [label="Notifier", tooltip="library.service.Notifier"];}
+  subgraph cluster_2 { label="Module 2 | C=NA";"library.model.Category" [label="Category", tooltip="library.model.Category"];}
+  subgraph cluster_3 { label="Module 3 | C=NA";"library.model.Dvd" [label="Dvd", tooltip="library.model.Dvd"];}
+  subgraph cluster_4 { label="Module 4 | C=NA";"library.model.Loanable" [label="Loanable", tooltip="library.model.Loanable"];}
+  subgraph cluster_5 { label="Module 5 | C=0.0270270270";"library.model.Member" [label="Member", tooltip="library.model.Member"];"library.service.ConsoleNotifier" [label="ConsoleNotifier", tooltip="library.service.ConsoleNotifier"];}
+  subgraph cluster_6 { label="Module 6 | C=NA";"library.service.LoanException" [label="LoanException", tooltip="library.service.LoanException"];}
+  subgraph cluster_7 { label="Module 7 | C=0.0540540541";"library.util.Statistics" [label="Statistics", tooltip="library.util.Statistics"];"library.util.TextUtils" [label="TextUtils", tooltip="library.util.TextUtils"];}
+"library.app.LibraryApp" -- "library.model.Book" [style=solid, label="0.0270"];
+"library.app.LibraryApp" -- "library.model.Item" [style=solid, label="0.0811"];
+"library.app.LibraryApp" -- "library.service.Catalog" [style=solid, label="0.0811"];
+"library.app.LibraryApp" -- "library.service.LoanService" [style=solid, label="0.0811"];
+"library.app.LibraryApp" -- "library.service.LoanService.Loan" [style=solid, label="0.0541"];
+"library.app.LibraryApp" -- "library.util.Statistics" [style=dashed, label="0.0270"];
+"library.model.Book" -- "library.model.Item" [style=solid, label="0.0270"];
+"library.model.Category" -- "library.model.Item" [style=dashed, label="0.0270"];
+"library.model.Item" -- "library.model.Member" [style=dashed, label="0.0541"];
+"library.model.Item" -- "library.service.Catalog" [style=solid, label="0.0541"];
+"library.model.Item" -- "library.service.LoanService" [style=solid, label="0.1081"];
+"library.model.Loanable" -- "library.service.LoanService" [style=dashed, label="0.0270"];
+"library.model.Member" -- "library.service.ConsoleNotifier" [style=solid, label="0.0270"];
+"library.model.Member" -- "library.service.LoanService" [style=dashed, label="0.0541"];
+"library.service.Catalog" -- "library.service.LoanService" [style=solid, label="0.0270"];
+"library.service.LoanService" -- "library.service.LoanService.Loan" [style=solid, label="0.1081"];
+"library.service.LoanService" -- "library.service.Notifier" [style=solid, label="0.0541"];
+"library.service.LoanService" -- "library.util.TextUtils" [style=dashed, label="0.0270"];
+"library.util.Statistics" -- "library.util.TextUtils" [style=solid, label="0.0541"];
+}

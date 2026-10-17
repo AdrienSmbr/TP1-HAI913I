@@ -1,0 +1,59 @@
+#58 S=0.0000000000 n=30
+  #56 S=0.0000000000 n=2
+    #20 hai913i.tp1.model.TypeKind
+    #21 hai913i.tp1.model.Visibility
+  #57 S=0.0000000000 n=28
+    #54 S=0.0001096491 n=26
+      #45 S=0.0052631579 n=2
+        #9 hai913i.tp1.extract.CallCollector
+        #11 hai913i.tp1.extract.StructureVisitor
+      #53 S=0.0002392344 n=24
+        #44 S=0.0052631579 n=2
+          #3 hai913i.tp1.cli.Action
+          #5 hai913i.tp1.cli.CommandLine
+        #52 S=0.0002506266 n=22
+          #14 hai913i.tp1.metrics.Ranking
+          #51 S=0.0005263158 n=21
+            #27 hai913i.tp1.spoon.SpoonExtractor
+            #50 S=0.0008310249 n=20
+              #25 hai913i.tp1.report.DotReport
+              #49 S=0.0010025063 n=19
+                #47 S=0.0026315789 n=7
+                  #40 S=0.0105263158 n=2
+                    #22 hai913i.tp1.parse.JdtParser
+                    #24 hai913i.tp1.parse.ProjectSources
+                  #46 S=0.0043859649 n=5
+                    #39 S=0.0105263158 n=2
+                      #10 hai913i.tp1.extract.FactExtractor
+                      #23 hai913i.tp1.parse.JdtParser.ParsedFile
+                    #42 S=0.0078947368 n=3
+                      #0 hai913i.tp1.Main
+                      #32 S=0.0473684211 n=2
+                        #4 hai913i.tp1.cli.Analyzer
+                        #6 hai913i.tp1.cli.Options
+                #48 S=0.0014354067 n=12
+                  #16 hai913i.tp1.model.FieldFact
+                  #43 S=0.0058479532 n=11
+                    #36 S=0.0157894737 n=2
+                      #2 hai913i.tp1.callgraph.CallGraphBuilder
+                      #15 hai913i.tp1.model.CallFact
+                    #41 S=0.0092105263 n=9
+                      #37 S=0.0157894737 n=4
+                        #13 hai913i.tp1.metrics.MetricsService
+                        #33 S=0.0315789474 n=3
+                          #19 hai913i.tp1.model.TypeFact
+                          #31 S=0.0526315789 n=2
+                            #18 hai913i.tp1.model.ProjectFacts
+                            #29 hai913i.tp1.ui.AnalyzerWindow
+                      #38 S=0.0118421053 n=5
+                        #17 hai913i.tp1.model.MethodFact
+                        #35 S=0.0157894737 n=4
+                          #1 hai913i.tp1.callgraph.CallGraph
+                          #34 S=0.0263157895 n=3
+                            #28 hai913i.tp1.spoon.SpoonRawCounts
+                            #30 S=0.0894736842 n=2
+                              #12 hai913i.tp1.metrics.MetricsReport
+                              #26 hai913i.tp1.report.TextReport
+    #55 S=0.0000000000 n=2
+      #7 hai913i.tp1.cli.UsageException
+      #8 hai913i.tp1.extract.AstPrinter

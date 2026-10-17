@@ -8,6 +8,8 @@
     <artifactId>hai913i-tp1-analyzer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>HAI913I — Analyse statique et architectures (TP1 + TP2)</name>
+    <description>Des sources Java aux faits, métriques, graphes et modules candidats.</description>
 
     <properties>
         <!-- release compile AUSSI contre l'API 17 : une API trop recente devient
@@ -75,7 +77,7 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>hai913i.tp1.Main</mainClass>
+                                    <mainClass>hai913i.Main</mainClass>
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>

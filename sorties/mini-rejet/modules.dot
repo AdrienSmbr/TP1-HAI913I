@@ -1,0 +1,7 @@
+graph Modules {
+  node [shape=box, fontname="DejaVu Sans"];
+  subgraph cluster_1 { label="Module 1 | C=0.6666666667";"demo.A";"demo.B";}
+  subgraph cluster_2 { label="Module 2 | C=NA";"demo.C";}
+"demo.A" -- "demo.B" [style=solid, label="0.6667"];
+"demo.B" -- "demo.C" [style=dashed, label="0.3333"];
+}

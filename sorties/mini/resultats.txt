@@ -1,0 +1,14 @@
+A0 | Classes : 3 | Méthodes : 5 | Arcs : 4
+A1 | Arcs internes écartés : 1 | Arcs inter-classes : 3
+A1 | Somme sur les couples non ordonnés : 1.0000000000
+A2 | Nœuds : 3 | Arêtes : 2
+A2 | Classes isolées : 
+A1/A2 | Couples par couplage décroissant (les cinq premiers en tête) :
+  demo.A -- demo.B : 0.6666666667
+  demo.B -- demo.C : 0.3333333333
+B1/B2 | Fusions : 2
+  1 : (0,1) -> 3 | S=0.6666666667
+  2 : (2,3) -> 4 | S=0.1666666667
+B3 | CP=0.2 | Modules : 1 | Maximum M/2 : 1
+  Module 1 | n=3 | C=0.3333333333 | demo.A, demo.B, demo.C
+B3 | COUPE ACCEPTÉE

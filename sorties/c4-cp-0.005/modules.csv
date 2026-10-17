@@ -1,0 +1,10 @@
+module;node;size;internalMean;cp;accepted;classes
+1;50;20;0.005041551246537396;0.005;true;hai913i.tp1.Main|hai913i.tp1.callgraph.CallGraph|hai913i.tp1.callgraph.CallGraphBuilder|hai913i.tp1.cli.Analyzer|hai913i.tp1.cli.Options|hai913i.tp1.extract.FactExtractor|hai913i.tp1.metrics.MetricsReport|hai913i.tp1.metrics.MetricsService|hai913i.tp1.model.CallFact|hai913i.tp1.model.FieldFact|hai913i.tp1.model.MethodFact|hai913i.tp1.model.ProjectFacts|hai913i.tp1.model.TypeFact|hai913i.tp1.parse.JdtParser|hai913i.tp1.parse.JdtParser.ParsedFile|hai913i.tp1.parse.ProjectSources|hai913i.tp1.report.DotReport|hai913i.tp1.report.TextReport|hai913i.tp1.spoon.SpoonRawCounts|hai913i.tp1.ui.AnalyzerWindow
+2;44;2;0.005263157894736842;0.005;true;hai913i.tp1.cli.Action|hai913i.tp1.cli.CommandLine
+3;7;1;NA;0.005;true;hai913i.tp1.cli.UsageException
+4;8;1;NA;0.005;true;hai913i.tp1.extract.AstPrinter
+5;45;2;0.005263157894736842;0.005;true;hai913i.tp1.extract.CallCollector|hai913i.tp1.extract.StructureVisitor
+6;14;1;NA;0.005;true;hai913i.tp1.metrics.Ranking
+7;20;1;NA;0.005;true;hai913i.tp1.model.TypeKind
+8;21;1;NA;0.005;true;hai913i.tp1.model.Visibility
+9;27;1;NA;0.005;true;hai913i.tp1.spoon.SpoonExtractor

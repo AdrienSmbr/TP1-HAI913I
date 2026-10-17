@@ -1,0 +1,12 @@
+{
+  "duration_seconds": 463.25,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 12,
+  "capture": "Robot, VS Code avec terminal Bash intégré, feh et Swing ; habillage inspiré du TP1",
+  "chapters": 25,
+  "source_readings": 4,
+  "invalid_input_cases": 3
+}

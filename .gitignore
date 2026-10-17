@@ -51,3 +51,14 @@ rapport/*.toc
 rapport/*.synctex.gz
 rapport/*.fls
 rapport/*.fdb_latexmk
+
+### Livrables / scripts Python ###
+__pycache__/
+*.pyc
+*.class
+*.jar
+video/*.zip
+*-nouvelle.zip
+core
+core.*
+!.mvn/wrapper/maven-wrapper.jar
