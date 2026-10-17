@@ -95,6 +95,8 @@ public class AnalyzerWindow extends JFrame {
         JButton analyse = new JButton("Analyser");
         analyse.addActionListener(event -> analyse());
         panel.add(analyse);
+        cpField.setEditor(new JSpinner.NumberEditor(cpField, "0.000"));
+        ((JSpinner.DefaultEditor) cpField.getEditor()).getTextField().setColumns(5);
         panel.add(new JLabel("CP :")); panel.add(cpField);
         modulesButton.setEnabled(false);
         modulesButton.addActionListener(event -> showModules()); panel.add(modulesButton);

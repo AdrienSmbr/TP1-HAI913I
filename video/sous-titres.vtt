@@ -1,0 +1,129 @@
+WEBVTT
+
+00:00:00.001 --> 00:00:15.082
+Construction du projet commun
+Suite du TP1 : un seul projet Maven et un seul JAR. Compilation avec -DskipTests ; cette capture ne relance pas la suite de tests.
+
+00:00:15.082 --> 00:00:28.940
+Continuité · Retrouver l'analyse du TP1
+La bibliothèque du TP1 reste notre point de départ : mêmes sources Java, mêmes métriques et même analyseur JDT.
+
+00:00:28.940 --> 00:00:46.748
+Continuité · Lire le pont entre les deux TP
+L'adaptateur réutilise ProjectFacts. Il conserve les classes, les méthodes et les arcs internes résolus pour alimenter le moteur TP2.
+
+00:00:46.748 --> 00:01:07.757
+Continuité · Des sources aux modules en une commande
+--sources appelle directement l'extracteur du TP1. Les résultats suivants viennent des fichiers Java, sans CSV intermédiaire.
+
+00:01:07.757 --> 00:01:21.847
+Continuité · Retrouver l'interface du TP1
+L'interface conserve la structure, les appels et les métriques. Le bouton Modules (TP2) sera activé après l'analyse des sources.
+
+00:01:21.847 --> 00:01:39.966
+Continuité · Ouvrir les modules depuis le TP1
+Un clic transmet les faits déjà en mémoire : pas de réextraction et pas de CSV. CP vaut ici 0,025, avec le lien moyen.
+
+00:01:39.966 --> 00:01:53.354
+Continuité · Faire varier CP dans la même application
+À 0,045 la coupe est rejetée ; à 0,025 elle est acceptée. Le graphe reste identique : seul le parcours de coupe change.
+
+00:01:53.354 --> 00:02:06.783
+A0 · Revenir aux faits de référence du sujet
+On distingue l'extraction réelle précédente des CSV canoniques fournis : les chiffres de référence du TP2 se lisent sur ces CSV.
+
+00:02:06.783 --> 00:02:25.743
+A1 · Du code à la formule du couplage
+Chaque arc interclasse ajoute 1 ; sites ne multiplie pas le poids. Le nombre d'arcs interclasses sert ensuite de dénominateur.
+
+00:02:25.743 --> 00:02:42.786
+A0–A2 · Charger les faits et calculer le couplage
+15 classes, 59 méthodes et 44 arcs. On écarte 7 arcs internes : le dénominateur est 37, sans compter les sites d'appel.
+
+00:02:42.786 --> 00:03:20.751
+A2 · Graphe pondéré et image produite
+19 arêtes ; Dvd et LoanException sont conservées comme nœuds isolés. Les images sont calculées à partir des exports de cette exécution.
+
+00:03:20.751 --> 00:03:39.333
+B1 · Lire le lien moyen dans le code
+La somme parcourt tous les couples, même nuls, puis divise par le produit des tailles. Le lien simple retourne uniquement le maximum.
+
+00:03:39.333 --> 00:03:58.809
+B1 · Départager les égalités sans dérive
+Les candidats suivent les identifiants croissants. On calcule le vrai maximum, puis on prend le premier couple situé à moins de 10⁻⁹.
+
+00:03:58.809 --> 00:04:33.625
+B1–B2 · Fusions et dendrogramme
+Lien moyen, zéros compris. Les identifiants tranchent les égalités. Quatorze fusions, dont les deux dernières à zéro.
+
+00:04:33.625 --> 00:04:52.810
+B3 · La coupe est une lecture de branches
+mean vient de internalMean, pas de la similarité de fusion. Le test est strict : mean > cp ; sinon on descend dans les deux fils.
+
+00:04:52.810 --> 00:05:02.189
+B3 · Coupe à CP = 0,025
+Sept modules : plafond respecté. Le module principal a C̄ = 0,033462, supérieur à CP ; sa similarité de fusion ne sert pas à la coupe.
+
+00:05:02.189 --> 00:05:19.353
+B3 · Coupe rejetée à CP = 0,045
+Dix modules dépassent le plafond floor(15/2) = 7. Le code 3 signale ce rejet et les exports restent disponibles.
+
+00:05:19.353 --> 00:05:37.917
+B4 · Pourquoi retenir CP = 0,025 ?
+0,015 donne quatre modules dont un bloc de onze classes ; 0,025 donne sept modules ; 0,045 dépasse le plafond. Le choix reste discutable.
+
+00:05:37.917 --> 00:05:52.009
+B4 · Member–ConsoleNotifier : un module discutable
+Un appel au getter getName donne 1/37 > 0,025. Cette paire mélange domaine et affichage ; les appels ne suffisent pas à définir une responsabilité.
+
+00:05:52.009 --> 00:06:25.953
+Déterminisme et rechargement
+Une seconde exécution donne les mêmes fichiers. Le graphe CSV rechargé redonne les mêmes modules, y compris les classes isolées.
+
+00:06:25.953 --> 00:06:44.463
+Robustesse · Un seuil CP absent est refusé
+Le seuil doit être explicite : l'outil affiche le diagnostic et l'usage, puis rend le code 2. Aucun seuil n'est choisi silencieusement.
+
+00:06:44.463 --> 00:07:03.446
+Robustesse · Un seuil CP mal formé est refusé
+Une chaîne à la place d'un nombre ne lance pas de calcul. Le message reste lisible, sans pile d'exception ; code de sortie 2.
+
+00:07:03.446 --> 00:07:24.520
+Robustesse · Un dossier inexistant est refusé
+Avec un CP valide, un chemin de données inexistant provoque un diagnostic et le code 2. Ce n'est pas le code 3 d'une coupe rejetée.
+
+00:07:24.520 --> 00:07:45.595
+C1 · Lien simple : divergence dès la deuxième fusion
+Le maximum Loan–LoanService vaut 4/37. Leur moyenne avec Item vaut seulement 2/37 : le lien moyen choisit LibraryApp–Catalog à 3/37.
+
+00:07:45.595 --> 00:08:07.895
+C2 · Ajouter héritage et implémentation
+Quatre relations internes s'ajoutent aux 37 arcs : dénominateur 41, 22 arêtes. À seuil constant, huit modules : coupe rejetée.
+
+00:08:07.895 --> 00:08:25.455
+C2 · Recalibrer CP en déclarant le changement
+À CP = 0,020, la coupe enrichie donne sept modules acceptés. La comparaison à 0,025 reste fournie : les relations et l'échelle ont changé.
+
+00:08:25.455 --> 00:08:40.988
+C4 · Réextraction réelle du second projet par le TP1
+Les visiteurs JDT du TP1 analysent maintenant les 29 fichiers de l'analyseur. Le pont écrit les faits ; aucune table préexistante n'est utilisée ici.
+
+00:08:40.988 --> 00:09:01.762
+C4 · Comparer les modules du second système
+30 classes, 199 méthodes, 267 arcs ; 190 sont interclasses. À CP = 0,010, quinze modules respectent le plafond de quinze.
+
+00:09:01.762 --> 00:09:24.626
+C4 · Cibles implicites réintégrées et effet du seuil
+Le pont conserve désormais 144 sites vers 69 méthodes implicites résolues : 121 arcs de plus. À 0,025, les 23 modules restent rejetés.
+
+00:09:24.626 --> 00:09:55.040
+C3 · Explorer les mêmes calculs dans Swing
+La recherche et la sélection expliquent une classe ; changer CP recalcule la coupe. Les filtres d'affichage ne modifient pas les données.
+
+00:09:55.040 --> 00:10:11.453
+C3 · Exporter la coupe courante
+Après changement de CP, le dialogue écrit un résumé et des paramètres à jour. La provenance de la relation est conservée.
+
+00:10:11.453 --> 00:10:24.250
+Export interactif vérifié et fin de démonstration
+Le résumé exporté est régénéré avec CP et la liaison courants. Les limites et la déclaration d'aide IA sont détaillées dans le rapport.

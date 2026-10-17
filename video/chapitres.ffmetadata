@@ -1,0 +1,163 @@
+;FFMETADATA1
+title=HAI913I · Du TP1 au TP2
+comment=Capture réelle du projet intégré ; gestes automatisés avec Robot, sans voix.
+[CHAPTER]
+TIMEBASE=1/1000
+START=1
+END=15082
+title=Construction du projet commun
+[CHAPTER]
+TIMEBASE=1/1000
+START=15082
+END=28940
+title=Continuité · Retrouver l'analyse du TP1
+[CHAPTER]
+TIMEBASE=1/1000
+START=28940
+END=46748
+title=Continuité · Lire le pont entre les deux TP
+[CHAPTER]
+TIMEBASE=1/1000
+START=46748
+END=67757
+title=Continuité · Des sources aux modules en une commande
+[CHAPTER]
+TIMEBASE=1/1000
+START=67757
+END=81847
+title=Continuité · Retrouver l'interface du TP1
+[CHAPTER]
+TIMEBASE=1/1000
+START=81847
+END=99966
+title=Continuité · Ouvrir les modules depuis le TP1
+[CHAPTER]
+TIMEBASE=1/1000
+START=99966
+END=113354
+title=Continuité · Faire varier CP dans la même application
+[CHAPTER]
+TIMEBASE=1/1000
+START=113354
+END=126783
+title=A0 · Revenir aux faits de référence du sujet
+[CHAPTER]
+TIMEBASE=1/1000
+START=126783
+END=145743
+title=A1 · Du code à la formule du couplage
+[CHAPTER]
+TIMEBASE=1/1000
+START=145743
+END=162786
+title=A0–A2 · Charger les faits et calculer le couplage
+[CHAPTER]
+TIMEBASE=1/1000
+START=162786
+END=200751
+title=A2 · Graphe pondéré et image produite
+[CHAPTER]
+TIMEBASE=1/1000
+START=200751
+END=219333
+title=B1 · Lire le lien moyen dans le code
+[CHAPTER]
+TIMEBASE=1/1000
+START=219333
+END=238809
+title=B1 · Départager les égalités sans dérive
+[CHAPTER]
+TIMEBASE=1/1000
+START=238809
+END=273625
+title=B1–B2 · Fusions et dendrogramme
+[CHAPTER]
+TIMEBASE=1/1000
+START=273625
+END=292810
+title=B3 · La coupe est une lecture de branches
+[CHAPTER]
+TIMEBASE=1/1000
+START=292810
+END=302189
+title=B3 · Coupe à CP \= 0,025
+[CHAPTER]
+TIMEBASE=1/1000
+START=302189
+END=319353
+title=B3 · Coupe rejetée à CP \= 0,045
+[CHAPTER]
+TIMEBASE=1/1000
+START=319353
+END=337917
+title=B4 · Pourquoi retenir CP \= 0,025 ?
+[CHAPTER]
+TIMEBASE=1/1000
+START=337917
+END=352009
+title=B4 · Member–ConsoleNotifier : un module discutable
+[CHAPTER]
+TIMEBASE=1/1000
+START=352009
+END=385953
+title=Déterminisme et rechargement
+[CHAPTER]
+TIMEBASE=1/1000
+START=385953
+END=404463
+title=Robustesse · Un seuil CP absent est refusé
+[CHAPTER]
+TIMEBASE=1/1000
+START=404463
+END=423446
+title=Robustesse · Un seuil CP mal formé est refusé
+[CHAPTER]
+TIMEBASE=1/1000
+START=423446
+END=444520
+title=Robustesse · Un dossier inexistant est refusé
+[CHAPTER]
+TIMEBASE=1/1000
+START=444520
+END=465595
+title=C1 · Lien simple : divergence dès la deuxième fusion
+[CHAPTER]
+TIMEBASE=1/1000
+START=465595
+END=487895
+title=C2 · Ajouter héritage et implémentation
+[CHAPTER]
+TIMEBASE=1/1000
+START=487895
+END=505455
+title=C2 · Recalibrer CP en déclarant le changement
+[CHAPTER]
+TIMEBASE=1/1000
+START=505455
+END=520988
+title=C4 · Réextraction réelle du second projet par le TP1
+[CHAPTER]
+TIMEBASE=1/1000
+START=520988
+END=541762
+title=C4 · Comparer les modules du second système
+[CHAPTER]
+TIMEBASE=1/1000
+START=541762
+END=564626
+title=C4 · Cibles implicites réintégrées et effet du seuil
+[CHAPTER]
+TIMEBASE=1/1000
+START=564626
+END=595040
+title=C3 · Explorer les mêmes calculs dans Swing
+[CHAPTER]
+TIMEBASE=1/1000
+START=595040
+END=611453
+title=C3 · Exporter la coupe courante
+[CHAPTER]
+TIMEBASE=1/1000
+START=611453
+END=624250
+title=Export interactif vérifié et fin de démonstration

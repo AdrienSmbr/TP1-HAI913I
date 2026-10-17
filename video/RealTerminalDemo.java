@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 public final class RealTerminalDemo {
     private static NaturalInput hand;
     private static ExplorerWindow explorer;
+    private static hai913i.tp1.ui.AnalyzerWindow analyzer;
     private static Path root,source,captures;
     private static PrintWriter timeline,notes,transcript;
     private static long start;
@@ -95,7 +96,7 @@ public final class RealTerminalDemo {
         hand.key(KeyEvent.VK_T);robot.keyRelease(KeyEvent.VK_ALT);robot.keyRelease(KeyEvent.VK_CONTROL);
     }
     private static void focusTerminal() throws Exception {
-        nativeCommand("xdotool","windowactivate","--sync",terminalWindow);terminalFocus();hand.pause(150,280);
+        nativeCommand("xdotool","windowactivate","--sync",terminalWindow);terminalFocus();hand.pause(650,950);
     }
     private static int[] status() {
         try{
@@ -115,13 +116,13 @@ public final class RealTerminalDemo {
         double t=(System.nanoTime()-start)/1e9;
         System.out.println(name);timeline.printf(Locale.ROOT,"%.3f\t%s%n",t,name);timeline.flush();
         notes.printf(Locale.ROOT,"%.3f\t%s\t%s%n",t,name,text);notes.flush();
-        if(explorer==null || !explorer.isShowing()){
+        if((explorer==null || !explorer.isShowing()) && (analyzer==null || !analyzer.isShowing())){
             focusTerminal();
             Robot key=new Robot();key.keyPress(KeyEvent.VK_CONTROL);hand.key(KeyEvent.VK_L);key.keyRelease(KeyEvent.VK_CONTROL);
         }
     }
     private static void begin(String cmd) throws Exception {
-        focusTerminal();transcript.println("$ "+cmd);transcript.flush();
+        focusTerminal();hand.pause(450,650);transcript.println("$ "+cmd);transcript.flush();
         hand.type(cmd,++commandNumber==3 || commandNumber==8 || commandNumber==12);
         hand.key(KeyEvent.VK_ENTER);
     }
@@ -140,7 +141,7 @@ public final class RealTerminalDemo {
         String[] lines=range.split(",");int first=Integer.parseInt(lines[0]),last=Integer.parseInt(lines[1]);
         focusTerminal();chord(KeyEvent.VK_CONTROL,KeyEvent.VK_J);hand.pause(300,500);
         chord(KeyEvent.VK_CONTROL,KeyEvent.VK_P);
-        hand.type("src/main/java/hai913i/tp2/"+filename+".java:"+first,false);hand.key(KeyEvent.VK_ENTER);hand.pause(700,1100);
+        hand.type("src/main/java/hai913i/"+(filename.contains("/")?filename:"tp2/"+filename)+".java:"+first,false);hand.key(KeyEvent.VK_ENTER);hand.pause(700,1100);
         chord(KeyEvent.VK_CONTROL,KeyEvent.VK_G);hand.type(String.valueOf(first),false);hand.key(KeyEvent.VK_ENTER);hand.key(KeyEvent.VK_HOME);
         Robot robot=new Robot();robot.keyPress(KeyEvent.VK_SHIFT);for(int i=first;i<=last;i++)hand.key(KeyEvent.VK_DOWN);robot.keyRelease(KeyEvent.VK_SHIFT);
         transcript.println("[source éditeur : "+filename+".java lignes "+range+"]");transcript.flush();
@@ -218,12 +219,41 @@ public final class RealTerminalDemo {
                 command("pwd && java -version",0);
                 return;
             }
-            chapter("Construction propre et tests", "Le projet commun est reconstruit par Maven. La suite de tests couvre le micro jeu, la bibliothèque, les variantes et les défauts de l'audit.");
-            command("pwd && java -version && mvn -B -Dstyle.color=never clean package | tail -28",0);
+            chapter("Construction du projet commun", "Suite du TP1 : un seul projet Maven et un seul JAR. Compilation avec -DskipTests ; cette capture ne relance pas la suite de tests.");
+            command("java -version && mvn -B -Dstyle.color=never -DskipTests package | tail -18",0);
+            chapter("Continuité · Retrouver l'analyse du TP1", "La bibliothèque du TP1 reste notre point de départ : mêmes sources Java, mêmes métriques et même analyseur JDT.");
+            command("java -jar target/hai913i-tp1-analyzer.jar tp1 resources/validation --action metrics --x 5",0);
+            chapter("Continuité · Lire le pont entre les deux TP", "L'adaptateur réutilise ProjectFacts. Il conserve les classes, les méthodes et les arcs internes résolus pour alimenter le moteur TP2.");
+            code("integration/Tp1FactsSource","45,66");
+            chapter("Continuité · Des sources aux modules en une commande", "--sources appelle directement l'extracteur du TP1. Les résultats suivants viennent des fichiers Java, sans CSV intermédiaire.");
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 --sources resources/validation --cp 0.025 --out target/demo-direct > target/demo-direct.txt && head -12 target/demo-direct.txt && tail -11 target/demo-direct.txt",0);
+            chapter("Continuité · Retrouver l'interface du TP1", "L'interface conserve la structure, les appels et les métriques. Le bouton Modules (TP2) sera activé après l'analyse des sources.");
+            edt(()->{analyzer=new hai913i.tp1.ui.AnalyzerWindow("resources/validation");analyzer.setBounds(30,35,1860,930);analyzer.setVisible(true);analyzer.toFront();});
+            hand.pause(1800,2500);
+            JButton analyse=findButton(analyzer,"Analyser"), modules=findButton(analyzer,"Modules (TP2)");
+            hand.click(analyse);
+            for(int retry=0;retry<120 && !modules.isEnabled();retry++)Thread.sleep(100);
+            if(!modules.isEnabled())throw new IllegalStateException("analyse TP1 non terminée");
+            hand.pause(3000,4000);
+            JTabbedPane originalTabs=findType(analyzer,JTabbedPane.class);Point[] metricTab=new Point[1];
+            edt(()->{Rectangle b=originalTabs.getBoundsAt(2);Point q=originalTabs.getLocationOnScreen();metricTab[0]=new Point(q.x+b.x+b.width/2,q.y+b.y+b.height/2);});
+            hand.click(metricTab[0].x,metricTab[0].y);hand.pause(4000,5500);
+            chapter("Continuité · Ouvrir les modules depuis le TP1", "Un clic transmet les faits déjà en mémoire : pas de réextraction et pas de CSV. CP vaut ici 0,025, avec le lien moyen.");
+            hand.click(modules);hand.pause(1300,1800);
+            edt(()->{for(Window w:Window.getWindows())if(w instanceof ExplorerWindow e && e.isShowing())explorer=e;
+                if(explorer==null)throw new IllegalStateException("explorateur intégré absent");
+                explorer.setBounds(30,35,1860,930);explorer.toFront();});
+            hand.pause(4000,5500);tab(1);hand.pause(3500,4500);tab(2);hand.pause(4000,5500);
+            chapter("Continuité · Faire varier CP dans la même application", "À 0,045 la coupe est rejetée ; à 0,025 elle est acceptée. Le graphe reste identique : seul le parcours de coupe change.");
+            editSpinner("cp","0.045",false);hand.pause(4500,5500);editSpinner("cp","0.025",false);hand.pause(3500,4500);
+            edt(()->{explorer.dispose();analyzer.dispose();});
+            if(args.length>2 && args[2].equals("--preview-integrated"))return;
+            chapter("A0 · Revenir aux faits de référence du sujet", "On distingue l'extraction réelle précédente des CSV canoniques fournis : les chiffres de référence du TP2 se lisent sur ces CSV.");
+            command("head -4 resources/facts-validation-classes.csv && head -4 resources/facts-validation-calls.csv",0);
             chapter("A1 · Du code à la formule du couplage", "Chaque arc interclasse ajoute 1 ; sites ne multiplie pas le poids. Le nombre d'arcs interclasses sert ensuite de dénominateur.");
             code("CouplingCalculator","12,24","if (a.equals(b))", "inter++", "1, Integer::sum", "count / (double) denominator");
             chapter("A0–A2 · Charger les faits et calculer le couplage", "15 classes, 59 méthodes et 44 arcs. On écarte 7 arcs internes : le dénominateur est 37, sans compter les sites d'appel.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.025 --out target/demo-025 > target/demo-025.txt && head -25 target/demo-025.txt",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --out target/demo-025 > target/demo-025.txt && head -25 target/demo-025.txt",0);
             chapter("A2 · Graphe pondéré et image produite", "19 arêtes ; Dvd et LoanException sont conservées comme nœuds isolés. Les images sont calculées à partir des exports de cette exécution.");
             command("python3 scripts/dessiner.py target/demo-025 && python3 video/annoter.py target/demo-025",0);image(source.resolve("target/demo-025/graphe-focus.png"));
             chapter("B1 · Lire le lien moyen dans le code", "La somme parcourt tous les couples, même nuls, puis divise par le produit des tailles. Le lien simple retourne uniquement le maximum.");
@@ -237,31 +267,31 @@ public final class RealTerminalDemo {
             chapter("B3 · Coupe à CP = 0,025", "Sept modules : plafond respecté. Le module principal a C̄ = 0,033462, supérieur à CP ; sa similarité de fusion ne sert pas à la coupe.");
             command("sed -n '/B3 |/,$p' target/demo-025.txt",0);
             chapter("B3 · Coupe rejetée à CP = 0,045", "Dix modules dépassent le plafond floor(15/2) = 7. Le code 3 signale ce rejet et les exports restent disponibles.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.045 --out target/demo-045 > target/demo-045.txt; code=$?; tail -13 target/demo-045.txt; exit $code",3);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.045 --out target/demo-045 > target/demo-045.txt; code=$?; tail -13 target/demo-045.txt; exit $code",3);
             chapter("B4 · Pourquoi retenir CP = 0,025 ?", "0,015 donne quatre modules dont un bloc de onze classes ; 0,025 donne sept modules ; 0,045 dépasse le plafond. Le choix reste discutable.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.015 --out target/demo-015 > target/demo-015.txt && grep 'B3 |' target/demo-015.txt && cat target/demo-015/modules.csv",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.015 --out target/demo-015 > target/demo-015.txt && grep 'B3 |' target/demo-015.txt && cat target/demo-015/modules.csv",0);
             chapter("B4 · Member–ConsoleNotifier : un module discutable", "Un appel au getter getName donne 1/37 > 0,025. Cette paire mélange domaine et affichage ; les appels ne suffisent pas à définir une responsabilité.");
             command("grep 'Member.*ConsoleNotifier' target/demo-025/modules.csv && grep 'Member' target/demo-025/couplages.csv",0);
             chapter("Déterminisme et rechargement", "Une seconde exécution donne les mêmes fichiers. Le graphe CSV rechargé redonne les mêmes modules, y compris les classes isolées.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.025 --out target/demo-repeat > /dev/null && diff -qr target/demo-025 target/demo-repeat --exclude='*-image.dot' --exclude='*.png' && java -jar target/hai913i-tp1-analyzer.jar --graph target/demo-025/graphe.csv --cp 0.025 --out target/demo-recharge > /dev/null && cmp target/demo-025/modules.csv target/demo-recharge/modules.csv && printf 'Exports identiques apres rechargement.\\n'",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --out target/demo-repeat > /dev/null && diff -qr target/demo-025 target/demo-repeat --exclude='*-image.dot' --exclude='*.png' && java -jar target/hai913i-tp1-analyzer.jar tp2 --graph target/demo-025/graphe.csv --cp 0.025 --out target/demo-recharge > /dev/null && cmp target/demo-025/modules.csv target/demo-recharge/modules.csv && printf 'Exports identiques apres rechargement.\\n'",0);
             chapter("Robustesse · Un seuil CP absent est refusé", "Le seuil doit être explicite : l'outil affiche le diagnostic et l'usage, puis rend le code 2. Aucun seuil n'est choisi silencieusement.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources",2); command("echo $?",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources",2); command("echo $?",0);
             chapter("Robustesse · Un seuil CP mal formé est refusé", "Une chaîne à la place d'un nombre ne lance pas de calcul. Le message reste lisible, sans pile d'exception ; code de sortie 2.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp abc",2); command("echo $?",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp abc",2); command("echo $?",0);
             chapter("Robustesse · Un dossier inexistant est refusé", "Avec un CP valide, un chemin de données inexistant provoque un diagnostic et le code 2. Ce n'est pas le code 3 d'une coupe rejetée.");
-            command("java -jar target/hai913i-tp1-analyzer.jar /chemin/inexistant --cp 0.025",2); command("echo $?",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 /chemin/inexistant --cp 0.025",2); command("echo $?",0);
             chapter("C1 · Lien simple : divergence dès la deuxième fusion", "Le maximum Loan–LoanService vaut 4/37. Leur moyenne avec Item vaut seulement 2/37 : le lien moyen choisit LibraryApp–Catalog à 3/37.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.025 --linkage single --out target/demo-single > target/demo-single.txt && grep -E 'C1|  1 :|  2 :|B3' target/demo-single.txt && tail -9 target/demo-single.txt",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --linkage single --out target/demo-single > target/demo-single.txt && grep -E 'C1|  1 :|  2 :|B3' target/demo-single.txt && tail -9 target/demo-single.txt",0);
             chapter("C2 · Ajouter héritage et implémentation", "Quatre relations internes s'ajoutent aux 37 arcs : dénominateur 41, 22 arêtes. À seuil constant, huit modules : coupe rejetée.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.025 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi > target/demo-enrichi.txt; code=$?; head -6 target/demo-enrichi.txt; tail -10 target/demo-enrichi.txt; exit $code",3);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi > target/demo-enrichi.txt; code=$?; head -6 target/demo-enrichi.txt; tail -10 target/demo-enrichi.txt; exit $code",3);
             chapter("C2 · Recalibrer CP en déclarant le changement", "À CP = 0,020, la coupe enrichie donne sept modules acceptés. La comparaison à 0,025 reste fournie : les relations et l'échelle ont changé.");
-            command("java -jar target/hai913i-tp1-analyzer.jar resources --cp 0.020 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi-020 | tail -10",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.020 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi-020 | tail -10",0);
             chapter("C4 · Réextraction réelle du second projet par le TP1", "Les visiteurs JDT du TP1 analysent maintenant les 29 fichiers de l'analyseur. Le pont écrit les faits ; aucune table préexistante n'est utilisée ici.");
             command("sh scripts/extraire-tp1.sh resources/projects/analyseur-tp1 target/demo-extraction | tail -16",0);
             chapter("C4 · Comparer les modules du second système", "30 classes, 199 méthodes, 267 arcs ; 190 sont interclasses. À CP = 0,010, quinze modules respectent le plafond de quinze.");
-            command("java -jar target/hai913i-tp1-analyzer.jar target/demo-extraction --cp 0.010 --out target/demo-second > target/demo-second.txt && head -5 target/demo-second.txt && tail -17 target/demo-second.txt",0);
+            command("java -jar target/hai913i-tp1-analyzer.jar tp2 target/demo-extraction --cp 0.010 --out target/demo-second > target/demo-second.txt && head -5 target/demo-second.txt && tail -17 target/demo-second.txt",0);
             chapter("C4 · Cibles implicites réintégrées et effet du seuil", "Le pont conserve désormais 144 sites vers 69 méthodes implicites résolues : 121 arcs de plus. À 0,025, les 23 modules restent rejetés.");
-            command("head -12 target/demo-extraction/cibles-reintegrees.csv; java -jar target/hai913i-tp1-analyzer.jar target/demo-extraction --cp 0.025 --out target/demo-second-rejet > target/demo-second-rejet.txt; code=$?; grep 'B3 |' target/demo-second-rejet.txt; exit $code",3);
+            command("head -12 target/demo-extraction/cibles-reintegrees.csv; java -jar target/hai913i-tp1-analyzer.jar tp2 target/demo-extraction --cp 0.025 --out target/demo-second-rejet > target/demo-second-rejet.txt; code=$?; grep 'B3 |' target/demo-second-rejet.txt; exit $code",3);
             chapter("C3 · Explorer les mêmes calculs dans Swing", "La recherche et la sélection expliquent une classe ; changer CP recalcule la coupe. Les filtres d'affichage ne modifient pas les données.");
             var graph=new CouplingCalculator().compute(new CsvFactsSource(source.resolve("resources"),null).load()).graph();
             var model=new ExplorerModel(graph,.025,AgglomerativeClusterer.Linkage.AVERAGE,"calls","A0 | Faits canoniques de la bibliothèque\n");
@@ -286,7 +316,7 @@ public final class RealTerminalDemo {
             command("cat target/demo-export-gui/parametres.txt && grep 'B3 |' target/demo-export-gui/resultats.txt",0);
         } finally {
             recording.set(false);capture.join();timeline.close();notes.close();transcript.close();
-            edt(()->{if(explorer!=null)explorer.dispose();});nativeCommand("xdotool","windowclose",terminalWindow);terminal.destroy();
+            edt(()->{if(explorer!=null)explorer.dispose();if(analyzer!=null)analyzer.dispose();});nativeCommand("xdotool","windowclose",terminalWindow);terminal.destroy();
         }
         if(failure.get()!=null)throw new AssertionError("Échec de capture",failure.get());
         System.out.printf(Locale.ROOT,"Capture terminée : %.1f s%n",(System.nanoTime()-start)/1e9);

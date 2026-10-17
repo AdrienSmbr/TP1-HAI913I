@@ -16,7 +16,7 @@ def encode(folder):
     font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',20)
     bold=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',16)
     def badge(title):
-        for prefix,label in [('Construction','A0 · ENVIRONNEMENT ET CONSTRUCTION'),('A0','A0–A2 · FAITS ET COUPLAGE'),('A1','A1 · COUPLAGE'),('A2','A2 · GRAPHE PONDÉRÉ'),('B1–B2','B1–B2 · DENDROGRAMME'),('B1','B1 · CLUSTERING'),('B3','B3 · COUPE EN MODULES'),('B4','B4 · INTERPRÉTATION'),('Robustesse','ROBUSTESSE · LIGNE DE COMMANDE'),('Déterminisme','B1 · DÉTERMINISME'),('C1','C1 · LIEN SIMPLE'),('C2','C2 · RELATIONS ENRICHIES'),('C3','C3 · INTERFACE GRAPHIQUE'),('C4','C4 · SECOND PROJET'),('Export','C3 · EXPORT ET SYNTHÈSE')]:
+        for prefix,label in [('Continuité','TP1 → TP2 · MÊME APPLICATION'),('Construction','A0 · ENVIRONNEMENT ET CONSTRUCTION'),('A0','A0–A2 · FAITS ET COUPLAGE'),('A1','A1 · COUPLAGE'),('A2','A2 · GRAPHE PONDÉRÉ'),('B1–B2','B1–B2 · DENDROGRAMME'),('B1','B1 · CLUSTERING'),('B3','B3 · COUPE EN MODULES'),('B4','B4 · INTERPRÉTATION'),('Robustesse','ROBUSTESSE · LIGNE DE COMMANDE'),('Déterminisme','B1 · DÉTERMINISME'),('C1','C1 · LIEN SIMPLE'),('C2','C2 · RELATIONS ENRICHIES'),('C3','C3 · INTERFACE GRAPHIQUE'),('C4','C4 · SECOND PROJET'),('Export','C3 · EXPORT ET SYNTHÈSE')]:
             if title.startswith(prefix):return label
         return title.upper()
     def caption(im,t):
@@ -24,6 +24,7 @@ def encode(folder):
         if not applicable:return im
         _,title,note=applicable[-1]
         draw=ImageDraw.Draw(im)
+        draw.text((65,3),'TP1 → TP2 · De l’analyse statique aux modules',font=bold,fill='#dedede')
         code_scene=any(part in title for part in ['Du code','Lire le lien','Départager','lecture de branches','lecture du code'])
         if code_scene:
             crop=im.crop((65,90,1855,970))
@@ -67,7 +68,7 @@ def encode(folder):
     raw=re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',raw)
     raw=re.sub(r'\x1b[()][A-Z0-9]','',raw).replace('\r','')
     (ROOT/'video/terminal.txt').write_text(raw)
-    metadata={'duration_seconds':written/12,'resolution':list(first.size),'fps':12,'capture':'Robot, VS Code avec terminal Bash intégré, feh et Swing ; habillage inspiré du TP1','chapters':len(chapters),
+    metadata={'duration_seconds':written/12,'resolution':list(first.size),'fps':12,'version':'projet intégré TP1 + TP2', 'capture':'Robot, VS Code avec terminal Bash intégré, feh et Swing ; habillage inspiré du TP1','chapters':len(chapters),
         'source_readings':(folder/'executions.log').read_text().count('[source éditeur :'),
         'invalid_input_cases':(folder/'executions.log').read_text().count('[code de sortie : 2]')}
     (ROOT/'video/metadata.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n')
@@ -75,8 +76,10 @@ def encode(folder):
         'Les caractères sont saisis dans le véritable terminal ; Bash exécute les commandes. Aucune console simulée.\n'
         'Habillage inspiré du TP1 : cartouche jaune, explication en bandeau inférieur et encadré jaune autour de la sélection réelle du code.\n'
         'Journal des commandes : executions.log ; transcription du véritable PTY : terminal.txt.\n'
+        'Nouvelle capture du projet intégré : métriques TP1, adaptateur partagé, --sources et bouton Modules (TP2).\n'
         'Sous-titres intégrés : étapes A0 à B4, choix de CP, interprétation, conventions, bonus C1 à C4 et limites. Sans voix.\n'
-        'Quatre lectures des sources réelles : couplage, lien moyen, départage et coupe ; coloration syntaxique et sélection dans VS Code.\n'
+        'Cinq lectures des sources réelles : adaptateur TP1/TP2, couplage, lien moyen, départage et coupe ; coloration syntaxique et sélection dans VS Code.\n'
+        'Construction Maven avec -DskipTests : aucun résultat de test nouveau annoncé.\n'
         'Trois erreurs provoquées : CP absent, CP mal formé et dossier inexistant, code 2 ; coupe rejetée, code 3.\n'
         'Repères jaunes sur les isolés du graphe et la branche du module principal ; données inchangées.\n'
         'La réextraction TP1 est exécutée pendant la capture. Les images du graphe et du dendrogramme sont régénérées.\n'
@@ -86,18 +89,40 @@ def encode(folder):
         'Les corrections de frappe sont scénarisées ; ce rendu ne prétend pas être une intervention humaine.\n'
         f'Durée : {written/12:.1f} secondes. Voir chapitres.txt et executions.log.\n'
         'Reproduction : python3 video/enregistrer.py --xvfb (Maven, JDK, Graphviz, Xvfb, VS Code, openbox, xdotool, feh et script dans PATH).\n')
+    add_navigation(notes,written/12)
     print(json.dumps(metadata,ensure_ascii=False))
+
+def add_navigation(notes,duration):
+    def cue(seconds):
+        ms=round(seconds*1000);h,ms=divmod(ms,3600000);m,ms=divmod(ms,60000);sec,ms=divmod(ms,1000)
+        return f'{h:02d}:{m:02d}:{sec:02d}.{ms:03d}'
+    cues=['WEBVTT','']
+    chapter_metadata=[';FFMETADATA1','title=HAI913I · Du TP1 au TP2','comment=Capture réelle du projet intégré ; gestes automatisés avec Robot, sans voix.']
+    for index,(timestamp,title,note) in enumerate(notes):
+        end=notes[index+1][0] if index+1<len(notes) else duration
+        cues.extend([f'{cue(timestamp)} --> {cue(end)}',title,note,''])
+        safe=title.replace('\\','\\\\').replace('=','\\=').replace(';','\\;').replace('#','\\#')
+        chapter_metadata.extend(['[CHAPTER]','TIMEBASE=1/1000',f'START={round(timestamp*1000)}',f'END={round(end*1000)}','title='+safe])
+    (ROOT/'video/sous-titres.vtt').write_text('\n'.join(cues).rstrip()+'\n')
+    navigation=ROOT/'video/chapitres.ffmetadata'
+    navigation.write_text('\n'.join(chapter_metadata)+'\n')
+    chaptered=ROOT/'video/demonstration-chapitres.mp4'
+    subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(),'-y','-loglevel','error','-i',str(ROOT/'video/demonstration.mp4'),'-i',str(navigation),'-map_metadata','1','-map_chapters','1','-codec','copy',str(chaptered)],check=True)
+    chaptered.replace(ROOT/'video/demonstration.mp4')
 
 def main():
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group()
     group.add_argument('--display',help='écran X11 existant, de préférence privé')
     group.add_argument('--xvfb',action='store_true',help='créer un écran X11 privé')
+    parser.add_argument('--work-dir',type=Path,help='conserver les captures dans ce dossier')
+    parser.add_argument('--preview-integrated',action='store_true',help='capturer seulement la continuité TP1 vers TP2')
     parser.add_argument('--encode-only',type=Path,help='encoder une capture continue déjà terminée')
     args=parser.parse_args()
     if args.encode_only:encode(args.encode_only);return
     env=os.environ.copy();server=None;manager=None
     with tempfile.TemporaryDirectory(prefix='tp2-video-') as tmp:
-        work=Path(tmp)
+        work=args.work_dir.resolve() if args.work_dir else Path(tmp)
+        work.mkdir(parents=True,exist_ok=True)
         if args.display:env['DISPLAY']=args.display
         else:
             if not shutil.which('Xvfb'):raise SystemExit('Xvfb absent : installer Xvfb ou fournir --display :N pour un écran X11 disponible.')
@@ -110,13 +135,14 @@ def main():
             for executable in ['openbox','xdotool','feh','script']:
                 if not shutil.which(executable):raise RuntimeError('Outil de capture absent : '+executable)
             if not shutil.which(env.get('TP2_CODE','code')):raise RuntimeError('VS Code absent : définir TP2_CODE vers le binaire natif')
-            manager=subprocess.Popen(['openbox'],env=env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            manager=subprocess.Popen(['openbox'],env=env,stdout=(work/'openbox.log').open('w'),stderr=subprocess.STDOUT)
             time.sleep(1)
+            if manager.poll() is not None:raise RuntimeError('Openbox ne démarre pas : '+(work/'openbox.log').read_text())
             jar=ROOT/'target/hai913i-tp1-analyzer.jar'
             if not jar.exists():subprocess.run(['mvn','-q','-DskipTests','package'],cwd=ROOT,env=env,check=True)
-            shutil.copy(jar,work/'engine.jar');classes=work/'classes';classes.mkdir()
+            shutil.copy(jar,work/'engine.jar');classes=work/'classes';classes.mkdir(exist_ok=True)
             subprocess.run(['javac','--release','17','-encoding','UTF-8','-cp',str(work/'engine.jar'),'-d',str(classes),str(ROOT/'video/RealTerminalDemo.java'),str(ROOT/'video/NaturalInput.java')],env=env,check=True)
-            subprocess.run(['java','-cp',str(classes)+os.pathsep+str(work/'engine.jar'),'hai913i.tp2.RealTerminalDemo',str(ROOT),str(work/'captures')],env=env,check=True)
+            subprocess.run(['java','-cp',str(classes)+os.pathsep+str(work/'engine.jar'),'hai913i.tp2.RealTerminalDemo',str(ROOT),str(work/'captures')]+(['--preview-integrated'] if args.preview_integrated else []),env=env,check=True)
             encode(work/'captures')
         finally:
             if manager is not None and manager.poll() is None:manager.terminate();manager.wait(timeout=10)

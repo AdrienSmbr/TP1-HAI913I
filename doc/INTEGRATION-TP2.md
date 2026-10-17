@@ -12,7 +12,7 @@ L’adaptateur ajoute les cibles de records/enum réellement résolues mais abse
 
 Les CSV et résultats du TP2 sont conservés ; resources/projects/analyseur-tp1 est le corpus figé de 29 fichiers, nécessaire pour reproduire les chiffres C4 du rapport. Analyser tout le dépôt désormais agrandi est possible avec --sources ., mais produit légitimement d’autres chiffres.
 
-Les rapports et la vidéo décrivent la version autonome antérieure. Une note de migration est ajoutée aux documents ; le README principal est la référence d’exécution actuelle. Les journaux historiques mentionnant 24 tests et 112 comparaisons portent sur ce moteur autonome, pas sur une campagne exécutée après l’intégration. La vidéo conserve ses commandes et son contexte ; elle n’est pas présentée comme une nouvelle capture de l’application commune.
+Les rapports décrivent la version autonome antérieure. Une note de migration est ajoutée aux documents ; le README principal est la référence d’exécution actuelle. Les journaux historiques mentionnant 24 tests et 112 comparaisons portent sur ce moteur autonome, pas sur une campagne exécutée après l’intégration. La vidéo principale a été réenregistrée après intégration : elle montre les métriques TP1, le code de l’adaptateur, la commande directe `tp2 --sources` et le bouton « Modules (TP2) », puis les données canoniques et tous les bonus. Le film précédent reste accessible dans l’historique Git (commit `6222b9f`). `interface-bonus.mp4` reste une ancienne capture complémentaire ; elle n’est pas le film principal.
 
 Les scripts de validation et de production sont adaptés à la racine du dépôt et au JAR unique. Aucun JAR, target, cache, archive dupliquée ou deuxième pom.xml n’est ajouté au dépôt.
 
@@ -30,6 +30,6 @@ python3 rapport/tp2/generer.py
 TP2_CODE=/chemin/VSCode-linux-x64/code python3 video/enregistrer.py --xvfb
 ```
 
-Le pilote est adapté à l’organisation commune ; une nouvelle capture montrera donc le JAR unique et l’ensemble des tests exécutés par Maven. L’ancienne vidéo livrée n’est pas remplacée silencieusement. Le commentaire annonce une suite complète plutôt qu’un nombre figé de tests.
+Le pilote utilise le JAR commun et reconstruit le projet avec `-DskipTests`. La nouvelle vidéo n’annonce aucun résultat de tests supplémentaire. Ses commandes, codes de sortie et chapitres sont conservés à côté du MP4. `--work-dir DOSSIER` conserve les captures brutes et permet une reprise d’encodage avec `--encode-only DOSSIER/captures`. Les fenêtres Swing sont celles de l’application réelle, ouvertes dans la JVM du pilote ; les commandes CLI sont exécutées par le Bash du terminal intégré. Les gestes Robot sont automatisés et déclarés comme tels.
 
 Les auteurs et l’usage de Codex sont déclarés dans les rapports. Cette intégration n’atteste pas à elle seule que les étudiants maîtrisent les algorithmes : le guide de soutenance et les sources sont fournis pour leur appropriation.

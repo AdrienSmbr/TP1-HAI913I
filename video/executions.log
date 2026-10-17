@@ -1,9 +1,16 @@
-$ pwd && java -version && mvn -B -Dstyle.color=never clean package | tail -28
+$ java -version && mvn -B -Dstyle.color=never -DskipTests package | tail -18
+[code de sortie : 0]
+$ java -jar target/hai913i-tp1-analyzer.jar tp1 resources/validation --action metrics --x 5
+[code de sortie : 0]
+[source éditeur : integration/Tp1FactsSource.java lignes 45,66]
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 --sources resources/validation --cp 0.025 --out target/demo-direct > target/demo-direct.txt && head -12 target/demo-direct.txt && tail -11 target/demo-direct.txt
+[code de sortie : 0]
+$ head -4 resources/facts-validation-classes.csv && head -4 resources/facts-validation-calls.csv
 [code de sortie : 0]
 [source éditeur : CouplingCalculator.java lignes 12,24]
-$ java -jar target/hai913i-tp2.jar resources --cp 0.025 --out target/demo-025 > target/demo-025.txt && head -25 target/demo-025.txt
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --out target/demo-025 > target/demo-025.txt && head -25 target/demo-025.txt
 [code de sortie : 0]
-$ python3 scripts/dessiner.py target/demo-025 && python3 ../video/annoter.py target/demo-025
+$ python3 scripts/dessiner.py target/demo-025 && python3 video/annoter.py target/demo-025
 [code de sortie : 0]
 $ feh --auto-zoom --scale-down --geometry 1860x900+30+30 target/demo-025/graphe-focus.png
 [code de sortie : 0]
@@ -16,37 +23,37 @@ $ feh --auto-zoom --scale-down --geometry 1860x900+30+30 target/demo-025/dendrog
 [source éditeur : ModuleCutter.java lignes 19,29]
 $ sed -n '/B3 |/,$p' target/demo-025.txt
 [code de sortie : 0]
-$ (java -jar target/hai913i-tp2.jar resources --cp 0.045 --out target/demo-045 > target/demo-045.txt; code=$?; tail -13 target/demo-045.txt; exit $code)
+$ (java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.045 --out target/demo-045 > target/demo-045.txt; code=$?; tail -13 target/demo-045.txt; exit $code)
 [code de sortie : 3]
-$ java -jar target/hai913i-tp2.jar resources --cp 0.015 --out target/demo-015 > target/demo-015.txt && grep 'B3 |' target/demo-015.txt && cat target/demo-015/modules.csv
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.015 --out target/demo-015 > target/demo-015.txt && grep 'B3 |' target/demo-015.txt && cat target/demo-015/modules.csv
 [code de sortie : 0]
 $ grep 'Member.*ConsoleNotifier' target/demo-025/modules.csv && grep 'Member' target/demo-025/couplages.csv
 [code de sortie : 0]
-$ java -jar target/hai913i-tp2.jar resources --cp 0.025 --out target/demo-repeat > /dev/null && diff -qr target/demo-025 target/demo-repeat --exclude='*-image.dot' --exclude='*.png' && java -jar target/hai913i-tp2.jar --graph target/demo-025/graphe.csv --cp 0.025 --out target/demo-recharge > /dev/null && cmp target/demo-025/modules.csv target/demo-recharge/modules.csv && printf 'Exports identiques apres rechargement.\n'
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --out target/demo-repeat > /dev/null && diff -qr target/demo-025 target/demo-repeat --exclude='*-image.dot' --exclude='*.png' && java -jar target/hai913i-tp1-analyzer.jar tp2 --graph target/demo-025/graphe.csv --cp 0.025 --out target/demo-recharge > /dev/null && cmp target/demo-025/modules.csv target/demo-recharge/modules.csv && printf 'Exports identiques apres rechargement.\n'
 [code de sortie : 0]
-$ java -jar target/hai913i-tp2.jar resources
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources
 [code de sortie : 2]
 $ echo $?
 [code de sortie : 0]
-$ java -jar target/hai913i-tp2.jar resources --cp abc
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp abc
 [code de sortie : 2]
 $ echo $?
 [code de sortie : 0]
-$ java -jar target/hai913i-tp2.jar /chemin/inexistant --cp 0.025
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 /chemin/inexistant --cp 0.025
 [code de sortie : 2]
 $ echo $?
 [code de sortie : 0]
-$ java -jar target/hai913i-tp2.jar resources --cp 0.025 --linkage single --out target/demo-single > target/demo-single.txt && grep -E 'C1|  1 :|  2 :|B3' target/demo-single.txt && tail -9 target/demo-single.txt
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --linkage single --out target/demo-single > target/demo-single.txt && grep -E 'C1|  1 :|  2 :|B3' target/demo-single.txt && tail -9 target/demo-single.txt
 [code de sortie : 0]
-$ (java -jar target/hai913i-tp2.jar resources --cp 0.025 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi > target/demo-enrichi.txt; code=$?; head -6 target/demo-enrichi.txt; tail -10 target/demo-enrichi.txt; exit $code)
+$ (java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.025 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi > target/demo-enrichi.txt; code=$?; head -6 target/demo-enrichi.txt; tail -10 target/demo-enrichi.txt; exit $code)
 [code de sortie : 3]
-$ java -jar target/hai913i-tp2.jar resources --cp 0.020 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi-020 | tail -10
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 resources --cp 0.020 --inheritance resources/facts-validation-inheritance.csv --out target/demo-enrichi-020 | tail -10
 [code de sortie : 0]
-$ sh scripts/extraire-tp1.sh bonus/tp1-extracteur target/demo-extraction | tail -16
+$ sh scripts/extraire-tp1.sh resources/projects/analyseur-tp1 target/demo-extraction | tail -16
 [code de sortie : 0]
-$ java -jar target/hai913i-tp2.jar target/demo-extraction --cp 0.010 --out target/demo-second > target/demo-second.txt && head -5 target/demo-second.txt && tail -17 target/demo-second.txt
+$ java -jar target/hai913i-tp1-analyzer.jar tp2 target/demo-extraction --cp 0.010 --out target/demo-second > target/demo-second.txt && head -5 target/demo-second.txt && tail -17 target/demo-second.txt
 [code de sortie : 0]
-$ (head -12 target/demo-extraction/cibles-reintegrees.csv; java -jar target/hai913i-tp2.jar target/demo-extraction --cp 0.025 --out target/demo-second-rejet > target/demo-second-rejet.txt; code=$?; grep 'B3 |' target/demo-second-rejet.txt; exit $code)
+$ (head -12 target/demo-extraction/cibles-reintegrees.csv; java -jar target/hai913i-tp1-analyzer.jar tp2 target/demo-extraction --cp 0.025 --out target/demo-second-rejet > target/demo-second-rejet.txt; code=$?; grep 'B3 |' target/demo-second-rejet.txt; exit $code)
 [code de sortie : 3]
 $ cat target/demo-export-gui/parametres.txt && grep 'B3 |' target/demo-export-gui/resultats.txt
 [code de sortie : 0]

@@ -60,7 +60,7 @@ Dans l’analyseur, choisir un projet et cliquer sur **Analyser**, régler **CP*
 - `resources/`, `examples/`, `datasets/` : faits canoniques, micro jeu, corpus et extraction C4.
 - `sorties/` : résultats et journaux du rendu TP2 autonome ; leur date et leur contexte ne constituent pas une validation nouvelle de l’intégration.
 - `rapport/` : rapport TP1 ; [rapport TP2](rapport/tp2/Compte-Rendu.pdf), [README TP2 historique](rapport/tp2/README.pdf), audit et guide de soutenance.
-- [Vidéo TP2](video/demonstration.mp4), [aperçu](video/apercu-style-tp1.png), chapitres et transcription : démonstration du rendu autonome du 16 octobre. Le moteur est intégré ici, mais cette vidéo ne prétend pas montrer les nouvelles commandes ou le bouton de liaison ajouté le 17 octobre.
+- [Vidéo TP1 → TP2](video/demonstration.mp4), [aperçu](video/apercu-style-tp1.png), [chapitres](video/chapitres.txt) et [transcription](video/terminal.txt) : nouvelle capture du projet intégré. Elle reprend les métriques du TP1, lit l’adaptateur, lance `tp2 --sources`, puis ouvre les modules depuis le bouton de l’interface TP1. Les parties A0–B4 et les bonus C1–C4 suivent dans le même environnement. Capture réelle pilotée automatiquement, sans voix ; les bandeaux explicitent les résultats.
 
 ## Validation et reproduction
 
